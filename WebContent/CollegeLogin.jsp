@@ -6,6 +6,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<style type="text/css">
+.red {
+    color:red;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+			$(document).ready(function () {
+    $("#cuid").focus();
+    $("#cuid").blur(function () {
+        var name = $('#cuid').val();
+        if (name.length == 0) {
+            $('#cuid').next('div.red').remove();
+            $('#cuid').after('<div class="red">User Name is Required</div>');
+        } else {
+            $(this).next('div.red').remove();
+            return true;
+        }
+    });
+
+    $("#cpwd").blur(function () {
+        var password = $('#cpwd').val();
+        if (password.length == 0) {
+            $('#cpwd').next('div.red').remove();
+            $('#cpwd').after('<div class="red">Password is Required</div>');
+            return false;
+        } else {
+            $('#cpwd').next('div.red').remove();
+            return true;
+        }
+    });
+
+});
+</script> 
+
+
 </head>
 <body>
 
@@ -18,12 +57,12 @@
 	<table>
 	<tr>
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="Userid"/></td>
+	 	<td>User Name : </td><td><spr:input path="Userid" id="cuid" name="cuid"/></td>
 	</tr>
 	</tr>
 	<tr>
 	<tr>
-	     <td>Password : </td><td><spr:password path="password"/></td>
+	     <td>Password : </td><td><spr:password path="password" id="cpwd" name="cpwd"/></td>
 	</tr>
 	</tr>
 	<tr>
