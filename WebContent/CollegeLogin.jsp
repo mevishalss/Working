@@ -9,21 +9,21 @@
 </head>
 <body>
 
-<jsp:include page="LoginHead.jsp"></jsp:include>
 
+<jsp:include page="LoginHead.jsp"></jsp:include>
 	<div  align="center" style="margin-top: 100px">
-	<spr:form action="login.php" commandName="user" method="post" >
+	<spr:form action="MLogin.php" commandName="collegedto" method="post" >
 	<fieldset>
-	<legend>LOGIN</legend>
+	<legend>College Login</legend>
 	<table>
 	<tr>
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="userName"/></td>
+	 	<td>User Name : </td><td><spr:input path="Userid"/></td>
 	</tr>
 	</tr>
 	<tr>
 	<tr>
-	     <td>Password : </td><td><spr:password path="userPass"/></td>
+	     <td>Password : </td><td><spr:password path="password"/></td>
 	</tr>
 	</tr>
 	<tr>
@@ -46,7 +46,8 @@
 	
 	<tr>
 	<tr>
-		<td align="Left"><a href="url">New Register</a></td> <td align="Right"><a href="url">Forgot Password</a></td>
+		<td align="Left">
+		</td> <td align="Right"><a href="url">Forgot Password</a></td>
 	</tr>
 	</tr>
 	</table> 

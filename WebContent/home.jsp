@@ -59,7 +59,7 @@ input[type=text]:focus {
 
 <table>
 <tr>
-  <input type="text" name="search" placeholder="Paste Your URL & Search for the products..">
+  <input type="text" name="search" placeholder="Paste Your URL & Search for the products......">
 
 	<td>
 		<input type="button" id="searchbox" value="Search">	

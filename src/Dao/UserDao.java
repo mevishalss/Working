@@ -38,6 +38,7 @@ public class UserDao {
 
 			@Override
 			public User doInHibernate(Session arg0) throws HibernateException {
+				System.out.println(user.getUserName());
 				Transaction t = arg0.beginTransaction();
 				arg0.save(user);
 				t.commit();
