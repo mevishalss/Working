@@ -8,10 +8,35 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<jsp:include page="LoginHead.jsp"></jsp:include>
+
+	<div  align="center" style="margin-top: 100px">
 	<spr:form action="login.php" commandName="user" method="post" >
-		User Name : <spr:input path="userName"/><br>
-		Password : <spr:password path="userPass"/><br>
-		<input type="submit" value="login" /><br>
+	<table>
+	<tr>
+	 	<td>User Name : </td><td><spr:input path="userName"/></td>
+	</tr>
+	<tr>
+	     <td>Password : </td><td><spr:password path="userPass"/></td>
+	</tr>
+	<tr>
+		<td> <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label></td>
+    </tr>
+    <tr>
+		<td colspan="2" align="center"><input type="submit" value="login" /> <input type="submit" value="login" /></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" align="Left"><a  href="url">New Register</a></td> <td colspan="2" align="Right><a href="url">Forgot Password</a></td>
+	</tr>
+	</table> 
+		
+		</div>
+		
+		
 	</spr:form>
 </body>
 </html>
