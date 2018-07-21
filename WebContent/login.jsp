@@ -19,8 +19,8 @@
     $("#uid").blur(function () {
         var name = $('#uid').val();
         if (name.length == 0) {
-            $('#uid').next('div.red').remove();
-            $('#uid').after('<div class="red">User Name is Required</div>');
+           
+            $('#uid').after('<div class="red">User Name is Requwired</div>');
         } else {
             $(this).next('div.red').remove();
             return true;
@@ -30,7 +30,7 @@
     $("#pwd").blur(function () {
         var password = $('#pwd').val();
         if (password.length == 0) {
-            $('#pwd').next('div.red').remove();
+           
             $('#pwd').after('<div class="red">Password is Required</div>');
             return false;
         } else {
