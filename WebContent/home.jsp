@@ -69,7 +69,11 @@ input[type=text]:focus {
 
 </table>
 </div>
-
+<br><br>
+<br>
+<br>
+<br>
+<jsp:include page="footer.jsp"></jsp:include>
 </form>
 </body>
 </html>
