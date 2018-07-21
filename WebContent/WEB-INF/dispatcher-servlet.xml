@@ -39,6 +39,7 @@
 	<property name="annotatedClasses" >
 		<list>
 			<value>dto.User</value>
+			<value>dto.UserDetails</value>
 		</list>
 	</property>
 	</bean>	
