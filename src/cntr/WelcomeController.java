@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Dao.UserDao;
+import dto.Collegedto;
 import dto.User;
 
 @Controller
@@ -34,5 +35,12 @@ public class WelcomeController {
 		dao.createUser(user);
 		model.put("msg", "Welcome !! "+user.getUserName());
 		return "info";
+	}
+	
+
+	@RequestMapping(value="/ValidateClgUser.php")
+	public String clglogin (ModelMap model) {
+		model.put("collegedto", new Collegedto());
+		return "ClgHomePage";
 	}
 }
