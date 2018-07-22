@@ -40,6 +40,10 @@
 		<list>
 			<value>dto.User</value>
 			<value>dto.UserDetails</value>
+			<value>dto.Payment</value>
+			<value>dto.Admindto</value>
+			<value>dto.Collegedto</value>
+			
 		</list>
 	</property>
 	</bean>	
