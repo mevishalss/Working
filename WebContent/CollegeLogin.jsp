@@ -10,9 +10,9 @@
 <body>
 
 
-
+<jsp:include page="LoginHead.jsp"></jsp:include>
 	<div  align="center" style="margin-top: 100px">
-	<spr:form action="validateClgUser.php" commandName="collegedto" method="post" >
+	<spr:form action="MLogin.php" commandName="collegedto" method="post" >
 	<fieldset>
 	<legend>College Login</legend>
 	<table>

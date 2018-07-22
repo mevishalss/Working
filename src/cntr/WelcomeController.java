@@ -38,9 +38,17 @@ public class WelcomeController {
 	}
 	
 
-	@RequestMapping(value="/ValidateClgUser.php")
+	@RequestMapping(value="/ClgLogin.php")
 	public String clglogin (ModelMap model) {
 		model.put("collegedto", new Collegedto());
-		return "ClgHomePage";
+		return "CollegeLogin";
 	}
+	
+	@RequestMapping(value="/MLogin.php")
+	public String clglogin (  Collegedto clgdto ,ModelMap model) {
+		model.put("msg","validUser"+clgdto.getUserid());
+		return "ClgLoginInfo";
+	}
+	
+	
 }
