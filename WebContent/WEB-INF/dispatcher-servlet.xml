@@ -43,6 +43,7 @@
 			<value>dto.Payment</value>
 			<value>dto.Admindto</value>
 			<value>dto.Collegedto</value>
+			<value>dto.OrderDetails</value>
 			
 		</list>
 	</property>
@@ -59,6 +60,10 @@
 	</bean>
 	
 	<bean id="pdao" class="Dao.PaymentDao" >
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="odao" class="Dao.OrderDao" >
 	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 
