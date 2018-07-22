@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Dao.UserDao;
+import dto.Admindto;
 import dto.Collegedto;
 import dto.User;
 
@@ -50,5 +51,17 @@ public class WelcomeController {
 		return "ClgLoginInfo";
 	}
 	
+	
+	@RequestMapping(value="/AdminLogin.php")
+	public String adminLogin (ModelMap model) {
+		model.put("Admindto", new Admindto());
+		return "Adminlogin_page";
+	}
+	
+	@RequestMapping(value="/AdminData.php")
+	public String adminLogin (Admindto AdminObj ,ModelMap model) {
+		model.put("msg", "welcome  "+AdminObj.getUserid());
+		return "AdminHome";
+	}
 	
 }
