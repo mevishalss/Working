@@ -20,6 +20,7 @@ import dto.User;
 public class WelcomeController {
 	@Autowired
 	UserDao dao;
+	@Autowired
 	PaymentDao pdao;
 	
 	public PaymentDao getPdao() {
@@ -46,7 +47,6 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
-		dao.createUser(user);
 		model.put("msg", "Welcome !! "+user.getUserName());
 		return "info";
 	}
@@ -80,11 +80,9 @@ public class WelcomeController {
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
 		
-		List<Payment> list = pdao.paymentList();
-		for(Payment u : list) {
-			System.out.println(u);
-		}
-		model.put("list",list);
+		List<Payment> list =pdao.paymentList();
+		model.put("list", list);
+		
 		return "payment";
 	}
 	

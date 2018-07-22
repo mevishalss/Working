@@ -37,14 +37,11 @@ public class PaymentDao {
 		List<Payment> ulist = hibernateTemplate.execute(new HibernateCallback<List<Payment>>() {
 
 			@Override
-			public List<Payment> doInHibernate(Session arg0) throws HibernateException {
+			public List<Payment> doInHibernate(Session arg0) throws HibernateException 
+			{
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(Payment.class);
 				List<Payment> ul = q.list();
-				for(Payment u : ul) {
-					System.out.println(u);
-				}
-				
 				t.commit();
 				arg0.close();
 				return ul;

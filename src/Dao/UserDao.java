@@ -89,8 +89,6 @@ public class UserDao {
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(User.class);
 				List<User> ul = q.list();
-				
-				
 				t.commit();
 				arg0.close();
 				return ul;

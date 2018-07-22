@@ -9,13 +9,56 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
 
-List<Payment> arr = (List)request.getAttribute("list");
-for(Payment u : arr) {
-	System.out.println(u);
-}
-
-%>
+<% List<Payment> list = (List) request.getAttribute("list"); %>
+<table align="center" border="1" >
+		<thead>
+		<tr>
+		<th colspan="8" >Payment History Page</th>
+		</tr>
+		<tr>
+		<th >User Id</th>
+		<th >Order Id</th>
+		<th >Transaction Id</th>
+		<th >Transaction Date</th>
+		<th >Transacation Amount</th>
+		<th >Transacation Status</th>
+		<th >Payment Mode</th>
+		
+		</tr>
+		</thead>
+		<tbody>
+		<%
+			for(Payment m : list){
+		%>
+		<tr>
+			<td align="center" >
+				<%=m.getUserId() %>
+			</td>
+			<td align="center" >
+				<%=m.getOrderId()%>
+			</td>
+			<td align="center" >
+				<%=m.getTransId() %>
+			</td>
+			<td align="center" >
+				<%=m.getTransDate() %>
+			</td>
+			<td align="center" >
+				<%=m.getTransAmount() %>
+			</td>
+			<td align="center" >
+				<%=m.getTransStatus()%>
+			</td>
+			<td align="center" >
+				<%=m.getModeOfTrans() %>
+			</td>
+			
+		</tr>
+		<% } %>
+		
+		</tbody>
+		</table>
+	
 </body>
 </html>
