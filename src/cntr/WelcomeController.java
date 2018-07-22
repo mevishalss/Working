@@ -1,22 +1,35 @@
 package cntr;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import Dao.PaymentDao;
 import Dao.UserDao;
 import dto.Admindto;
 import dto.Collegedto;
+import dto.Payment;
 import dto.User;
 
 @Controller
 public class WelcomeController {
 	@Autowired
 	UserDao dao;
+	PaymentDao pdao;
 	
+	public PaymentDao getPdao() {
+		return pdao;
+	}
+
+	public void setPdao(PaymentDao pdao) {
+		this.pdao = pdao;
+	}
+
 	public UserDao getDao() {
 		return dao;
 	}
@@ -63,5 +76,20 @@ public class WelcomeController {
 		model.put("msg", "welcome  "+AdminObj.getUserid());
 		return "AdminHome";
 	}
+	
+	@RequestMapping(value="/paymentdetails.php")
+	public String paymentdetails (ModelMap model) {
+		
+		List<Payment> list = pdao.paymentList();
+		for(Payment u : list) {
+			System.out.println(u);
+		}
+		model.put("list",list);
+		return "payment";
+	}
+	
+	
+	
+	
 	
 }

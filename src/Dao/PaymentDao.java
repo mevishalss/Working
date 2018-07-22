@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import dto.Payment;
 import dto.User;
 
 
@@ -32,14 +33,18 @@ public class PaymentDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 	
-	public List<User> userList(){
-		List<User> ulist = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
+	public List<Payment> paymentList(){
+		List<Payment> ulist = hibernateTemplate.execute(new HibernateCallback<List<Payment>>() {
 
 			@Override
-			public List<User> doInHibernate(Session arg0) throws HibernateException {
+			public List<Payment> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
-				Criteria q = arg0.createCriteria(User.class);
-				List<User> ul = q.list();
+				Criteria q = arg0.createCriteria(Payment.class);
+				List<Payment> ul = q.list();
+				for(Payment u : ul) {
+					System.out.println(u);
+				}
+				
 				t.commit();
 				arg0.close();
 				return ul;
