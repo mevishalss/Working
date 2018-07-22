@@ -23,7 +23,21 @@ public class UserDetails {
 	private String address;
 	private String city;
 	private String state;
+	public String getCollegeName() {
+		return CollegeName;
+	}
+	public void setCollegeName(String collegeName) {
+		CollegeName = collegeName;
+	}
+	public String getCollegeCode() {
+		return CollegeCode;
+	}
+	public void setCollegeCode(String collegeCode) {
+		CollegeCode = collegeCode;
+	}
 	private String pinCode;
+	private String CollegeName;
+	private String CollegeCode;
 	public String getUserName() {
 		return userName;
 	}

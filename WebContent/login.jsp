@@ -14,8 +14,9 @@
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-			$(document).ready(function () {
+	$(document).ready(function () {
     $("#uid").focus();
+
     $("#uid").blur(function () {
         var name = $('#uid').val();
         if (name.length == 0) {
@@ -74,7 +75,7 @@
     <tr>
     <tr>
     <tr>
-		<td colspan="2" align="center"><input type="submit" value="Login" /> <input type="submit" value="Reset" /></td>
+		<td colspan="2" align="center"><input type="submit" value="Login" onclick="validate()"/> <input type="submit" value="Reset" /></td>
 	</tr>
 	</tr>
 	</tr>

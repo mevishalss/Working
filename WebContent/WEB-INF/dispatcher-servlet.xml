@@ -61,5 +61,9 @@
 	<bean id="pdao" class="Dao.PaymentDao" >
 	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
+	
+	<bean id="cdao" class="Dao.CollegeDao" >
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
 
 </beans>

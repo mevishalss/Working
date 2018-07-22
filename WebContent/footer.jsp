@@ -8,20 +8,13 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-#list {
-    margin-left: 290px;
-}
-#footer{
-    font-family:Lucida Console;
-    background-color:#f1f1f1;
-}
 
 </style>
 </head>
 <body>
 
 <font size="2">
-<div class="container" id="footer">
+<div class="container" id="footer" style="font-family:Lucida Console; background-color:#f1f1f1;" >
 <div align="center"><b><u>Contact Us</b></u></div>
   <div class="row" align="center">    
   	<div class="col-sm">1.Abhijeet Markand 180240520001</div>

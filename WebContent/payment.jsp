@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="menu.jsp"></jsp:include>
+<br><br>
 <% List<Payment> list = (List) request.getAttribute("list"); %>
 <table align="center" border="1" >
 		<thead>
@@ -59,6 +60,9 @@
 		
 		</tbody>
 		</table>
-	
+		
+		<br><br>
+		<br>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
