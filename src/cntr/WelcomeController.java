@@ -176,6 +176,7 @@ public class WelcomeController {
 	@RequestMapping(value="/edit.php")
 	public String edituser (ModelMap model) {
 		List<UserDetails> list= editdao.orderList(user);
+		model.put("user",user);
 		model.put("list",list);
 		return "edit";
 	}
@@ -186,7 +187,12 @@ public class WelcomeController {
 		return "login";
 	}
 	
-
+	
+	@RequestMapping(value="/edited.php")
+	public String editDetails(UserDetails user,ModelMap model) {
+		System.out.println(user.getAddress());
+				return "home";
+	}
 	
 	
 }
