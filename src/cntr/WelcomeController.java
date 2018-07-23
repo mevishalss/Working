@@ -180,6 +180,12 @@ public class WelcomeController {
 		return "edit";
 	}
 	
+	@RequestMapping(value="/ForgotPass.jsp")
+	public String forgotPass (ModelMap model) {
+		System.out.println("hello");
+		return "login";
+	}
+	
 
 	
 	
