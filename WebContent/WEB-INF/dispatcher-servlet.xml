@@ -45,6 +45,7 @@
 			<value>dto.Collegedto</value>
 			<value>dto.OrderDetails</value>
 			
+			
 		</list>
 	</property>
 	</bean>	
@@ -72,7 +73,12 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
+	<bean id="adao" class="Dao.AdminDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
 	<bean id="user" class="dto.User" ></bean>
+	<bean id="AdminObj" class="dto.Admindto" ></bean>
 	
 
 </beans>

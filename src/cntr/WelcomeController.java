@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import Dao.AdminDao;
 import Dao.CollegeDao;
 import Dao.OrderDao;
 import Dao.PaymentDao;
@@ -32,8 +33,28 @@ public class WelcomeController {
 	OrderDao odao;
 	@Autowired
 	User user;
+	@Autowired
+	Admindto AdminObj;
+	@Autowired
+	AdminDao adao;
 	
 	
+	public AdminDao getAdao() {
+		return adao;
+	}
+
+	public void setAdao(AdminDao adao) {
+		this.adao = adao;
+	}
+
+	public Admindto getAdminObj() {
+		return AdminObj;
+	}
+
+	public void setAdminObj(Admindto adminObj) {
+		AdminObj = adminObj;
+	}
+
 	public CollegeDao getCdoa() {
 		return cdoa;
 	}
@@ -118,8 +139,11 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
-		model.put("msg", "welcome  "+AdminObj.getUserid());
-		return "AdminHome";
+		this.AdminObj = AdminObj;
+		if(adao.checkUser(this.AdminObj))
+			return "Adminlogin_page";
+		else
+			return "AdminHome";
 	}
 	
 	@RequestMapping(value="/paymentdetails.php")
