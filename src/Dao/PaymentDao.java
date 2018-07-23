@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -33,7 +34,7 @@ public class PaymentDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 	
-	public List<Payment> paymentList(){
+	public List<Payment> paymentList(User user){
 		List<Payment> ulist = hibernateTemplate.execute(new HibernateCallback<List<Payment>>() {
 
 			@Override
@@ -41,6 +42,7 @@ public class PaymentDao {
 			{
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(Payment.class);
+				q.add(Restrictions.eq("userId",user.getUserName()));
 				List<Payment> ul = q.list();
 				t.commit();
 				arg0.close();

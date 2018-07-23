@@ -30,8 +30,34 @@ public class WelcomeController {
 	CollegeDao cdoa;
 	@Autowired
 	OrderDao odao;
+	@Autowired
+	User user;
 	
 	
+	public CollegeDao getCdoa() {
+		return cdoa;
+	}
+
+	public void setCdoa(CollegeDao cdoa) {
+		this.cdoa = cdoa;
+	}
+
+	public OrderDao getOdao() {
+		return odao;
+	}
+
+	public void setOdao(OrderDao odao) {
+		this.odao = odao;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public PaymentDao getPdao() {
 		return pdao;
 	}
@@ -50,7 +76,7 @@ public class WelcomeController {
 
 	@RequestMapping(value="/prepLog.php")
 	public String prepLogin(ModelMap model) {
-		model.put("user", new User());
+		model.put("user", user);
 		return "login";
 	}
 	
@@ -61,8 +87,8 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
-		model.put("msg", "Welcome !! "+user.getUserName());
-		
+		this.user = user;
+		model.put("msg", "Welcome !! "+this.user.getUserName());
 		return "home";
 	}
 	
@@ -97,7 +123,7 @@ public class WelcomeController {
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
 		
-		List<Payment> list =pdao.paymentList();
+		List<Payment> list =pdao.paymentList(user);
 		model.put("list", list);
 		
 		return "payment";
@@ -105,7 +131,7 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/orderdetails.php")
 	public String orderdetails (ModelMap model) {
-		List<OrderDetails> list= odao.orderList();
+		List<OrderDetails> list= odao.orderList(user);
 		model.put("list",list);
 		return "orderhistory";
 	}

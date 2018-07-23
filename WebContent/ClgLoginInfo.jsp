@@ -10,7 +10,8 @@
 </head>
 <body>
 
-
+<jsp:include page="AdminMenu.jsp"></jsp:include>
+<br><br><br>
 <% List<UserDetails> list = (List) request.getAttribute("list"); %>
 
 <table align="center" border="1" >

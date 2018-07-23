@@ -71,5 +71,8 @@
 	<bean id="odao" class="Dao.OrderDao" >
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
+	
+	<bean id="user" class="dto.User" ></bean>
+	
 
 </beans>
