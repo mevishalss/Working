@@ -83,7 +83,7 @@
 	<bean id="AdminObj" class="dto.Admindto" ></bean>
 	
 
-<bean id="editdao" class="Dao.EditDao" >
+	<bean id="editdao" class="Dao.EditDao" >
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 
