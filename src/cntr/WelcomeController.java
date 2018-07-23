@@ -149,6 +149,14 @@ public class WelcomeController {
 			return "AdminHome";
 	}
 	
+	public EditDao getEditdao() {
+		return editdao;
+	}
+
+	public void setEditdao(EditDao editdao) {
+		this.editdao = editdao;
+	}
+
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
 		
