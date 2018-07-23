@@ -86,11 +86,11 @@ $(document).ready(function () {
 	
 	<tr>
 	<tr>
-<<<<<<< HEAD
+
 		<td align="Left"><a href="url">New Register</a></td> <td align="Right"><a href="ForgotPass.jsp">Forgot Password</a></td>
-=======
+
 		<td align="Left"><a href="registrationpage.jsp">New Register</a></td> <td align="Right"><a href="url">Forgot Password</a></td>
->>>>>>> branch 'master' of https://github.com/mevishalss/Working.git
+
 	</tr>
 	</tr>
 	</table> 
