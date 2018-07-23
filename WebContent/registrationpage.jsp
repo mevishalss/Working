@@ -54,7 +54,7 @@ $("#submit").click(function(){
 
 		if (!birthreg.test(birthdate)) {
         	$('#spanbirthdate').next('div.red').remove();
-            $('#spanbirthdate').after('<div class="red">Invalid date(should follow pattern DD/MM/YYYY)</div>');
+            $('#spanbirthdate').after('<div class="red">Invalid date(should follow pattern MM/DD/YYYY)</div>');
         } else {
         	$('#spanbirthdate').next('div.red').remove();
         }
