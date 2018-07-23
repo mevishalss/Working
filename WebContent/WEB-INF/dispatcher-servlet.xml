@@ -43,6 +43,7 @@
 			<value>dto.Payment</value>
 			<value>dto.Admindto</value>
 			<value>dto.Collegedto</value>
+			<value>dto.OrderDetails</value>
 			
 		</list>
 	</property>
@@ -51,19 +52,24 @@
 	<bean
 	id="hibernateTemplate"
 	class="org.springframework.orm.hibernate4.HibernateTemplate">
-	<property name="sessionFactory" ref="localSessFactBean" ></property>
+		<property name="sessionFactory" ref="localSessFactBean" ></property>
 	</bean>
 	
 	<bean id="dao" class="Dao.UserDao" >
-	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
 	<bean id="pdao" class="Dao.PaymentDao" >
-	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
+
 	<bean id="cdao" class="Dao.CollegeDao" >
-	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="odao" class="Dao.OrderDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 
 </beans>

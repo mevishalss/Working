@@ -10,10 +10,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Dao.CollegeDao;
+import Dao.OrderDao;
 import Dao.PaymentDao;
 import Dao.UserDao;
 import dto.Admindto;
 import dto.Collegedto;
+import dto.OrderDetails;
 import dto.Payment;
 import dto.User;
 import dto.UserDetails;
@@ -26,6 +28,8 @@ public class WelcomeController {
 	PaymentDao pdao;
 	@Autowired
 	CollegeDao cdoa;
+	@Autowired
+	OrderDao odao;
 	
 	
 	public PaymentDao getPdao() {
@@ -99,7 +103,12 @@ public class WelcomeController {
 		return "payment";
 	}
 	
-	
+	@RequestMapping(value="/orderdetails.php")
+	public String orderdetails (ModelMap model) {
+		List<OrderDetails> list= odao.orderList();
+		model.put("list",list);
+		return "orderhistory";
+	}
 	
 	
 	
