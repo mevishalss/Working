@@ -149,6 +149,14 @@ public class WelcomeController {
 			return "AdminHome";
 	}
 	
+	public EditDao getEditdao() {
+		return editdao;
+	}
+
+	public void setEditdao(EditDao editdao) {
+		this.editdao = editdao;
+	}
+
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
 		
@@ -170,6 +178,12 @@ public class WelcomeController {
 		List<UserDetails> list= editdao.orderList(user);
 		model.put("list",list);
 		return "edit";
+	}
+	
+	@RequestMapping(value="/ForgotPass.jsp")
+	public String forgotPass (ModelMap model) {
+		System.out.println("hello");
+		return "login";
 	}
 	
 

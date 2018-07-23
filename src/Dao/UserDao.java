@@ -13,6 +13,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import dto.User;
+import dto.UserDetails;
 
 @Repository
 public class UserDao {
@@ -123,5 +124,28 @@ public class UserDao {
 		
 	}
 	
+/*	public boolean CheckPhone(User user){
+		
+		List<User> ulist = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
+
+			@Override
+			public List<User> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.eq("phoneNo","d" ));
+				List<User> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		if(ulist.isEmpty())		
+			return false;
+		else
+			return true;
+		
+	}
+	*/
 
 }
