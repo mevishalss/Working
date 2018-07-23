@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ManyToAny;
@@ -15,23 +16,34 @@ public class OrderDetails {
 	@Id
 	@Column (name="order_id")
 	private String orderId;
-	
+	@Column(name="user_id")
 	private String userId;
+	private String orderDate;
+	private String noOfInstalments;
+	private String orderPrice;
+	private String description;
+	private String remainingInst;
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public OrderDetails(String userId) {
 		super();
 		this.userId = userId;
 	}
-	@ManyToOne
-	@JoinColumn(name="UserDetails")
 	public String getUserId() {
 		return userId;
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	private String orderDate;
-	private String noOfInstalments;
-	private String orderPrice;
+	
 	public String getOrderId() {
 		return orderId;
 	}
