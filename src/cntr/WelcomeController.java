@@ -165,6 +165,13 @@ public class WelcomeController {
 		return "orderhistory";
 	}
 	
+	@RequestMapping(value="/edit.php")
+	public String edituser (ModelMap model) {
+		List<UserDetails> list= editdao.orderList(user);
+		model.put("list",list);
+		return "edit";
+	}
+	
 	
 	
 }

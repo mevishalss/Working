@@ -13,87 +13,28 @@
 
 
 <% List <UserDetails> list = (List) request.getAttribute("list"); %>
-<table align="center" border="1" >
-		<thead>
-		<tr>
-		<th colspan="14" >Order History Page</th>
-		</tr>
-		<tr>
+	<h3>Order History Page</h3>
+		<table>
+		<%for(UserDetails m : list){ %>
 		
-		<th >First Name</th>
-		<th >Last Name</th>
-		<th >Password</th>
-		<th >College Code</th>
-		<th >Mobile Number</th>
-		<th >Birth Date</th>
-		<th >Email Id</th>
-		<th > PRN Number</th>
-		<th >Course</th>
-		<th >Year of Course</th>
-		<th >Address</th>
-		<th > City</th>
-		<th >State</th>
-		<th >City Pin code</th>
-</tr>
-		</thead>
-		<tbody>
-		<%
-			for(UserDetails m : list){
-		%>
-		<tr>
-			
-			<td align="center" >
-				<input type="text" <%=m. getfName() %> >
-			</td>
-			<td align="center" >
-			<input type="text" <%=m.getlName() %>>
-			</td>
-			<td align="center" >
-				<input type="text" <%=m.getUserPass() %>>
-			</td>
-			
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getCollegeCode()%>>
-			</td>
-			
-			
-			<td align="center" >
-				<input type="text" <%=m.getPhoneNo() %>>
-			</td>
-			<td align="center" >
-				<input type="text" <%=m.getBithDate() %>>
-			</td>
-			<td align="center" >
-				<input type="text" <%=m.getEmailId() %>>
-			</td>
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getPrnNo() %>>
-			</td>
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getCourse() %>>
-			</td>
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getYearOfCourse() %>>
-			</td>
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getAddress() %>>
-			</td>
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getCity() %>>
-			</td>
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getState() %>>
-			</td>
-			<td align="center" >
-				<input type="text" readonly="readonly"<%=m.getPinCode() %>>
-			</td>
-			
-			
-			
-		</tr>
+		<tr><td >First Name</td><td><input type="text" value="<%=m. getfName() %>" ></td></tr>
+		<tr><td >Last Name</td><td><input type="text" value="<%=m.getlName() %>"></td></tr>
+		<tr><td >Password</td><td><input type="text" value="<%=m.getUserPass() %>"></td></tr>
+		<tr><td >College Code</td><td><input type="text" readonly="readonly" value="<%=m.getCollegeCode()%>"></td></tr>
+		<tr><td >Mobile Number</td><td><input type="text" value="<%=m.getPhoneNo() %>"></td></tr>
+		<tr><td >Birth Date</td><td><input type="text" value="<%=m.getBithDate() %>"></td></tr>
+		<tr><td >Email Id</td><td><input type="text" value="<%=m.getEmailId() %>"></td></tr>
+		<tr><td > PRN Number</td><td><input type="text" readonly="readonly" value="<%=m.getPrnNo()%>"></td></tr>
+		<tr><td >Course</td><td><input type="text" readonly="readonly" value="<%=m.getCourse() %>"></td></tr>
+		<tr><td >Year of Course</td><td><input type="text" readonly="readonly" value="<%=m.getYearOfCourse() %>"></td></tr>
+		<tr><td >Address</td><td><input type="text" readonly="readonly" value="<%=m.getAddress() %>"></td></tr>
+		<tr><td > City</td><td><input type="text" readonly="readonly" value="<%=m.getCity() %>"></td></tr>
+		<tr><td >State</td><td><input type="text" readonly="readonly" value="<%=m.getState() %>"></td></tr>
+		<tr><td >City Pin code</td><td><input type="text" readonly="readonly" value="<%=m.getPinCode() %>"></td></tr>
+
 		<% } %>
 		
-		</tbody>
+	
 		</table>
 		
 </body>
