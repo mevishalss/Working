@@ -17,11 +17,22 @@
 <script>
 
 $(document).ready(function () {
+
+	$(document).ready(function () {
+
     $("#uid").focus();
+
     $("#btnlogin").click(function(){
+
+
+    $("#uid").blur(function () {
+
         var name = $('#uid').val();
         if (name.length == 0) {
             $('#uid').next('div.red').remove();
+
+
+
 
             $('#uid').after('<div class="red">User Name is Required</div>');
         } else {
@@ -34,6 +45,8 @@ $(document).ready(function () {
         var password = $('#pwd').val();
         if (password.length == 0) {
             $('#pwd').next('div.red').remove();
+
+
 
             $('#pwd').after('<div class="red">Password is Required</div>');
             return false;
@@ -81,7 +94,11 @@ $(document).ready(function () {
     <tr>
     <tr>
     <tr>
+
 		<td colspan="2" align="center"><input type="submit" id="btnlogin" value="Login" /> <input type="reset" value="Reset" /></td>
+
+		<td colspan="2" align="center"><input type="submit" value="Login" onclick="validate()"/> <input type="submit" value="Reset" /></td>
+
 	</tr>
 	</tr>
 	</tr>

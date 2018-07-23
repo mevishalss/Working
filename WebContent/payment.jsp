@@ -1,5 +1,5 @@
-<%@page import="dto.UserDetails"%>
 <%@page import="java.util.List"%>
+<%@page import="dto.Payment"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,59 +9,50 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<jsp:include page="AdminMenu.jsp"></jsp:include>
-<br><br><br>
-<% List<UserDetails> list = (List) request.getAttribute("list"); %>
-
+<jsp:include page="menu.jsp"></jsp:include>
+<br><br>
+<% List<Payment> list = (List) request.getAttribute("list"); %>
 <table align="center" border="1" >
 		<thead>
 		<tr>
-		<th colspan="8" align="center">Payment History Page</th>
+		<th colspan="8" >Payment History Page</th>
 		</tr>
-		
 		<tr>
-		
 		<th >User Id</th>
-		<th >First Name</th>
-		<th >Last Name</th>
-		<th >Course</th>
-		<th>Year of Admission</th>
-		<th >PRN Number</th>
-		<th >Email</th>
-		<th >Phone Number</th>
+		<th >Order Id</th>
+		<th >Transaction Id</th>
+		<th >Transaction Date</th>
+		<th >Transacation Amount</th>
+		<th >Transacation Status</th>
+		<th >Payment Mode</th>
 		
 		</tr>
 		</thead>
-		
 		<tbody>
 		<%
-			for(UserDetails m : list){
+			for(Payment m : list){
 		%>
 		<tr>
 			<td align="center" >
-				<%=m.getUserName()%>
+				<%=m.getUserId() %>
 			</td>
 			<td align="center" >
-				<%=m.getfName()%>
+				<%=m.getOrderId()%>
 			</td>
 			<td align="center" >
-				<%=m.getlName()%>
+				<%=m.getTransId() %>
 			</td>
 			<td align="center" >
-				<%=m.getCourse()%>
+				<%=m.getTransDate() %>
 			</td>
 			<td align="center" >
-				<%=m.getYearOfCourse()%>
+				<%=m.getTransAmount() %>
 			</td>
 			<td align="center" >
-				<%=m.getPrnNo()%>
+				<%=m.getTransStatus()%>
 			</td>
 			<td align="center" >
-				<%=m.getEmailId() %>
-			</td>
-			<td align="center" >
-				<%=m.getPhoneNo()%>
+				<%=m.getModeOfTrans() %>
 			</td>
 			
 		</tr>
@@ -73,8 +64,5 @@
 		<br><br>
 		<br>
 	<jsp:include page="footer.jsp"></jsp:include>
-	
-	
-
 </body>
 </html>

@@ -34,23 +34,57 @@
 			<prop key="hibernate.dialect">	org.hibernate.dialect.Oracle9Dialect</prop>
 			<prop key="hibernate.show_sql">true</prop>
 			<prop key="hibernate.hbm2ddl.auto">update</prop>
+			
 		</props>
 	</property>
 	<property name="annotatedClasses" >
 		<list>
 			<value>dto.User</value>
 			<value>dto.UserDetails</value>
+			<value>dto.Payment</value>
+			<value>dto.Admindto</value>
+			<value>dto.Collegedto</value>
+			<value>dto.OrderDetails</value>
+			<value>dto.UserDetails</value>
+
 		</list>
 	</property>
 	</bean>	
+	
 	<bean
 	id="hibernateTemplate"
 	class="org.springframework.orm.hibernate4.HibernateTemplate">
-	<property name="sessionFactory" ref="localSessFactBean" ></property>
+		<property name="sessionFactory" ref="localSessFactBean" ></property>
 	</bean>
 	
 	<bean id="dao" class="Dao.UserDao" >
-	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="pdao" class="Dao.PaymentDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+
+	<bean id="cdao" class="Dao.CollegeDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	<bean id="odao" class="Dao.OrderDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="adao" class="Dao.AdminDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="user" class="dto.User" ></bean>
+	<bean id="AdminObj" class="dto.Admindto" ></bean>
+	
+
+	<bean id="editdao" class="Dao.EditDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 
 </beans>
