@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Dao.CollegeDao;
+import Dao.EditDao;
 import Dao.OrderDao;
 import Dao.PaymentDao;
 import Dao.UserDao;
@@ -30,7 +31,8 @@ public class WelcomeController {
 	CollegeDao cdoa;
 	@Autowired
 	OrderDao odao;
-	
+	@Autowired
+	EditDao editdao;
 	
 	public PaymentDao getPdao() {
 		return pdao;
@@ -108,6 +110,13 @@ public class WelcomeController {
 		List<OrderDetails> list= odao.orderList();
 		model.put("list",list);
 		return "orderhistory";
+	}
+	
+	@RequestMapping(value="/edit.php")
+	public String userdetails (ModelMap model) {
+		List<UserDetails> list= editdao.orderList();
+		model.put("list",list);
+		return "edit";
 	}
 	
 	

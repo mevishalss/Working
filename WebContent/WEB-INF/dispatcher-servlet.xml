@@ -44,7 +44,7 @@
 			<value>dto.Admindto</value>
 			<value>dto.Collegedto</value>
 			<value>dto.OrderDetails</value>
-			
+			<value>dto.UserDetails</value>
 		</list>
 	</property>
 	</bean>	
@@ -69,6 +69,10 @@
 	</bean>
 	
 	<bean id="odao" class="Dao.OrderDao" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+<bean id="editdao" class="Dao.EditDao" >
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 
