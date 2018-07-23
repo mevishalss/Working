@@ -89,6 +89,7 @@ $(document).ready(function () {
 
 		<td align="Left"><a href="registrationpage.jsp">New Register</a></td> <td align="Right"><a href="ForgotPass.jsp">Forgot Password</a></td>
 
+		
 	</tr>
 	</tr>
 	</table> 
