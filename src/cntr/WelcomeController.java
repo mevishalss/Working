@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import Dao.AdminDao;
 import Dao.CollegeDao;
 import Dao.EditDao;
 import Dao.OrderDao;
@@ -33,7 +34,54 @@ public class WelcomeController {
 	OrderDao odao;
 	@Autowired
 	EditDao editdao;
+	@Autowired
+	User user;
+	@Autowired
+	Admindto AdminObj;
+	@Autowired
+	AdminDao adao;
 	
+	
+	public AdminDao getAdao() {
+		return adao;
+	}
+
+	public void setAdao(AdminDao adao) {
+		this.adao = adao;
+	}
+
+	public Admindto getAdminObj() {
+		return AdminObj;
+	}
+
+	public void setAdminObj(Admindto adminObj) {
+		AdminObj = adminObj;
+	}
+
+	public CollegeDao getCdoa() {
+		return cdoa;
+	}
+
+	public void setCdoa(CollegeDao cdoa) {
+		this.cdoa = cdoa;
+	}
+
+	public OrderDao getOdao() {
+		return odao;
+	}
+
+	public void setOdao(OrderDao odao) {
+		this.odao = odao;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public PaymentDao getPdao() {
 		return pdao;
 	}
@@ -52,7 +100,7 @@ public class WelcomeController {
 
 	@RequestMapping(value="/prepLog.php")
 	public String prepLogin(ModelMap model) {
-		model.put("user", new User());
+		model.put("user", user);
 		return "login";
 	}
 	
@@ -63,9 +111,11 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
-		model.put("msg", "Welcome !! "+user.getUserName());
-		
-		return "home";
+		this.user = user;
+			if(dao.checkUser(this.user))
+				return "home";
+			else
+				return "login";
 	}
 	
 
@@ -92,14 +142,17 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
-		model.put("msg", "welcome  "+AdminObj.getUserid());
-		return "AdminHome";
+		this.AdminObj = AdminObj;
+		if(adao.checkUser(this.AdminObj))
+			return "Adminlogin_page";
+		else
+			return "AdminHome";
 	}
 	
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
 		
-		List<Payment> list =pdao.paymentList();
+		List<Payment> list =pdao.paymentList(user);
 		model.put("list", list);
 		
 		return "payment";
@@ -107,16 +160,9 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/orderdetails.php")
 	public String orderdetails (ModelMap model) {
-		List<OrderDetails> list= odao.orderList();
+		List<OrderDetails> list= odao.orderList(user);
 		model.put("list",list);
 		return "orderhistory";
-	}
-	
-	@RequestMapping(value="/edit.php")
-	public String userdetails (ModelMap model) {
-		List<UserDetails> list= editdao.orderList();
-		model.put("list",list);
-		return "edit";
 	}
 	
 	

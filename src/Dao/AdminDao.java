@@ -12,46 +12,50 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
-import dto.Payment;
+import dto.Admindto;
 import dto.User;
 
-
 @Repository
-public class PaymentDao {
+public class AdminDao {
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
-	public PaymentDao() {
+	public AdminDao() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-
+	
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
 	}
 
+
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
-	
-	public List<Payment> paymentList(User user){
-		List<Payment> ulist = hibernateTemplate.execute(new HibernateCallback<List<Payment>>() {
+
+	public boolean checkUser(Admindto user){
+		
+		List<Admindto> ulist = hibernateTemplate.execute(new HibernateCallback<List<Admindto>>() {
 
 			@Override
-			public List<Payment> doInHibernate(Session arg0) throws HibernateException 
-			{
+			public List<Admindto> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
-				Criteria q = arg0.createCriteria(Payment.class);
-				q.add(Restrictions.eq("userId",user.getUserName()));
-				List<Payment> ul = q.list();
+				Criteria q = arg0.createCriteria(Admindto.class);
+				q.add(Restrictions.and(Restrictions.eq("userName", user.getUserid()), Restrictions.eq("userPass", user.getPassword())));
+				List<Admindto> ul = q.list();
 				t.commit();
 				arg0.close();
 				return ul;
 			}
 		
 		});
-		return ulist;
+		if(ulist.isEmpty())		
+			return false;
+		else
+			return true;
+		
 	}
-	
 
 }
