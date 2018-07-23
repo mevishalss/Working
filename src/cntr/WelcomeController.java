@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import Dao.AdminDao;
 import Dao.CollegeDao;
@@ -180,7 +181,7 @@ public class WelcomeController {
 		return "edit";
 	}
 	
-	@RequestMapping(value="/ForgotPass.jsp")
+	
 	public String forgotPass (ModelMap model) {
 		System.out.println("hello");
 		return "login";
