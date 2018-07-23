@@ -10,7 +10,8 @@
 </head>
 <body>
 
-
+<jsp:include page="menu.jsp"></jsp:include>
+<br><br><br>
 
 <% List <OrderDetails> list = (List) request.getAttribute("list"); %>
 <table align="center" border="1" >
@@ -58,5 +59,6 @@
 		</tbody>
 		</table>
 		
+		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
