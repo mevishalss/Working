@@ -17,26 +17,14 @@
 <script>
 
 $(document).ready(function () {
-
-	$(document).ready(function () {
-
     $("#uid").focus();
-
     $("#btnlogin").click(function(){
-
-
-    $("#uid").blur(function () {
-
         var name = $('#uid').val();
         if (name.length == 0) {
-            $('#uid').next('div.red').remove();
-
-
-
-
-            $('#uid').after('<div class="red">User Name is Required</div>');
+            $('#spanuser').next('div.red').remove();
+            $('#spanuser').after('<div class="red">User Name is Required</div>');
         } else {
-            $(this).next('div.red').remove();
+        	$('#spanuser').next('div.red').remove();
             return true;
         }
     });
@@ -44,21 +32,16 @@ $(document).ready(function () {
     $("#btnlogin").click(function(){
         var password = $('#pwd').val();
         if (password.length == 0) {
-            $('#pwd').next('div.red').remove();
-
-
-
-            $('#pwd').after('<div class="red">Password is Required</div>');
+            $('#spanpass').next('div.red').remove();
+            $('#spanpass').after('<div class="red">Password is Required</div>');
             return false;
         } else {
-            $('#pwd').next('div.red').remove();
+            $('#spanpass').next('div.red').remove();
             return true;
         }
     });     
       
-});			
-
-
+});
 			
 </script>  
 </head>
@@ -73,12 +56,12 @@ $(document).ready(function () {
 	<table>
 	<tr>
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="userName" id="uid" name="uid"/></td>
+	 	<td>User Name : </td><td><spr:input path="userName" id="uid" name="uid"/></td><td><span id="spanuser"></span></td>
 	</tr>
 	</tr>
 	<tr>
 	<tr>
-	     <td>Password : </td><td><spr:password path="userPass" id="pwd" name="pwd"/></td>
+	     <td>Password : </td><td><spr:password path="userPass" id="pwd" name="pwd"/></td><td><span id="spanpass"></span></td>
 	</tr>
 	</tr>
 	<tr>
@@ -96,8 +79,6 @@ $(document).ready(function () {
     <tr>
 
 		<td colspan="2" align="center"><input type="submit" id="btnlogin" value="Login" /> <input type="reset" value="Reset" /></td>
-
-		<td colspan="2" align="center"><input type="submit" value="Login" onclick="validate()"/> <input type="submit" value="Reset" /></td>
 
 	</tr>
 	</tr>
