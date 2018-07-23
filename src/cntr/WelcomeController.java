@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import Dao.AdminDao;
 import Dao.CollegeDao;
+import Dao.EditDao;
 import Dao.OrderDao;
 import Dao.PaymentDao;
 import Dao.UserDao;
@@ -31,9 +33,31 @@ public class WelcomeController {
 	@Autowired
 	OrderDao odao;
 	@Autowired
+	EditDao editdao;
+	@Autowired
 	User user;
+	@Autowired
+	Admindto AdminObj;
+	@Autowired
+	AdminDao adao;
 	
 	
+	public AdminDao getAdao() {
+		return adao;
+	}
+
+	public void setAdao(AdminDao adao) {
+		this.adao = adao;
+	}
+
+	public Admindto getAdminObj() {
+		return AdminObj;
+	}
+
+	public void setAdminObj(Admindto adminObj) {
+		AdminObj = adminObj;
+	}
+
 	public CollegeDao getCdoa() {
 		return cdoa;
 	}
@@ -88,8 +112,10 @@ public class WelcomeController {
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
 		this.user = user;
-		model.put("msg", "Welcome !! "+this.user.getUserName());
-		return "home";
+			if(dao.checkUser(this.user))
+				return "home";
+			else
+				return "login";
 	}
 	
 
@@ -116,8 +142,11 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
-		model.put("msg", "welcome  "+AdminObj.getUserid());
-		return "AdminHome";
+		this.AdminObj = AdminObj;
+		if(adao.checkUser(this.AdminObj))
+			return "Adminlogin_page";
+		else
+			return "AdminHome";
 	}
 	
 	@RequestMapping(value="/paymentdetails.php")
