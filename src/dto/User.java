@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name="my_users")
 public class User {
 	@Id
-	
 	@Column(name="user_id")
 	private String userName;
 	private String userPass;

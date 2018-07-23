@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,13 +16,42 @@ public class Payment {
 	@Id
 	@Column(name="transId")
 	private String transId;
+	@Column(name="user_id")
 	private String userId;
+	@Column(name="order_id")
 	private String orderId;
 	private String transAmount;
 	private String transStatus;
 	private String transDate;
 	private String modeOfTrans;
 	
+	@ManyToOne
+	private OrderDetails orderDetails;
+	
+	
+	public OrderDetails getOrderDetails() {
+		return orderDetails;
+	}
+
+
+	public void setOrderDetails(OrderDetails orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+	@ManyToOne
+	private User user;
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	public Payment() {
 		super();
 	}
