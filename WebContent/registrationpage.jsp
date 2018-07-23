@@ -195,6 +195,12 @@ div {
 <td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
 </tr>
 <tr>
+<td>College Code: </td><td> <input type="text"  path = "CollegeCode" class="cCode"  required id="text" Placeholder="College Code" ></td><td><span id="cCode"></span></td>
+</tr>
+<tr>
+<td>College Name: </td><td> <input type="text"  path = "CollegeName" class="cName" required id="text" Placeholder="College Name" ></td><td><span id="cName"></span></td>
+</tr>
+<tr>
 <td>College PNR: </td><td> <input path = "prnNo" id="text"  required Placeholder="P123456789" ></td>
 </tr>
 <tr>
