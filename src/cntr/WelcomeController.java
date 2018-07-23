@@ -88,8 +88,10 @@ public class WelcomeController {
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
 		this.user = user;
-		model.put("msg", "Welcome !! "+this.user.getUserName());
-		return "home";
+			if(dao.checkUser(this.user))
+				return "home";
+			else
+				return "login";
 	}
 	
 

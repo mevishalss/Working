@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -48,6 +49,7 @@ public class UserDao {
 		
 		});
 	}
+
 	public void deleteUser(User user) {
 		hibernateTemplate.execute(new HibernateCallback<User>() {
 
@@ -96,6 +98,30 @@ public class UserDao {
 		
 		});
 		return ulist;
+	}
+	
+	
+	public boolean checkUser(User user){
+		
+		List<User> ulist = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
+
+			@Override
+			public List<User> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(User.class);
+				q.add(Restrictions.and(Restrictions.eq("userName", user.getUserName()), Restrictions.eq("userPass", user.getUserPass())));
+				List<User> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		if(ulist.isEmpty())		
+			return false;
+		else
+			return true;
+		
 	}
 	
 
