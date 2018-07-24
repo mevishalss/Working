@@ -208,7 +208,7 @@ div {
 <td>LastName: </td><td> <input path = "lName" id="text" class="lname" required Placeholder="Last Name" /></td><td><span id="lnamemsg"></span></td>
 </tr>
 <tr>
- <td>Birth Date:</td><td><input path = "bithDate" class="birthdate" id="text" class="birthdate" required Placeholder="DD/MM/YYYY" /></td><td><span id="spanbirthdate"></span></td>
+ <td>Birth Date:</td><td><input path = "bithDate" class="birthdate" id="text" class="birthdate" required Placeholder="(MM/DD/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
 <tr>
 <td>UserID: </td><td> <input path = "userName"  required id="text" Placeholder="User ID" /></td>

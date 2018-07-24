@@ -1,6 +1,5 @@
 <%@page import="java.util.List"%>
 <%@page import="dto.UserDetails"%>
-<
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"  %>
@@ -100,17 +99,8 @@ $(document).ready(function () {
         	$('#spanyearofcourse').next('div.red').remove();
         }
         
-	     
-        
-	
 });
  
-	
-
-
-
-
-
 </script>
 
 
@@ -165,9 +155,6 @@ editDiv {
 
 <body>
 <% List <UserDetails> list = (List) request.getAttribute("list"); %>
-	
-	
-		
 <jsp:include page="menu.jsp"></jsp:include>
 
 
