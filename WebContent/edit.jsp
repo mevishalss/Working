@@ -3,12 +3,12 @@
 <
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"  %>
 
-<html >
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>edit page</title>
 <script src="scripts/jquery-3.3.1.min.js"></script>
 <script src="scripts/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="path/to/date-validator.js"></script>
@@ -18,15 +18,7 @@
 $(document).ready(function () {
 
 
-$("#submit").click(function(){
-	$(".conpass").focus();
-	 if ($('.pass').val() !== $('.conpass').val()){
-		 $('#conpass').next('div.red').remove();
-         $('#conpass').after('<div class="red">You password does not match the confirmed password</div>');
-		 }
-	 else{
-     	$('#conpass').next('div.red').remove();
-	 }
+
 	 
 	var zip = $('.pincode').val();
 		if ((zip.length)>= 7 || (zip.length)<=5 ){	    	
@@ -114,7 +106,7 @@ $("#submit").click(function(){
 });
  
 	
-});
+
 
 
 
@@ -150,7 +142,7 @@ $("#submit").click(function(){
   transform: translateY(4px);
 }
 
-div {
+editDiv {
     border-radius: 5px;
     background-color: 696969;
     padding: 20px;
@@ -173,66 +165,64 @@ div {
 
 <body>
 <% List <UserDetails> list = (List) request.getAttribute("list"); %>
-	<h6>Edit Your Profile</h6>
-		<table>
-		<%for(UserDetails m : list){ %>
-<jsp:include page="LoginHead.jsp"></jsp:include>
-<div align="center" >
-<form action="registrationpage.php"  method="post" >
+	
+	
+		
+<jsp:include page="menu.jsp"></jsp:include>
+
+
+<div align="center" id="editDiv" >
+<spr:form action="edited.php" commandName="user"  method="post" >
 <fieldset>
-<legend><b><u><font size="5">Registration Form</font></u></b></legend>
+<legend><b><u><font size="5">Edit Page</font></u></b></legend>
+<%for(UserDetails m : list){ %>
 <table>
  <tr>
-<td>FirstName : </td><td><input path = "fName" id="text" class="fname" id="first_name" required  placeholder="First Name" value="<%=m. getfName() %>" /></td><td><span class="fnameclass" id="fnamemsg"></span></td>
+<td>FirstName : </td><td><spr:input path = "fName" id="text" class="fname"  required="required"  placeholder="First Name" value="<%=m.getfName() %>" /></td><td><span  id="fnamemsg"></span></td>
+</tr>
+ 
+<tr>
+<td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname" required="required" Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
+</tr>
+<tr>
+ <td>Birth Date:</td><td><spr:input path = "bithDate" class="birthdate" id="text"  value="<%=m.getBithDate() %>" required="required" /></td><td><span id="spanbirthdate"></span></td>
+</tr>
+<tr>
+<td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
 </tr>
 
 <tr>
-<td>LastName: </td><td> <input path = "lName" id="text" class="lname" required Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
+<td>College Code: </td><td> <spr:input   path = "CollegeCode" class="cCode"  readonly="readonly" value="<%=m.getCollegeCode()%>" required="required" id="text" Placeholder="College Code" /></td><td><span id="cCode"></span></td>
 </tr>
 <tr>
- <td>Birth Date:</td><td><input path = "bithDate" class="birthdate" id="text" class="birthdate" value="<%=m.getBithDate() %>" required /></td><td><span id="spanbirthdate"></span></td>
+<td>College Name: </td><td> <spr:input   path = "CollegeName" class="cName" required="required" id="text"  readonly="readonly" value="<%=m.getCollegeName()%>" Placeholder="College Name" /></td><td><span id="cName"></span></td>
 </tr>
 <tr>
-<td>UserID: </td><td> <input path = "userName"  required id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
+<td>College PNR: </td><td> <spr:input path = "prnNo" id="text" readonly="readonly" value="<%=m.getPrnNo()%>"  required="required" Placeholder="P123456789" /></td>
 </tr>
 <tr>
-<td>Password: </td><td> <input type="password" path="userPass" class="pass"  required id="text" Placeholder="Password" ></td>
+<td>Course: </td><td> <spr:input path = "course" id="text" class="course" readonly="readonly" value="<%=m.getCourse() %>" required="required" Placeholder="Course" /></td><td><span id="course"></span></td>
 </tr>
 <tr>
-<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
+<td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" required="required" Placeholder="abc@gmail.com"  value="<%=m.getEmailId() %>" /> </td>
 </tr>
 <tr>
-<td>College Code: </td><td> <input type="text"  path = "CollegeCode" class="cCode"  readonly="readonly" value="<%=m.getCollegeCode()%>" required id="text" Placeholder="College Code" ></td><td><span id="cCode"></span></td>
+<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text" class="mobile" required="required" Placeholder="eg:9123456789" value="<%=m.getPhoneNo() %>"/></td><td><span id="spanmobile"></span></td>
 </tr>
 <tr>
-<td>College Name: </td><td> <input type="text"  path = "CollegeName" class="cName" required id="text"  readonly="readonly" value="<%=m.getCollegeName()%>" Placeholder="College Name" ></td><td><span id="cName"></span></td>
+<td>Year of Course: </td><td> <spr:input path = "yearOfCourse" class="yearofcourse"  readonly="readonly" value="<%=m.getYearOfCourse() %>" required="required" id="text" Placeholder="Year of Course" /></td><td><span id="spanyearofcourse"></span></td>
 </tr>
 <tr>
-<td>College PNR: </td><td> <input path = "prnNo" id="text" readonly="readonly" value="<%=m.getPrnNo()%>"  required Placeholder="P123456789" ></td>
+<td>Address: </td><td> <spr:input path = "address"  id="text" required="required" Placeholder="Address" value="<%=m.getAddress() %>" /></td>
 </tr>
 <tr>
-<td>Course: </td><td> <input path = "course" id="text" class="course" readonly="readonly" value="<%=m.getCourse() %>" required Placeholder="Course" ></td><td><span id="course"></span></td>
+<td>City: </td><td> <spr:input path = "city" id="text" class="city" required="required" Placeholder="City" value="<%=m.getCity() %>" /></td><td><span id="spancity"></span></td>
 </tr>
 <tr>
-<td>EmailId: </td><td> <input type ="email" path = "emailId" id="text" required Placeholder="abc@gmail.com"  value="<%=m.getEmailId() %>" ></td>
+<td>State: </td><td> <spr:input path = "state" id="text" class="state" value="<%=m.getState() %>" required="required" Placeholder="Maharashtra" /></td><td><span id="spanstate"></span></td>
 </tr>
 <tr>
-<td>Mobile No: </td><td> <input path = "mobile" id="text" class="mobile" required Placeholder="eg:9123456789" value="<%=m.getPhoneNo() %>"></td><td><span id="spanmobile"></span></td>
-</tr>
-<tr>
-<td>Year of Course: </td><td> <input path = "yearOfCourse" class="yearofcourse"  readonly="readonly" value="<%=m.getYearOfCourse() %>" required id="text" Placeholder="Year of Course" ></td><td><span id="spanyearofcourse"></span></td>
-</tr>
-<tr>
-<td>Address: </td><td> <input path = "address"  id="text" required Placeholder="Address" value="<%=m.getAddress() %>" ></td>
-</tr>
-<tr>
-<td>City: </td><td> <input path = "city" id="text" class="city" required Placeholder="City" value="<%=m.getCity() %>" ></td><td><span id="spancity"></span></td>
-</tr>
-<tr>
-<td>State: </td><td> <input path = "state" id="text" class="state" value="<%=m.getState() %>" required Placeholder="Maharashtra" ></td><td><span id="spanstate"></span></td>
-</tr>
-<tr>
-<td>PinCode: </td><td> <input path = "pinCode" id="text" class="pincode"  value="<%=m.getPinCode() %>" required Placeholder="PinCode" ></td><td><span id="spanpincode"></span></td>
+<td>PinCode: </td><td> <spr:input path = "pinCode" id="text" class="pincode"  value="<%=m.getPinCode() %>" required="required" Placeholder="PinCode" /></td><td><span id="spanpincode"></span></td>
 </tr>
 
 <tr>
@@ -240,12 +230,13 @@ div {
 </tr>	
 
 </table>
+<%} %>
 </fieldset>
 
-</form>
+</spr:form>
 </div>
 
-<%} %>
+
 	
 </body>
 </html>

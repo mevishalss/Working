@@ -65,14 +65,13 @@ public class UserDao {
 		
 		});
 	}
-	public void updateUser(User user) {
+	public void updateUser(UserDetails user) {
 		hibernateTemplate.execute(new HibernateCallback<User>() {
 
 			@Override
 			public User doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				arg0.update(user);
-				
 				t.commit();
 				System.out.println(user);
 				arg0.flush();
