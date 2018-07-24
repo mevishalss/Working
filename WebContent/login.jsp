@@ -84,14 +84,6 @@ $(document).ready(function () {
 	</tr>
 	</tr>
 	
-	<tr>
-	<tr>
-
-		<td align="Left"><a href="registrationpage.jsp">New Register</a></td> <td align="Right"><a href="ForgotPass.jsp">Forgot Password</a></td>
-
-		
-	</tr>
-	</tr>
 	</table> 
 		
 		</div>
@@ -103,5 +95,15 @@ $(document).ready(function () {
 		
 		<p id="details"></p>
 	</spr:form>
+<table align="center">
+	<tr>
+	<tr>
+
+		<td align="Left"><a href="registrationpage.php">New Register</a></td> <td align="Right"><a href="forgotpass.php">Forgot Password</a></td>
+		
+	</tr>
+	</tr>
+</table>
+		
 </body>
 </html>
