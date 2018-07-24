@@ -5,7 +5,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"  %>
 
-<html >
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>edit page</title>
@@ -142,7 +142,7 @@ $(document).ready(function () {
   transform: translateY(4px);
 }
 
-div {
+editDiv {
     border-radius: 5px;
     background-color: 696969;
     padding: 20px;
@@ -165,21 +165,24 @@ div {
 
 <body>
 <% List <UserDetails> list = (List) request.getAttribute("list"); %>
-	<h6>Edit Your Profile</h6>
-		<table>
-		<%for(UserDetails m : list){ %>
-<jsp:include page="LoginHead.jsp"></jsp:include>
-<div align="center" >
+	
+	
+		
+<jsp:include page="menu.jsp"></jsp:include>
+
+
+<div align="center" id="editDiv" >
 <spr:form action="edited.php" commandName="user"  method="post" >
 <fieldset>
-<legend><b><u><font size="5">Registration Form</font></u></b></legend>
+<legend><b><u><font size="5">Edit Page</font></u></b></legend>
+<%for(UserDetails m : list){ %>
 <table>
  <tr>
-<td>FirstName : </td><td><spr:input path = "fName" id="fname" class="fname"  required="required"  placeholder="First Name" value="<%=m.getfName() %>" /></td><td><span  id="fnamemsg"></span></td>
+<td>FirstName : </td><td><spr:input path = "fName" id="text" class="fname"  required="required"  placeholder="First Name" value="<%=m.getfName() %>" /></td><td><span  id="fnamemsg"></span></td>
 </tr>
  
 <tr>
-<td>LastName: </td><td> <spr:input path = "lName" id="lname" class="lname" required="required" Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
+<td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname" required="required" Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
 </tr>
 <tr>
  <td>Birth Date:</td><td><spr:input path = "bithDate" class="birthdate" id="text"  value="<%=m.getBithDate() %>" required="required" /></td><td><span id="spanbirthdate"></span></td>
@@ -227,12 +230,13 @@ div {
 </tr>	
 
 </table>
+<%} %>
 </fieldset>
 
 </spr:form>
 </div>
 
-<%} %>
+
 	
 </body>
 </html>
