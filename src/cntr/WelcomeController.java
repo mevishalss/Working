@@ -37,9 +37,18 @@ public class WelcomeController {
 	@Autowired
 	User user;
 	@Autowired
+	UserDetails ud;
+	@Autowired
 	Admindto AdminObj;
 	@Autowired
 	AdminDao adao;
+	public UserDetails getUd() {
+		return ud;
+	}
+
+	public void setUd(UserDetails ud) {
+		this.ud = ud;
+	}
 	
 	
 	public AdminDao getAdao() {
@@ -176,7 +185,7 @@ public class WelcomeController {
 	@RequestMapping(value="/edit.php")
 	public String edituser (ModelMap model) {
 		List<UserDetails> list= editdao.orderList(user);
-		model.put("user",user);
+		model.put("user",ud);
 		model.put("list",list);
 		return "edit";
 	}
@@ -190,7 +199,7 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/edited.php")
 	public String editDetails(UserDetails user,ModelMap model) {
-		System.out.println(user.getAddress());
+			dao.updateUser(user);
 				return "home";
 	}
 	

@@ -182,7 +182,7 @@ div {
 <td>LastName: </td><td> <spr:input path = "lName" id="lname" class="lname" required="required" Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
 </tr>
 <tr>
- <td>Birth Date:</td><td><spr:input path = "birthDate" class="birthdate" id="text"  value="<%=m.getBithDate() %>" required="required" /></td><td><span id="spanbirthdate"></span></td>
+ <td>Birth Date:</td><td><spr:input path = "bithDate" class="birthdate" id="text"  value="<%=m.getBithDate() %>" required="required" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
 <tr>
 <td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
@@ -204,7 +204,7 @@ div {
 <td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" required="required" Placeholder="abc@gmail.com"  value="<%=m.getEmailId() %>" /> </td>
 </tr>
 <tr>
-<td>Mobile No: </td><td> <spr:input path = "mobile" id="text" class="mobile" required="required" Placeholder="eg:9123456789" value="<%=m.getPhoneNo() %>"/></td><td><span id="spanmobile"></span></td>
+<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text" class="mobile" required="required" Placeholder="eg:9123456789" value="<%=m.getPhoneNo() %>"/></td><td><span id="spanmobile"></span></td>
 </tr>
 <tr>
 <td>Year of Course: </td><td> <spr:input path = "yearOfCourse" class="yearofcourse"  readonly="readonly" value="<%=m.getYearOfCourse() %>" required="required" id="text" Placeholder="Year of Course" /></td><td><span id="spanyearofcourse"></span></td>
