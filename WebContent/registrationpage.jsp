@@ -40,7 +40,10 @@ $("#submit").click(function(){
 		}
 		
 		var regex = /^[a-zA-Z ]*$/;
+		var regex1 = /^[a-zA-Z.,]*$/;
+
 		var numreg=/^(10|[1-6])$/;
+		var regcollge=/^[0-9]/;
 		var birthreg=/^[0,1]?\d{1}\/(([0-2]?\d{1})|([3][0,1]{1}))\/(([1]{1}[9]{1}[9]{1}\d{1})|([2-9]{1}\d{3}))$/;
 		var mobilereg=/^[7-9][0-9]{9}$/;
 		var fname = $(".fname").val();
@@ -50,6 +53,11 @@ $("#submit").click(function(){
 		var yearofcourse = $(".yearofcourse").val();
 		var mobile = $(".mobile").val();
 		var birthdate = $(".birthdate").val();
+		var collegename=$(".cName").val();
+		var collegecode=$(".cCode").val();
+
+		
+		
 		
 
 		if (!birthreg.test(birthdate)) {
@@ -65,7 +73,25 @@ $("#submit").click(function(){
         } else {
         	$('#spanmobile').next('div.red').remove();
         }
+		
+		
+		if (!regcollge.test(collegecode)) {
+        	$('#spancCode').next('div.red').remove();
+            $('#spancCode').after('<div class="red">Invalid College Code</div>');
+        } else {
+        	$('#spancCode').next('div.red').remove();
+        }
 		 
+		
+		if (!regex1.test(collegename)) {
+        	$('#spancName').next('div.red').remove();
+            $('#spancName').after('<div class="red">Invalid College Name</div>');
+        } else {
+        	$('#spancName').next('div.red').remove();
+        }
+		
+		
+		
 		//var aa = regex.test(fname);
          if (!regex.test(fname)) {
         	$('#fnamemsg').next('div.red').remove();
@@ -82,8 +108,7 @@ $("#submit").click(function(){
          } else {
          	$('#spancity').next('div.red').remove();
          }
-         
-         
+                  
          if (!regex.test(state)) {
           	$('#spanstate').next('div.red').remove();
               $('#spanstate').after('<div class="red">Invalid State</div>');
@@ -105,7 +130,7 @@ $("#submit").click(function(){
         	$('#spanyearofcourse').next('div.red').remove();
         }
         
-	     
+	
         
 	
 });
@@ -195,10 +220,10 @@ div {
 <td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
 </tr>
 <tr>
-<td>College Code: </td><td> <input type="text"  path = "CollegeCode" class="cCode"  required id="text" Placeholder="College Code" ></td><td><span id="cCode"></span></td>
+<td>College Code: </td><td> <input type="text"  path = "CollegeCode" class="cCode"  required id="text" Placeholder="College Code" ></td><td><span id="spancCode"></span></td>
 </tr>
 <tr>
-<td>College Name: </td><td> <input type="text"  path = "CollegeName" class="cName" required id="text" Placeholder="College Name" ></td><td><span id="cName"></span></td>
+<td>College Name: </td><td> <input type="text"  path = "CollegeName" class="cName" required id="text" Placeholder="College Name" ></td><td><span id="spancName"></span></td>
 </tr>
 <tr>
 <td>College PNR: </td><td> <input path = "prnNo" id="text"  required Placeholder="P123456789" ></td>
