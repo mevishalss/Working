@@ -193,7 +193,7 @@ public class WelcomeController {
 	@RequestMapping(value="/forgotpass.php")
 	public String forgotPass (ModelMap model) {
 		System.out.println("hello");
-		return "home";
+		return "ForgotPass";
 	}
 	
 	
