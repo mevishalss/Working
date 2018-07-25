@@ -99,7 +99,7 @@ $(document).ready(function () {
 	<tr>
 	<tr>
 
-		<td align="Left"><a href="registrationpage.php">New Register</a></td> <td align="Right"><a href="forgotpass.php">Forgot Password</a></td>
+		<td align="Left"><a href="registration.php">New Register</a></td> <td align="Right"><a href="forgotpass.php">Forgot Password</a></td>
 		
 	</tr>
 	</tr>

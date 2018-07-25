@@ -203,5 +203,20 @@ public class WelcomeController {
 				return "home";
 	}
 	
+
+	@RequestMapping(value="/registration.php")
+	public String Regis(ModelMap model) {
+		model.put("user",new UserDetails());
+		return "registrationpage1";
+	}
+	
+	@RequestMapping(value="/registrationpage.php")
+	public String Regis( UserDetails d ,ModelMap model){
+		
+		System.out.println(d.getfName());
+		return "registrationpage1";
+	}
+	
+	
 	
 }

@@ -190,6 +190,12 @@ editDiv {
 <tr>
 <td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
 </tr>
+<tr>
+<td>Password: </td><td> <input type="password" path="userPass" class="pass" required id="text" Placeholder="Password" ></td>
+</tr>
+<tr>
+<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
+</tr>
 
 <tr>
 <td>College Code: </td><td> <spr:input   path = "CollegeCode" class="cCode"  readonly="readonly" value="<%=m.getCollegeCode()%>" required="required" id="text" Placeholder="College Code" /></td><td><span id="cCode"></span></td>
