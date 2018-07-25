@@ -231,5 +231,11 @@ public class WelcomeController {
 	}
 	
 	
+
+	@RequestMapping(value="/changePassword.php")
+	public String chagePassword(UserDetails user,ModelMap model) {
+		dao.updateUser(user);
+			return "home";
+}
 	
 }
