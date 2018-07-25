@@ -220,7 +220,7 @@ public class WelcomeController {
 	@RequestMapping(value="/registration.php")
 	public String Regis(ModelMap model) {
 		model.put("user",new UserDetails());
-		return "registrationPage";
+		return "registrationpage";
 	}
 	
 	@RequestMapping(value="/registrationpage.php")
