@@ -1,14 +1,12 @@
-<%@page import="java.util.List"%>
-<%@page import="dto.UserDetails"%>
-<
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"  %>
-
-<html>
+    <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>edit page</title>
+<title>Insert title here</title>
 <script src="scripts/jquery-3.3.1.min.js"></script>
 <script src="scripts/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="path/to/date-validator.js"></script>
@@ -18,7 +16,15 @@
 $(document).ready(function () {
 
 
-
+$("#submit").click(function(){
+	$(".conpass").focus();
+	 if ($('.pass').val() !== $('.conpass').val()){
+		 $('#conpass').next('div.red').remove();
+         $('#conpass').after('<div class="red">You password does not match the confirmed password</div>');
+		 }
+	 else{
+     	$('#conpass').next('div.red').remove();
+	 }
 	 
 	var zip = $('.pincode').val();
 		if ((zip.length)>= 7 || (zip.length)<=5 ){	    	
@@ -35,7 +41,10 @@ $(document).ready(function () {
 		}
 		
 		var regex = /^[a-zA-Z ]*$/;
+		var regex1 = /^[a-zA-Z.,]*$/;
+
 		var numreg=/^(10|[1-6])$/;
+		var regcollge=/^[0-9]/;
 		var birthreg=/^[0,1]?\d{1}\/(([0-2]?\d{1})|([3][0,1]{1}))\/(([1]{1}[9]{1}[9]{1}\d{1})|([2-9]{1}\d{3}))$/;
 		var mobilereg=/^[7-9][0-9]{9}$/;
 		var fname = $(".fname").val();
@@ -45,6 +54,11 @@ $(document).ready(function () {
 		var yearofcourse = $(".yearofcourse").val();
 		var mobile = $(".mobile").val();
 		var birthdate = $(".birthdate").val();
+		var collegename=$(".cName").val();
+		var collegecode=$(".cCode").val();
+
+		
+		
 		
 
 		if (!birthreg.test(birthdate)) {
@@ -60,7 +74,25 @@ $(document).ready(function () {
         } else {
         	$('#spanmobile').next('div.red').remove();
         }
+		
+		
+		if (!regcollge.test(collegecode)) {
+        	$('#spancCode').next('div.red').remove();
+            $('#spancCode').after('<div class="red">Invalid College Code</div>');
+        } else {
+        	$('#spancCode').next('div.red').remove();
+        }
 		 
+		
+		if (!regex1.test(collegename)) {
+        	$('#spancName').next('div.red').remove();
+            $('#spancName').after('<div class="red">Invalid College Name</div>');
+        } else {
+        	$('#spancName').next('div.red').remove();
+        }
+		
+		
+		
 		//var aa = regex.test(fname);
          if (!regex.test(fname)) {
         	$('#fnamemsg').next('div.red').remove();
@@ -77,8 +109,7 @@ $(document).ready(function () {
          } else {
          	$('#spancity').next('div.red').remove();
          }
-         
-         
+                  
          if (!regex.test(state)) {
           	$('#spanstate').next('div.red').remove();
               $('#spanstate').after('<div class="red">Invalid State</div>');
@@ -100,13 +131,13 @@ $(document).ready(function () {
         	$('#spanyearofcourse').next('div.red').remove();
         }
         
-	     
+	
         
 	
 });
  
 	
-
+});
 
 
 
@@ -142,7 +173,7 @@ $(document).ready(function () {
   transform: translateY(4px);
 }
 
-editDiv {
+div {
     border-radius: 5px;
     background-color: 696969;
     padding: 20px;
@@ -164,71 +195,63 @@ editDiv {
 
 
 <body>
-<% List <UserDetails> list = (List) request.getAttribute("list"); %>
-	
-	
-		
-<jsp:include page="menu.jsp"></jsp:include>
-
-
-<div align="center" id="editDiv" >
-<spr:form action="edited.php" commandName="user"  method="post" >
+<jsp:include page="LoginHead.jsp"></jsp:include>
+<div align="center" >
+<form action="registrationpage.php"  method="post" >
 <fieldset>
-<legend><b><u><font size="5">Edit Page</font></u></b></legend>
-
+<legend><b><u><font size="5">Registration Form</font></u></b></legend>
 <table>
  <tr>
-<td>FirstName : </td><td><spr:input path = "fName" id="text" class="fname"  required="required"  placeholder="First Name" /></td><td><span  id="fnamemsg"></span></td>
-</tr>
- 
-<tr>
-<td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname" required="required" Placeholder="Last Name" /></td><td><span id="lnamemsg"  ></span></td>
-</tr>
-<tr>
- <td>Birth Date:</td><td><spr:input path = "bithDate" class="birthdate" id="text"  required="required" /></td><td><span id="spanbirthdate"></span></td>
-</tr>
-<tr>
-<td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" Placeholder="User ID" /></td>
-</tr>
-<tr>
-<td>Password: </td><td> <spr:input type="password" path="userPass" class="pass" required="required" id="text" Placeholder="Password" /></td>
-</tr>
-<tr>
-<td>Confirm Password: </td><td> <input type="password"  class="conpass" required="required" id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
+<td>FirstName : </td><td><input path = "fName" id="text" class="fname" id="first_name" required  placeholder="First Name"/></td><td><span class="fnameclass" id="fnamemsg"></span></td>
 </tr>
 
-<tr> 	
-<td>College Code: </td><td> <spr:input   path = "CollegeCode" class="cCode" required="required" id="text" Placeholder="College Code" /></td><td><span id="cCode"></span></td>
+<tr>
+<td>LastName: </td><td> <input path = "lName" id="text" class="lname" required Placeholder="Last Name" /></td><td><span id="lnamemsg"></span></td>
 </tr>
 <tr>
-<td>College Name: </td><td> <spr:input   path = "CollegeName" class="cName" required="required" id="text" Placeholder="College Name" /></td><td><span id="cName"></span></td>
+ <td>Birth Date:</td><td><input path = "bithDate" class="birthdate" id="text" class="birthdate" required Placeholder="(MM/DD/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
 <tr>
-<td>College PNR: </td><td> <spr:input path = "prnNo" id="text" required="required" Placeholder="P123456789" /></td>
+<td>UserID: </td><td> <input path = "userName"  required id="text" Placeholder="User ID" /></td>
 </tr>
 <tr>
-<td>Course: </td><td> <spr:input path = "course" id="text" class="course" required="required" Placeholder="Course" /></td><td><span id="course"></span></td>
+<td>Password: </td><td> <input type="password" path="userPass" class="pass" required id="text" Placeholder="Password" ></td>
 </tr>
 <tr>
-<td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" required="required" Placeholder="abc@gmail.com" /> </td>
+<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
 </tr>
 <tr>
-<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text" class="mobile" required="required" Placeholder="eg:9123456789" /></td><td><span id="spanmobile"></span></td>
+<td>College Code: </td><td> <input type="text"  path = "CollegeCode" class="cCode"  required id="text" Placeholder="College Code" ></td><td><span id="spancCode"></span></td>
 </tr>
 <tr>
-<td>Year of Course: </td><td> <spr:input path = "yearOfCourse" class="yearofcourse" required="required" id="text" Placeholder="Year of Course" /></td><td><span id="spanyearofcourse"></span></td>
+<td>College Name: </td><td> <input type="text"  path = "CollegeName" class="cName" required id="text" Placeholder="College Name" ></td><td><span id="spancName"></span></td>
 </tr>
 <tr>
-<td>Address: </td><td> <spr:input path = "address"  id="text" required="required" Placeholder="Address" /></td>
+<td>College PNR: </td><td> <input path = "prnNo" id="text"  required Placeholder="P123456789" ></td>
 </tr>
 <tr>
-<td>City: </td><td> <spr:input path = "city" id="text" class="city" required="required" Placeholder="City" /></td><td><span id="spancity"></span></td>
+<td>Course: </td><td> <input path = "course" id="text" class="course" required Placeholder="Course" ></td><td><span id="course"></span></td>
 </tr>
 <tr>
-<td>State: </td><td> <spr:input path = "state" id="text" class="state" required="required" Placeholder="Maharashtra" /></td><td><span id="spanstate"></span></td>
+<td>EmailId: </td><td> <input type ="email" path = "emailId" id="text" required Placeholder="abc@gmail.com" ></td>
 </tr>
 <tr>
-<td>PinCode: </td><td> <spr:input path = "pinCode" id="text" class="pincode" required="required" Placeholder="PinCode" /></td><td><span id="spanpincode"></span></td>
+<td>Mobile No: </td><td> <input path = "mobile" id="text" class="mobile" required Placeholder="9123456789" ></td><td><span id="spanmobile"></span></td>
+</tr>
+<tr>
+<td>Year of Course: </td><td> <input path = "yearOfCourse" class="yearofcourse" required id="text" Placeholder="Year of Course" ></td><td><span id="spanyearofcourse"></span></td>
+</tr>
+<tr>
+<td>Address: </td><td> <input path = "address"  id="text" required Placeholder="Address" ></td>
+</tr>
+<tr>
+<td>City: </td><td> <input path = "city" id="text" class="city" required Placeholder="City" ></td><td><span id="spancity"></span></td>
+</tr>
+<tr>
+<td>State: </td><td> <input path = "state" id="text" class="state" required Placeholder="Maharashtra" ></td><td><span id="spanstate"></span></td>
+</tr>
+<tr>
+<td>PinCode: </td><td> <input path = "pinCode" id="text" class="pincode" required Placeholder="PinCode" ></td><td><span id="spanpincode"></span></td>
 </tr>
 
 <tr>
@@ -236,10 +259,9 @@ editDiv {
 </tr>	
 
 </table>
-
 </fieldset>
 
-</spr:form>
+</form>
 </div>
 
 
