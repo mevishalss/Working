@@ -162,6 +162,9 @@ editDiv {
 <spr:form action="edited.php" commandName="user"  method="post" >
 <fieldset>
 <legend><b><u><font size="5">Edit Page</font></u></b></legend>
+<div align="right" id="changePasswordDiv" >
+<a href="changePassword.jsp">Change Password?</a>
+</div>
 <%for(UserDetails m : list){ %>
 <table>
  <tr>
@@ -171,9 +174,11 @@ editDiv {
 <tr>
 <td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname" required="required" Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
 </tr>
+
 <tr>
  <td>Birth Date:</td><td><spr:input path = "bithDate" class="birthdate" id="text"  value="<%=m.getBithDate() %>" required="required" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
+
 <tr>
 <td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
 </tr>
@@ -187,15 +192,19 @@ editDiv {
 <tr>
 <td>College Code: </td><td> <spr:input   path = "CollegeCode" class="cCode"  readonly="readonly" value="<%=m.getCollegeCode()%>" required="required" id="text" Placeholder="College Code" /></td><td><span id="cCode"></span></td>
 </tr>
+
 <tr>
 <td>College Name: </td><td> <spr:input   path = "CollegeName" class="cName" required="required" id="text"  readonly="readonly" value="<%=m.getCollegeName()%>" Placeholder="College Name" /></td><td><span id="cName"></span></td>
 </tr>
+
 <tr>
 <td>College PNR: </td><td> <spr:input path = "prnNo" id="text" readonly="readonly" value="<%=m.getPrnNo()%>"  required="required" Placeholder="P123456789" /></td>
 </tr>
+
 <tr>
 <td>Course: </td><td> <spr:input path = "course" id="text" class="course" readonly="readonly" value="<%=m.getCourse() %>" required="required" Placeholder="Course" /></td><td><span id="course"></span></td>
 </tr>
+
 <tr>
 <td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" required="required" Placeholder="abc@gmail.com"  value="<%=m.getEmailId() %>" /> </td>
 </tr>
