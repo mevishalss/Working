@@ -191,10 +191,10 @@ editDiv {
 <td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" Placeholder="User ID" /></td>
 </tr>
 <tr>
-<td>Password: </td><td> <input type="password" path="userPass" class="pass" required id="text" Placeholder="Password" ></td>
+<td>Password: </td><td> <spr:input type="password" path="userPass" class="pass" required="required" id="text" Placeholder="Password" /></td>
 </tr>
 <tr>
-<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
+<td>Confirm Password: </td><td> <input type="password"  class="conpass" required="required" id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
 </tr>
 
 <tr> 	

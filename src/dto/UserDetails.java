@@ -27,6 +27,13 @@ public class UserDetails {
 	private String address;
 	private String city;
 	private String state;
+	private String status;
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@OneToOne
 	private User user;
 	

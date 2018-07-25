@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Dao.AdminDao;
 import Dao.CollegeDao;
@@ -138,6 +139,7 @@ public class WelcomeController {
 	public String clglogin (  Collegedto clgdto ,ModelMap model) {
 		List<UserDetails> list =cdoa.studentsList(clgdto.getUserid());
 		model.put("list", list);
+		model.put("user",dao);
 		model.put("CollegeCode",clgdto.getUserid());
 		return "ClgLoginInfo";
 	}
@@ -196,6 +198,17 @@ public class WelcomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/ValidateUser.php")
+	public String Timepass (@RequestParam("value") String value,@RequestParam("uid") String uid,ModelMap model) {
+		List<UserDetails> list = dao.checkUserDetails(uid);
+		for(UserDetails u :list)
+		{
+			u.setStatus(value);
+			dao.updateUser(u);
+		}
+		return "ValidateUser";
+	}
+	
 	
 	@RequestMapping(value="/edited.php")
 	public String editDetails(UserDetails user,ModelMap model) {
@@ -207,14 +220,14 @@ public class WelcomeController {
 	@RequestMapping(value="/registration.php")
 	public String Regis(ModelMap model) {
 		model.put("user",new UserDetails());
-		return "registrationpage1";
+		return "registrationPage";
 	}
 	
 	@RequestMapping(value="/registrationpage.php")
 	public String Regis( UserDetails d ,ModelMap model){
 		
 		System.out.println(d.getfName());
-		return "registrationpage1";
+		return "registrationPage";
 	}
 	
 	

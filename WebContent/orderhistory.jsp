@@ -52,7 +52,6 @@
 				<%=m.getOrderPrice() %>
 			</td>
 			
-			
 		</tr>
 		<% } %>
 		
