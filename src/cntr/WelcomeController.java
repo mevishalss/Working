@@ -3,6 +3,8 @@ package cntr;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Controller;
@@ -224,19 +226,18 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/registrationpage.php")
-	public String Regis( UserDetails d ,ModelMap model){
-		
-		System.out.println(d.getfName());
-		return "registrationPage";
+	public String Regis(UserDetails d ,ModelMap model){
+		this.ud = d;
+		System.out.println(ud.getAddress());
+		dao.createUserDetails(d);
+		user.setUserName(ud.getUserName());
+		user.setUserPass(ud.getUserPass());
+		dao.InsertIntoLogin(user);
+		model.put("user", user);
+		return "login";
 	}
-	
 	
 
-	@RequestMapping(value="/changePassword.php")
-	public String chagePassword(UserDetails user,ModelMap model) {
-		dao.updateUser(user);
-			return "home";
-	}
 	
 	@RequestMapping(value="/ValidateUserId.php")
 	public String validateuserid(@RequestParam("value") String value,ModelMap model) {
@@ -278,5 +279,8 @@ public class WelcomeController {
 		model.put("ans", ans);
 		return "ValidateMobile";
 	}
-	
+
 }
+
+	
+
