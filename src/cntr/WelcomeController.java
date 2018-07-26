@@ -236,6 +236,47 @@ public class WelcomeController {
 	public String chagePassword(UserDetails user,ModelMap model) {
 		dao.updateUser(user);
 			return "home";
-}
+	}
+	
+	@RequestMapping(value="/ValidateUserId.php")
+	public String validateuserid(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkUserDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+			
+		model.put("ans", ans);
+		return "ValidateUserId";
+	}
+	
+	@RequestMapping(value="/ValidateMailId.php")
+	public String ValidateMailId(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkMailDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+		
+		model.put("ans", ans);
+		return "ValidateMailId";
+	}
+	
+		
+	@RequestMapping(value="/ValidateMobile.php")
+	public String Validatemobile(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkMobileDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+		
+		System.out.println(ans);
+		model.put("ans", ans);
+		return "ValidateMobile";
+	}
 	
 }

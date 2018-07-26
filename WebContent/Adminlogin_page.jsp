@@ -55,45 +55,42 @@
 	<fieldset>
 	<legend>Admin  Login</legend>
 	<table>
+	
 	<tr>
-	<tr>
-	 	<td>User Name : </td><td><spr:input path="Userid" id="auid" name="auid"/></td>
+	 	<td>User Name : </td><td><spr:input path="userId" id="auid" name="auid"/></td>
 	</tr>
-	</tr>
-	<tr>
+
+	
 	<tr>
 	     <td>Password : </td><td><spr:password path="password" id="apwd" value="apwd"/></td>
 	</tr>
-	</tr>
-	<tr>
-	<tr>
+
+
+	
 	<tr>
 		<td> <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label></td>
     </tr>
-    </tr>
-    </tr>
-    
-    <tr>
-    <tr>
+
+ 
     <tr>
 		<td colspan="2" align="center"><input type="submit" value="Login" /> <input type="submit" value="Reset" /></td>
 	</tr>
-	</tr>
-	</tr>
+
 	
-	<tr>
+
 	<tr>
 		<td align="Left">
 		</td> <td align="Right"><a href="url">Forgot Password</a></td>
 	</tr>
-	</tr>
+
 	</table> 
 		
-		</div>
+		
 		
 		</fieldset>
 	</spr:form>
+	</div>
 </body>
 </html>
