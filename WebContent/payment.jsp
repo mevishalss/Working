@@ -22,8 +22,8 @@
 		<th >Order Id</th>
 		<th >Transaction Id</th>
 		<th >Transaction Date</th>
-		<th >Transacation Amount</th>
-		<th >Transacation Status</th>
+		<th >Transaction Amount</th>
+		<th >Transaction Status</th>
 		<th >Payment Mode</th>
 		
 		</tr>

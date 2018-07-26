@@ -1,6 +1,8 @@
+<%@page import="dto.UserDetails"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"  %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -20,7 +22,7 @@ $(document).ready(function () {
 	     	$('#conpass').next('div.red').remove();
 		 }
 	});
-	
+});
 
 
 </script>
@@ -72,21 +74,31 @@ div {
 <body>
 <jsp:include page="LoginHead.jsp"></jsp:include>
 <div align="center" >
-<form action="changePassword.php"  method="post" >
+
+
+<spr:form action="changedpwd.php" commandName="ud"  method="post" >
 <fieldset>
 <legend><b><u><font size="5">Change Password</font></u></b></legend>
+
 <table>
 <tr>
-<td>Password: </td><td> <input type="password" path="userPass" class="pass" required id="text"  Placeholder="Password" ></td>
+<td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" readonly="readonly"  Placeholder="User ID" /></td>
 </tr>
 <tr>
-<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
+<td>Password: </td><td> <spr:input type="password" path="userPass" class="pass" required="required" id="text"  Placeholder="Password" /></td>
+</tr>
+<tr>
+<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" /></td><td><span id="conpass"></span></td>
 </tr>
 <tr>
 <td></td><td><input type="submit" id="submit" value="Save" /></td>
 </tr>	
 </table>
+
 </fieldset>
-</form>
+</spr:form>
+
+
+</div>
 </body>
 </html>

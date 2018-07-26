@@ -51,9 +51,11 @@ $(document).ready(function () {
 
 	<div  align="center" style="margin-top: 100px">
 	<spr:form action="login.php" commandName="user" method="post" id="myform">
+	
 	<fieldset>
 	<legend>LOGIN</legend>
 	<table>
+	<a href="AdminUserDetails.jsp">admin</a>
 	<tr>
 	<tr>
 	 	<td>User Name : </td><td><spr:input path="userName" id="uid" name="uid"/></td><td><span id="spanuser"></span></td>
