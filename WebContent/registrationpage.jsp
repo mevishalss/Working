@@ -225,37 +225,39 @@ fieldset {
 
 <body>
 <jsp:include page="LoginHead.jsp"></jsp:include>
-<form action="registrationpage.php"  method="post" >
+<spr:form commandName="user" action="registrationpage.php"  method="post" >
 <h1 align="center" id="h1">Registration Page</h1>
+
+
 <div align="center" >
 <fieldset>
 
 <legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
-<td>UserID: </td><td> <input path = "userName"  required id="text" Placeholder="User ID" /></td>
+<td>UserID: </td><td> <spr:input path = "userName" required="required"  id="text" Placeholder="User ID" /></td>
 </tr>
  <tr>
-<td>FirstName : </td><td><input path = "fName" id="text" class="fname" id="first_name" required  placeholder="First Name"/></td><td><span class="fnameclass" id="fnamemsg"></span></td>
+<td>FirstName : </td><td><spr:input path = "fName" id="text" class="fname" required="required"  placeholder="First Name"/></td><td><span class="fnameclass" id="fnamemsg"></span></td>
 </tr>
 <tr>
-<td>LastName: </td><td> <input path = "lName" id="text" class="lname" required Placeholder="Last Name" /></td><td><span id="lnamemsg"></span></td>
+<td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname" required="required" Placeholder="Last Name" /></td><td><span id="lnamemsg"></span></td>
 </tr>
 <tr>
- <td>Birth Date:</td><td><input path = "bithDate" class="birthdate" id="text" class="birthdate" required Placeholder="(MM/DD/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
+ <td>Birth Date:</td><td><spr:input path = "bithDate" id="text" class="birthdate" required="required" Placeholder="(MM/DD/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
 
 <tr>
-<td>Password: </td><td> <input type="password" path="userPass" class="pass" required id="text" Placeholder="Password" ></td>
+<td>Password: </td><td> <spr:input type="password" path="userPass" class="pass" required="required" id="text" Placeholder="Password" /></td>
 </tr>
 <tr>
-<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
+<td>Confirm Password: </td><td> <input type="password"  class="conpass" required="required" id="text" Placeholder="Confirm Password" /></td><td><span id="conpass"></span></td>
 </tr>
 <tr>
-<td>EmailId: </td><td> <input type ="email" path = "emailId" id="text" required Placeholder="abc@gmail.com" ></td>
+<td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" required="required" Placeholder="abc@gmail.com" /></td>
 </tr>
 <tr>
-<td>Mobile No: </td><td> <input path = "mobile" id="text" class="mobile" required Placeholder="9123456789" ></td><td><span id="spanmobile"></span></td>
+<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text" class="mobile" required="required" Placeholder="9123456789" /></td><td><span id="spanmobile"></span></td>
 </tr>
 </table>
 </fieldset>
@@ -266,20 +268,20 @@ fieldset {
 <legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>College Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
-<td>College Code: </td><td> <input type="text"  path = "CollegeCode" class="cCode"  required id="text" Placeholder="College Code" ></td><td><span id="spancCode"></span></td>
+<td>College Code: </td><td> <spr:input type="text"  path = "CollegeCode" class="cCode"  required="required" id="text" Placeholder="College Code" /></td><td><span id="spancCode"></span></td>
 </tr>
 <tr>
-<td>College Name: </td><td> <input type="text"  path = "CollegeName" class="cName" required id="text" Placeholder="College Name" ></td><td><span id="spancName"></span></td>
+<td>College Name: </td><td> <spr:input type="text"  path = "CollegeName" class="cName" required="required" id="text" Placeholder="College Name" /></td><td><span id="spancName"></span></td>
 </tr>
 <tr>
-<td>College PNR: </td><td> <input path = "prnNo" id="text"  required Placeholder="P123456789" ></td>
+<td>College PNR: </td><td> <spr:input path = "prnNo" id="text"  required="required" Placeholder="P123456789" /></td>
 </tr>
 <tr>
-<td>Course: </td><td> <input path = "course" id="text" class="course" required Placeholder="Course" ></td><td><span id="course"></span></td>
+<td>Course: </td><td> <spr:input path = "course" id="text" class="course" required="required" Placeholder="Course" /></td><td><span id="course"></span></td>
 </tr>
 
 <tr>
-<td>Year of Course: </td><td> <input path = "yearOfCourse" class="yearofcourse" required id="text" Placeholder="Year of Course" ></td><td><span id="spanyearofcourse"></span></td>
+<td>Year of Course: </td><td> <spr:input path = "yearOfCourse" class="yearofcourse" required="required" id="text" Placeholder="Year of Course" /></td><td><span id="spanyearofcourse"></span></td>
 </tr>
 </table>
 </fieldset>
@@ -291,16 +293,16 @@ fieldset {
 <legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Address Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
-<td>Address: </td><td> <input path = "address"  id="text" required Placeholder="Address" ></td>
+<td>Address: </td><td> <spr:input path = "address"  id="text" required="required" Placeholder="Address" /></td>
 </tr>
 <tr>
-<td>City: </td><td> <input path = "city" id="text" class="city" required Placeholder="City" ></td><td><span id="spancity"></span></td>
+<td>City: </td><td> <spr:input path = "city" id="text" class="city" required="required" Placeholder="City" /></td><td><span id="spancity"></span></td>
 </tr>
 <tr>
-<td>State: </td><td> <input path = "state" id="text" class="state" required Placeholder="Maharashtra" ></td><td><span id="spanstate"></span></td>
+<td>State: </td><td> <spr:input path = "state" id="text" class="state" required="required" Placeholder="Maharashtra" /></td><td><span id="spanstate"></span></td>
 </tr>
 <tr>
-<td>PinCode: </td><td> <input path = "pinCode" id="text" class="pincode" required Placeholder="PinCode" ></td><td><span id="spanpincode"></span></td>
+<td>PinCode: </td><td> <spr:input path = "pinCode" id="text" class="pincode" required="required" Placeholder="PinCode" /></td><td><span id="spanpincode"></span></td>
 </tr>
 </table>
 </fieldset>
@@ -312,7 +314,9 @@ fieldset {
 </tr>	
 </table>
 </div>
-	</form>
+	
+	
+	</spr:form>
 	
 </body>
 </html>

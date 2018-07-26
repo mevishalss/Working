@@ -42,6 +42,7 @@ $(document).ready(function () {
     });     
       
 });
+
 			
 </script>  
 </head>
@@ -79,7 +80,7 @@ $(document).ready(function () {
     <tr>
 
 		<td colspan="2" align="center"><input type="submit" id="btnlogin" value="Login" /> <input type="reset" value="Reset" /></td>
-
+		
 	</tr>
 	</tr>
 	</tr>
