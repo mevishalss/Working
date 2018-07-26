@@ -16,9 +16,9 @@ public class Payment {
 	@Id
 	@Column(name="transId")
 	private String transId;
-	@Column(name="user_id")
+	
 	private String userId;
-	@Column(name="order_id")
+	
 	private String orderId;
 	private String transAmount;
 	private String transStatus;
@@ -38,18 +38,10 @@ public class Payment {
 		this.orderDetails = orderDetails;
 	}
 
-	@ManyToOne
-	private User user;
+
 	
 	
-	public User getUser() {
-		return user;
-	}
 
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 
 	public Payment() {

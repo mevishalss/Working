@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Dao.AdminDao;
 import Dao.CollegeDao;
@@ -151,11 +152,13 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
-		this.AdminObj = AdminObj;
-		if(adao.checkUser(this.AdminObj))
-			return "Adminlogin_page";
-		else
-			return "AdminHome";
+		//this.AdminObj = AdminObj;
+		//if(adao.checkUser(this.AdminObj))
+			//return "Adminlogin_page";
+		//else
+		List<UserDetails> list= editdao.UserList();
+		model.put("list",list);
+			return "AdminUserName";
 	}
 	
 	public EditDao getEditdao() {
@@ -205,9 +208,39 @@ public class WelcomeController {
 	
 
 	@RequestMapping(value="/changePassword.php")
-	public String chagePassword(UserDetails user,ModelMap model) {
-		dao.updateUser(user);
-			return "home";
+	public String chagePassword(ModelMap model) {
+		model.put("ud", ud);
+	return "changePassword";
 }
 	
+	@RequestMapping(value="/changedpwd.php")
+	public String changepwd(UserDetails ud,ModelMap model) {
+		this.ud=ud;
+		dao.updateUser(ud);
+	return "changedpwd";
+}
+	
+	
+	@RequestMapping(value="/admnUserNames.php")
+	public String adminUserName (ModelMap model) {
+		List<UserDetails> list= dao.allUserList();
+		model.put("list",list);
+		return "adminUserNames";
+	}
+	
+	@RequestMapping(value="/admnUserDetails.php")
+	public String adminUserDetails (@RequestParam("uid") String uid,ModelMap model) {
+		List<UserDetails> list= dao.singleUser(uid);
+		model.put("list",list);
+		model.put("user", user);
+		return "AdminUserDetails";
+	}
+	
+	
+	@RequestMapping(value="/paymentDetails.php")
+	public String paymentDetails (User user,ModelMap model) {
+		List<Payment> list =pdao.paymentList(user);
+		model.put("list", list);
+		return "AdminPatymentDetails";
+	}
 }

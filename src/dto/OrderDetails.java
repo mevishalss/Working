@@ -16,22 +16,14 @@ public class OrderDetails {
 	@Id
 	@Column (name="order_id")
 	private String orderId;
-	@Column(name="user_id")
+	
 	private String userId;
 	private String orderDate;
 	private String noOfInstalments;
 	private String orderPrice;
 	private String description;
 	private String remainingInst;
-	@ManyToOne
-	private User user;
 	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	
 	public OrderDetails(String userId) {
 		super();

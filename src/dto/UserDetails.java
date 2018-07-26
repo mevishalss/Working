@@ -27,16 +27,9 @@ public class UserDetails {
 	private String address;
 	private String city;
 	private String state;
-	@OneToOne
-	private User user;
+
 	
 	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	public String getCollegeName() {
 		return CollegeName;
 	}

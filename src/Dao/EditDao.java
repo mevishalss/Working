@@ -50,4 +50,25 @@ public List<UserDetails> orderList(User user){
 	});
 	return ulist;
 
-}}
+}
+
+public List<UserDetails> UserList(){
+	List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+
+		@Override
+		public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+			Transaction t = arg0.beginTransaction();
+			Criteria q = arg0.createCriteria(UserDetails.class);
+			List<UserDetails> ul = q.list();
+			t.commit();
+			arg0.close();
+			return ul;
+		}
+	
+	});
+	return ulist;
+
+}
+
+}
+
