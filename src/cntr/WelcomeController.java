@@ -153,8 +153,8 @@ public class WelcomeController {
 	@RequestMapping(value="/LoginPage.php")
 	public String LoginPage(User user,ModelMap model) {
 			model.put("user", user);
-				return "home";
-	}
+					return "home";
+				}
 	
 	
 	
@@ -251,10 +251,6 @@ public class WelcomeController {
 		return "ValidateUser";
 	}
 	
-
-	
-	
-	
 	
 	@RequestMapping(value="/edited.php")
 	public String editDetails(UserDetails user,ModelMap model) {
@@ -323,6 +319,22 @@ public class WelcomeController {
 		return "ValidateMobile";
 	}
 	
+	
+	
+
+	@RequestMapping(value="/orderUpdatePage.php")
+	public String orderUPdate (@RequestParam("value") String value,@RequestParam("uid") String uid,ModelMap model) {
+		List<OrderDetails> list = odao.orderList(uid);
+		for(OrderDetails u :list)
+		{
+			u.setOrderSatus(value);
+			odao.OrderUpdate(u);
+		}
+		return "orderUpdatePage";
+	}
+	
+
+
 	
 	
 	
