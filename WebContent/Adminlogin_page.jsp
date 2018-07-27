@@ -74,7 +74,8 @@ fieldset {
 	<table>
 	
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="userId" id="auid" name="auid"/></td>
+	<tr>
+	 		<td>User Name : </td><td><spr:input path="userId" id="auid" name="auid"/></td>
 	</tr>
 
 	
@@ -92,7 +93,7 @@ fieldset {
 
  
     <tr>
-		<td colspan="2" align="center"><input type="submit" value="Login" /> <input type="submit" value="Reset" /></td>
+		<td colspan="2" align="center"><input type="submit" value="Login" /> <input type="reset" value="Reset" /></td>
 	</tr>
 
 	

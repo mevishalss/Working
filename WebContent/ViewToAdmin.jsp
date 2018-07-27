@@ -25,7 +25,7 @@
 		<th >Order Date</th>
 		<th >Number of Installments</th>
 		<th >Price of Item</th>
-		
+		<th >confirm Oreder </th>
 		
 		</tr>
 		</thead>
@@ -51,9 +51,10 @@
 			<td align="center" >
 				<%=m.getOrderPrice() %>
 			</td>
+			<td align="center" >
 			
-			
-		</tr>
+			</td>
+            </tr>
 		<% } %>
 		
 		</tbody>
