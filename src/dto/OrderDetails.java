@@ -38,7 +38,6 @@ private String orderSatus;
 		this.orderSatus = orderSatus;
 	}
 
-
 	
 	public OrderDetails(String userId) {
 		super();
