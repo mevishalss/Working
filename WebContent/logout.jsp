@@ -8,20 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-Cookie[] cookies = request.getCookies();
-
-        for(int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("UserName")) {
-             cookies[i].setMaxAge(0);
-            response.addCookie(cookies[i]);
-}
-}
-}
-
-<%
-session.invalidate();
-response.sendRedirect("login.jsp");
-%>
-    
+<% 
+ Cookie UserName=new Cookie("name","");  
+        UserName.setMaxAge(0);  
+        response.addCookie(UserName);  
+        
+        
+        Cookie UserPass=new Cookie("UserPass","");  
+        UserPass.setMaxAge(0);  
+        response.addCookie(UserPass);  
+         out.print("you are successfully logged out!");  
+         %>
+    <p>Welcome <%= UserName.toString() %></p>  
+    <p>Welcome <%= UserName.toString() %></p>  
 </body>
 </html>

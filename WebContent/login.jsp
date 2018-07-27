@@ -48,20 +48,16 @@ $(document).ready(function () {
 <body>
 
 <%     
+
    Cookie UserName = new Cookie("UserName", request.getParameter("UserName"));
-  
+Cookie UserPass = new Cookie("UserPass", request.getParameter("UserPass"));
    UserName.setMaxAge(24*60*60);
-   
+   UserPass.setMaxAge(24*60*60);
  
    response.addCookie( UserName );
-
-   
-   
-   String UserSession=(String)session.getAttribute("UserName");
-   
- 
+   response.addCookie( UserPass );
   
-   
+  
 %>
   
 
@@ -125,6 +121,7 @@ $(document).ready(function () {
 	</tr>
 	</tr>
 </table>
-		<p>Welcome <%= UserSession %></p>  
+		<p>Welcome <%= UserName.toString() %></p>  
+		<p>Welcome <%= UserPass.toString() %></p>  
 </body>
 </html>
