@@ -10,7 +10,23 @@
 <style type="text/css">
 .red {
     color:red;
-}
+}fieldset { 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;    
+    }
+    
+    legend
+    {
+       color: #5f97ef;   
+    }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,27 +38,30 @@
         var contact = $('#contact').val();
         if (contact.length == 0) {
             $('#contact').next('div.red').remove();
-            $('#contact').after('<div class="red">Contact Number is Required</div>');
+            $('#contact').after('<div class="red">E-Mail Address is Required</div>');
         } else {
             $(this).next('div.red').remove();
             return true;
         }
     });
+    
+    
+    $("#contact").blur(function () {
+    	var emailreg=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        var contact = $('#contact').val();
+
+	if (!emailreg.test(contact)) {
+    	$('#contact').next('div.red').remove();
+        $('#contact').after('<div class="red">Enter Proper Email Address</div>');
+    } else {
+    	$('#contact').next('div.red').remove();
+    }
+    });
 
 });
 			
 			
-			$(document).ready(function () {
-				  //called when key is pressed in textbox
-				  $("#contact").keypress(function (e) {
-				     //if the letter is not digit then display error and don't type anything
-				     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-				        //display error message
-				        $("#errmsg").html("Digits Only").show().fadeOut("slow");
-				               return false;
-				    }
-				   });
-				});
+			
 			
 			
 			
@@ -57,11 +76,11 @@
 	<div  align="center" style="margin-top: 100px">
 	<form action="forgotpass.php" method="post" >
 	<fieldset>
-	<legend>FORGOT PASSWORD</legend>
+	<legend align="center">&nbsp;&nbsp;&nbsp;FORGOT PASSWORD&nbsp;&nbsp;&nbsp;</legend>
 	<table>
 	<tr>
 	<tr>
-	 	<td>Contact Number : </td><td><input type="text" path="contactNo" id="contact" name="contact"/><span id="errmsg"> </span></td>
+	 	<td>Enter Your E-Mail Address: </td><td><input type="text" path="contactNo" id="contact" name="contact"/><span id="errmsg"> </span></td>
 	</tr>
 	</tr>
 	
