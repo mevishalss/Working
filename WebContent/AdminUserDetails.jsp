@@ -73,7 +73,7 @@ editDiv {
 <div align="center" id="paymentDiv" >
 <spr:form action="paymentDetails.php" commandName="user"  method="post" >
 <fieldset>
-<legend><b><u><font size="5"> Payment Details</font></u></b></legend>
+<legend><b><u><font size="5"> Payment Details </font></u></b></legend>
 <div align="right" id="userdetail" >
 <tr>
 

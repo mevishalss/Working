@@ -47,6 +47,24 @@ $(document).ready(function () {
 </head>
 <body>
 
+<%     
+   Cookie UserName = new Cookie("UserName", request.getParameter("UserName"));
+  
+   UserName.setMaxAge(24*60*60);
+   
+ 
+   response.addCookie( UserName );
+
+   
+   
+   String UserSession=(String)session.getAttribute("UserName");
+   
+ 
+  
+   
+%>
+  
+
 <jsp:include page="LoginHead.jsp"></jsp:include>
 
 	<div  align="center" style="margin-top: 100px">
@@ -60,6 +78,7 @@ $(document).ready(function () {
 	<tr>
 	 	<td>User Name : </td><td><spr:input path="userName" id="uid" name="uid"/></td><td><span id="spanuser"></span></td>
 	</tr>
+	 <%= request.getParameter("UserName")%>
 	</tr>
 	<tr>
 	<tr>
@@ -106,6 +125,6 @@ $(document).ready(function () {
 	</tr>
 	</tr>
 </table>
-		
+		<p>Welcome <%= UserSession %></p>  
 </body>
 </html>
