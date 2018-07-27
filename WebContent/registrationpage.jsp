@@ -10,6 +10,7 @@
 <script src="scripts/jquery-3.3.1.min.js"></script>
 <script src="scripts/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="path/to/date-validator.js"></script>
+<script type="text/javascript" src="path/to/date-validator.js"></script>
 
 <script>
 
@@ -20,7 +21,7 @@ $("#submit").click(function(){
 	$(".conpass").focus();
 	 if ($('.pass').val() !== $('.conpass').val()){
 		 $('#conpass').next('div.red').remove();
-         $('#conpass').after('<div class="red">You password does not match the confirmed password</div>');
+         $('#conpass').after('<div class="red">You password does not match</div>');
 		 }
 	 else{
      	$('#conpass').next('div.red').remove();
@@ -29,10 +30,10 @@ $("#submit").click(function(){
 	var zip = $('.pincode').val();
 		if ((zip.length)>= 7 || (zip.length)<=5 ){	    	
 	    	$('#spanpincode').next('div.red').remove();
-            $('#spanpincode').after('<div class="red">Invalid Pin code(Should have 6 digit)</div>');
+            $('#spanpincode').after('<div class="red">Invalid Pin code</div>');
 	    	if ( zip =( "^[0-9]+$" )){		    	
 	    		$('#spanpincode').next('div.red').remove();
-	            $('#spanpincode').after('<div class="red">Invalid Pin code(Should have 6 digit)</div>');
+	            $('#spanpincode').after('<div class="red">Invalid Pin code</div>');
 		    }
 	    }
 		else {
@@ -63,7 +64,7 @@ $("#submit").click(function(){
 
 		if (!birthreg.test(birthdate)) {
         	$('#spanbirthdate').next('div.red').remove();
-            $('#spanbirthdate').after('<div class="red">Invalid date(should follow pattern MM/DD/YYYY)</div>');
+            $('#spanbirthdate').after('<div class="red">Invalid date(MM/DD/YYYY)</div>');
         } else {
         	$('#spanbirthdate').next('div.red').remove();
         }
@@ -177,6 +178,8 @@ div {
     border-radius: 5px;
     background-color: 696969;
     padding: 20px;
+    background-image: url("images/background.jpg");
+    e
 }
 
 #text {
@@ -188,6 +191,32 @@ div {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+fieldset { 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;
+    
+    }
+    
+    
+    legend
+   {
+       color: #5f97ef;
+   
+    }
+ #h1 {
+    color: #164084;
+    font-family: verdana;
+    font-size: 150%;
+}
 </style>
 </head>
 
@@ -196,30 +225,46 @@ div {
 
 <body>
 <jsp:include page="LoginHead.jsp"></jsp:include>
-<div align="center" >
 <form action="registrationpage.php"  method="post" >
+<h1 align="center" id="h1">Registration Page</h1>
+<div align="center" >
 <fieldset>
-<legend><b><u><font size="5">Registration Form</font></u></b></legend>
+
+<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
+<tr>
+<td>UserID: </td><td> <input path = "userName"  required id="text" Placeholder="User ID" /></td>
+</tr>
  <tr>
 <td>FirstName : </td><td><input path = "fName" id="text" class="fname" id="first_name" required  placeholder="First Name"/></td><td><span class="fnameclass" id="fnamemsg"></span></td>
 </tr>
-
 <tr>
 <td>LastName: </td><td> <input path = "lName" id="text" class="lname" required Placeholder="Last Name" /></td><td><span id="lnamemsg"></span></td>
 </tr>
 <tr>
  <td>Birth Date:</td><td><input path = "bithDate" class="birthdate" id="text" class="birthdate" required Placeholder="(MM/DD/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
-<tr>
-<td>UserID: </td><td> <input path = "userName"  required id="text" Placeholder="User ID" /></td>
-</tr>
+
 <tr>
 <td>Password: </td><td> <input type="password" path="userPass" class="pass" required id="text" Placeholder="Password" ></td>
 </tr>
 <tr>
 <td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
 </tr>
+<tr>
+<td>EmailId: </td><td> <input type ="email" path = "emailId" id="text" required Placeholder="abc@gmail.com" ></td>
+</tr>
+<tr>
+<td>Mobile No: </td><td> <input path = "mobile" id="text" class="mobile" required Placeholder="9123456789" ></td><td><span id="spanmobile"></span></td>
+</tr>
+</table>
+</fieldset>
+</div>
+
+<div align="center" >
+<fieldset>
+<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>College Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<table>
 <tr>
 <td>College Code: </td><td> <input type="text"  path = "CollegeCode" class="cCode"  required id="text" Placeholder="College Code" ></td><td><span id="spancCode"></span></td>
 </tr>
@@ -232,15 +277,19 @@ div {
 <tr>
 <td>Course: </td><td> <input path = "course" id="text" class="course" required Placeholder="Course" ></td><td><span id="course"></span></td>
 </tr>
-<tr>
-<td>EmailId: </td><td> <input type ="email" path = "emailId" id="text" required Placeholder="abc@gmail.com" ></td>
-</tr>
-<tr>
-<td>Mobile No: </td><td> <input path = "mobile" id="text" class="mobile" required Placeholder="9123456789" ></td><td><span id="spanmobile"></span></td>
-</tr>
+
 <tr>
 <td>Year of Course: </td><td> <input path = "yearOfCourse" class="yearofcourse" required id="text" Placeholder="Year of Course" ></td><td><span id="spanyearofcourse"></span></td>
 </tr>
+</table>
+</fieldset>
+</div>
+
+
+<div align="center">
+<fieldset >
+<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Address Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<table>
 <tr>
 <td>Address: </td><td> <input path = "address"  id="text" required Placeholder="Address" ></td>
 </tr>
@@ -253,18 +302,17 @@ div {
 <tr>
 <td>PinCode: </td><td> <input path = "pinCode" id="text" class="pincode" required Placeholder="PinCode" ></td><td><span id="spanpincode"></span></td>
 </tr>
-
+</table>
+</fieldset>
+</div>
+<div align="center">
+<table>
 <tr>
 <td></td><td><input type="submit" id="submit" value="Save" /></td>
 </tr>	
-
 </table>
-</fieldset>
-
-</form>
 </div>
-
-
+	</form>
 	
 </body>
 </html>
