@@ -44,6 +44,7 @@ public class UserDetails {
 	@NotNull
 	private String state;
 	private String status;
+	
 	public String getStatus() {
 		return status;
 	}
