@@ -32,7 +32,7 @@
 	<property name="hibernateProperties" >
 		<props>
 			<prop key="hibernate.dialect">	org.hibernate.dialect.Oracle9Dialect</prop>
-			<prop key="hibernate.show_sql">true</prop>
+			<prop key="hibernate.show_sql">false</prop>
 			<prop key="hibernate.hbm2ddl.auto">update</prop>
 			
 		</props>
@@ -81,9 +81,11 @@
 	
 	<bean id="user" class="dto.User" ></bean>
 	<bean id="AdminObj" class="dto.Admindto" ></bean>
+	<bean id="ud" class="dto.UserDetails" ></bean>
+	
 	
 
-<bean id="editdao" class="Dao.EditDao" >
+	<bean id="editdao" class="Dao.EditDao" >
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 

@@ -2,8 +2,12 @@ package Dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -13,13 +17,17 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import dto.User;
+import dto.UserDetails;
 
 @Repository
 public class UserDao {
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
-
+	@Autowired
+	UserDetails ud;
+	@Autowired
+	User user;
 	public UserDao() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -39,7 +47,6 @@ public class UserDao {
 
 			@Override
 			public User doInHibernate(Session arg0) throws HibernateException {
-				System.out.println(user.getUserName());
 				Transaction t = arg0.beginTransaction();
 				arg0.save(user);
 				t.commit();
@@ -50,13 +57,14 @@ public class UserDao {
 		});
 	}
 
-	public void deleteUser(User user) {
-		hibernateTemplate.execute(new HibernateCallback<User>() {
-
+	public void createUserDetails(UserDetails user) {
+		this.ud=user;
+		hibernateTemplate.execute(new HibernateCallback<UserDetails>() {
+			
 			@Override
-			public User doInHibernate(Session arg0) throws HibernateException {
+			public UserDetails doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
-				arg0.delete(user);
+				arg0.save(ud);
 				t.commit();
 				arg0.flush();
 				arg0.close();
@@ -65,14 +73,30 @@ public class UserDao {
 		
 		});
 	}
-	public void updateUser(User user) {
+	
+	public void InsertIntoLogin(User user) {
+		this.user=user;
+		hibernateTemplate.execute(new HibernateCallback<User>() {
+			
+			@Override
+			public User doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				arg0.save(user);
+				t.commit();
+				arg0.flush();
+				arg0.close();
+				return null;
+			}
+		
+		});
+	}
+	public void updateUser(UserDetails user) {
 		hibernateTemplate.execute(new HibernateCallback<User>() {
 
 			@Override
 			public User doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				arg0.update(user);
-				
 				t.commit();
 				System.out.println(user);
 				arg0.flush();
@@ -100,6 +124,61 @@ public class UserDao {
 		return ulist;
 	}
 	
+	public List<UserDetails> checkUserDetails(String uid){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+
+			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.eq("userName", uid));
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	public List<UserDetails> checkMobileDetails(String uid){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+
+			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.eq("phoneNo", uid));
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	public List<UserDetails> checkMailDetails(String uid){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+
+			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.eq("emailId", uid));
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	
 	
 	public boolean checkUser(User user){
 		
@@ -124,5 +203,6 @@ public class UserDao {
 		
 	}
 	
+
 
 }

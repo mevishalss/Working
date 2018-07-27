@@ -43,7 +43,7 @@ public class AdminDao {
 			public List<Admindto> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(Admindto.class);
-				q.add(Restrictions.and(Restrictions.eq("userid", user.getUserid()), Restrictions.eq("password", user.getPassword())));
+				q.add(Restrictions.and(Restrictions.eq("userId", user.getUserId()), Restrictions.eq("password", user.getPassword())));
 				List<Admindto> ul = q.list();
 				t.commit();
 				arg0.close();

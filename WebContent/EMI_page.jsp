@@ -24,7 +24,7 @@
      		var T_EMI=mm*result1;
      		var intrest = result1+(result1/10) ;
      		document.getElementById("result").innerHTML=intrest;
-     		document.getElementById("T_EMI").innerHTML=T_EMI;
+     		document.getElementById("T_EMI").innerHTML=intrest*mm;
      }
 </script>
 
@@ -61,8 +61,8 @@
 	
 	</table>
 	<table border="1" >
-	<tr><td style="padding:5px">monthly EMI</td><td><span id="result"></span></td></tr>
-	<tr><td style="padding:5px">Total EMI</td><td><span id="T_EMI"></span></td></tr>
+	<tr><td style="padding:2px">monthly EMI</td><td><span id="result"></span></td></tr>
+	<tr><td style="padding:2px">Total EMI</td><td><span id="T_EMI"></span></td></tr>
 </table>
 </fieldset>
 

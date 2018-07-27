@@ -3,11 +3,14 @@ package cntr;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Dao.AdminDao;
 import Dao.CollegeDao;
@@ -37,9 +40,18 @@ public class WelcomeController {
 	@Autowired
 	User user;
 	@Autowired
+	UserDetails ud;
+	@Autowired
 	Admindto AdminObj;
 	@Autowired
 	AdminDao adao;
+	public UserDetails getUd() {
+		return ud;
+	}
+
+	public void setUd(UserDetails ud) {
+		this.ud = ud;
+	}
 	
 	
 	public AdminDao getAdao() {
@@ -129,6 +141,7 @@ public class WelcomeController {
 	public String clglogin (  Collegedto clgdto ,ModelMap model) {
 		List<UserDetails> list =cdoa.studentsList(clgdto.getUserid());
 		model.put("list", list);
+		model.put("user",dao);
 		model.put("CollegeCode",clgdto.getUserid());
 		return "ClgLoginInfo";
 	}
@@ -155,6 +168,14 @@ public class WelcomeController {
 		//}
 	}
 	
+	public EditDao getEditdao() {
+		return editdao;
+	}
+
+	public void setEditdao(EditDao editdao) {
+		this.editdao = editdao;
+	}
+
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
 		
@@ -171,10 +192,105 @@ public class WelcomeController {
 		return "orderhistory";
 	}
 	
+	@RequestMapping(value="/edit.php")
+	public String edituser (ModelMap model) {
+		List<UserDetails> list= editdao.orderList(user);
+		model.put("user",ud);
+		model.put("list",list);
+		return "edit";
+	}
+	
+	@RequestMapping(value="/forgotpass.php")
+	public String forgotPass (ModelMap model) {
+		System.out.println("hello");
+		return "ForgotPass";
+	}
+	
+	@RequestMapping(value="/ValidateUser.php")
+	public String Timepass (@RequestParam("value") String value,@RequestParam("uid") String uid,ModelMap model) {
+		List<UserDetails> list = dao.checkUserDetails(uid);
+		for(UserDetails u :list)
+		{
+			u.setStatus(value);
+			dao.updateUser(u);
+		}
+		return "ValidateUser";
+	}
 	
 
 	
 	
 	
 	
+	@RequestMapping(value="/edited.php")
+	public String editDetails(UserDetails user,ModelMap model) {
+			dao.updateUser(user);
+				return "home";
+	}
+	
+
+	@RequestMapping(value="/registration.php")
+	public String Regis(ModelMap model) {
+		model.put("user",new UserDetails());
+		return "registrationpage";
+	}
+	
+	@RequestMapping(value="/registrationpage.php")
+	public String Regis(UserDetails d ,ModelMap model){
+		this.ud = d;
+		System.out.println(ud.getAddress());
+		dao.createUserDetails(d);
+		user.setUserName(ud.getUserName());
+		user.setUserPass(ud.getUserPass());
+		dao.InsertIntoLogin(user);
+		model.put("user", user);
+		return "login";
+	}
+	
+
+	
+	@RequestMapping(value="/ValidateUserId.php")
+	public String validateuserid(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkUserDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+			
+		model.put("ans", ans);
+		return "ValidateUserId";
+	}
+	
+	@RequestMapping(value="/ValidateMailId.php")
+	public String ValidateMailId(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkMailDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+		
+		model.put("ans", ans);
+		return "ValidateMailId";
+	}
+	
+		
+	@RequestMapping(value="/ValidateMobile.php")
+	public String Validatemobile(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkMobileDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+		
+		System.out.println(ans);
+		model.put("ans", ans);
+		return "ValidateMobile";
+	}
+
 }
+
+	
+

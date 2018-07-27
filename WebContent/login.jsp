@@ -12,35 +12,38 @@
 }
 </style>
  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="scripts/jquery-3.3.1.min.js"></script>
+<script src="scripts/jquery-3.3.1.slim.min.js"></script>
 <script>
-	$(document).ready(function () {
-    $("#uid").focus();
 
-    $("#uid").blur(function () {
+$(document).ready(function () {
+    $("#uid").focus();
+    $("#btnlogin").click(function(){
         var name = $('#uid').val();
         if (name.length == 0) {
-            $('#uid').next('div.red').remove();
-            $('#uid').after('<div class="red">User Name is Required</div>');
+            $('#spanuser').next('div.red').remove();
+            $('#spanuser').after('<div class="red">User Name is Required</div>');
         } else {
-            $(this).next('div.red').remove();
+        	$('#spanuser').next('div.red').remove();
             return true;
         }
     });
 
-    $("#pwd").blur(function () {
+    $("#btnlogin").click(function(){
         var password = $('#pwd').val();
         if (password.length == 0) {
-            $('#pwd').next('div.red').remove();
-            $('#pwd').after('<div class="red">Password is Required</div>');
+            $('#spanpass').next('div.red').remove();
+            $('#spanpass').after('<div class="red">Password is Required</div>');
             return false;
         } else {
-            $('#pwd').next('div.red').remove();
+            $('#spanpass').next('div.red').remove();
             return true;
         }
-    });
-
+    });     
+      
 });
+
+			
 </script>  
 </head>
 <body>
@@ -54,19 +57,19 @@
 	<table>
 	<tr>
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="userName" id="uid" name="uid"/></td>
+	 	<td>User Name : </td><td><spr:input path="userName" id="uid" name="uid"/></td><td><span id="spanuser"></span></td>
 	</tr>
 	</tr>
 	<tr>
 	<tr>
-	     <td>Password : </td><td><spr:password path="userPass" id="pwd" name="pwd"/></td>
+	     <td>Password : </td><td><spr:password path="userPass" id="pwd" name="pwd"/></td><td><span id="spanpass"></span></td>
 	</tr>
 	</tr>
 	<tr>
 	<tr>
 	<tr>
 		<td> <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
+        <input type="checkbox" name="remember" id="remember"> Remember me
       </label></td>
     </tr>
     </tr>
@@ -75,21 +78,36 @@
     <tr>
     <tr>
     <tr>
-		<td colspan="2" align="center"><input type="submit" value="Login" onclick="validate()"/> <input type="submit" value="Reset" /></td>
+
+		<td colspan="2" align="center"><input type="submit" id="btnlogin" value="Login" /> <input type="reset" value="Reset" /></td>
+		
 	</tr>
 	</tr>
 	</tr>
 	
-	<tr>
-	<tr>
-		<td align="Left"><a href="url">New Register</a></td> <td align="Right"><a href="url">Forgot Password</a></td>
-	</tr>
-	</tr>
 	</table> 
 		
 		</div>
 		
 		</fieldset>
+		
+		
+		
+		
+		<p id="details"></p>
 	</spr:form>
+<table align="center">
+	<tr>
+	<tr>
+
+
+		<td align="Left"><a href="registration.php">New Register</a></td> <td align="Right"><a href="forgotpass.php">Forgot Password</a></td>
+
+
+		
+	</tr>
+	</tr>
+</table>
+		
 </body>
 </html>
