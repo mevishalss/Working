@@ -23,9 +23,17 @@ public class OrderDetails {
 	private String orderPrice;
 	private String description;
 	private String remainingInst;
+	private String status;
+	
 	@ManyToOne
 	private User user;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public User getUser() {
 		return user;
 	}

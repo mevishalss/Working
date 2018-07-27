@@ -57,7 +57,7 @@
 	<table>
 	<tr>
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="Userid" id="auid" name="auid"/></td>
+	 	<td>User Name : </td><td><spr:input path="userid" id="auid" name="auid"/></td>
 	</tr>
 	</tr>
 	<tr>
@@ -78,7 +78,7 @@
     <tr>
     <tr>
     <tr>
-		<td colspan="2" align="center"><input type="submit" value="Login" /> <input type="submit" value="Reset" /></td>
+		<td colspan="2" align="center"><input type="submit" value="Login" /> <input type="reset" value="Reset" /></td>
 	</tr>
 	</tr>
 	</tr>

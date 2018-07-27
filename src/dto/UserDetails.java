@@ -7,6 +7,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.BatchSize;
+
+import com.sun.istack.internal.NotNull;
+
 @Entity
 
 @Table (name="user_details")
@@ -15,17 +19,29 @@ public class UserDetails {
 	@Id
 	@Column(name="user_id")
 	private String userName;
+	@NotNull
 	private String userPass;
+	@NotNull
 	private String fName;
+	@NotNull
 	private String lName;
+	@NotNull
 	private String phoneNo;
+	@NotNull
 	private String bithDate;
+	@NotNull
 	private String emailId;
+	@NotNull
 	private String prnNo;
+	@NotNull
 	private String course;
+	@NotNull
 	private String yearOfCourse;
+	@NotNull
 	private String address;
+	@NotNull
 	private String city;
+	@NotNull
 	private String state;
 	@OneToOne
 	private User user;
