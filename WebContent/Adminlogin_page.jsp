@@ -11,6 +11,23 @@
 .red {
     color:red;
 }
+fieldset { 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;    
+    }
+    
+    legend
+    {
+       color: #5f97ef;   
+    }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -53,7 +70,7 @@
 	<div  align="center" style="margin-top: 100px">
 	<spr:form action="AdminData.php" commandName="Admindto" method="post" >
 	<fieldset>
-	<legend>Admin  Login</legend>
+	<legend align="center">&nbsp;&nbsp;&nbsp;Admin  Login&nbsp;&nbsp;&nbsp;</legend>
 	<table>
 	
 	<tr>
@@ -82,7 +99,7 @@
 
 	<tr>
 		<td align="Left">
-		</td> <td align="Right"><a href="url">Forgot Password</a></td>
+		</td> <td align="Right"><a href="forgotpass.php">Forgot Password</a></td>
 	</tr>
 
 	</table> 

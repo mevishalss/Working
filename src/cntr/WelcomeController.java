@@ -124,11 +124,37 @@ public class WelcomeController {
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
 		this.user = user;
+		model.put("uid", user.getUserName());
+		model.put("user", user);
 			if(dao.checkUser(this.user))
-				return "home";
-			else
-				return "login";
+				return "session";
+			//else
+				//return "login";
+			return "session";
 	}
+	
+	
+	
+	@RequestMapping(value="/session.php")
+	public String checklogin(User user,ModelMap model) {
+			model.put("user", user);
+			
+				return "session";
+	}
+	
+	@RequestMapping(value="/LoginPage.php")
+	public String LoginPage(User user,ModelMap model) {
+			model.put("user", user);
+				return "home";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	@RequestMapping(value="/ClgLogin.php")
@@ -275,10 +301,13 @@ public class WelcomeController {
 		else
 			ans = "false";
 		
-		System.out.println(ans);
 		model.put("ans", ans);
 		return "ValidateMobile";
 	}
+	
+	
+	
+	
 
 }
 
