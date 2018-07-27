@@ -28,16 +28,16 @@ input[type=text]:focus {
 
 #searchbox {
   display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
+  padding: 12px 20px;
+  font-size: 17px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #b4b4b4;
+  background-color: #4CAF50;
   border: none;
-  border-radius: 15px;
+  border-radius: 11px;
   box-shadow: 0 9px #999;
 }
 
@@ -54,7 +54,17 @@ input[type=text]:focus {
 
 </head>
 <body>
-<% User user = (User) request.getAttribute("user"); %>
+<% User user = (User) request.getAttribute("user"); 
+ String see =(String) session.getAttribute("sessname");
+//System.out.print(see);
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
+
 <jsp:include page="menu.jsp?user=<%=user.getUserName() %>"></jsp:include>
 <form>
 <div align="center" style="margin-top: 200px">

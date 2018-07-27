@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ManyToAny;
+
+import com.sun.istack.internal.NotNull;
 @Entity
 @Table (name="order_details")
 
@@ -24,6 +26,19 @@ public class OrderDetails {
 	private String description;
 	private String remainingInst;
 	
+
+	@NotNull 
+private String orderSatus;
+	
+	
+	public String getOrderSatus() {
+		return orderSatus;
+	}
+	public void setOrderSatus(String orderSatus) {
+		this.orderSatus = orderSatus;
+	}
+
+
 	
 	public OrderDetails(String userId) {
 		super();

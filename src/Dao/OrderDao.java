@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import dto.OrderDetails;
 import dto.User;
+import dto.UserDetails;
 
 @Repository
 public class OrderDao {
@@ -53,4 +54,60 @@ public class OrderDao {
 		return ulist;
 	
 }
+	public List<OrderDetails> orderList(String uid){
+		List<OrderDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<OrderDetails>>() {
+
+			@Override
+			public List<OrderDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(OrderDetails.class);
+				q.add(Restrictions.eq("orderId", uid));
+				List<OrderDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	
+}
+	
+	
+	public List<OrderDetails> AllorderList(){
+		List<OrderDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<OrderDetails>>() {
+
+			@Override
+			public List<OrderDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(OrderDetails.class);
+				
+				List<OrderDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	
+}
+	
+	public void OrderUpdate(OrderDetails or) {
+		hibernateTemplate.execute(new HibernateCallback<OrderDetails>() {
+
+			@Override
+			public OrderDetails doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				arg0.update(or);
+				t.commit();
+				System.out.println(or);
+				arg0.flush();
+				arg0.close();
+				return null;
+			}
+		
+		});
+	}
+	
 	}

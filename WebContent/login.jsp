@@ -1,3 +1,6 @@
+<%@page import="java.io.Console"%>
+
+<%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form" %>    
@@ -10,16 +13,34 @@
 .red {
     color:red;
 }
+fieldset 
+{ 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;    
+}
+    
+legend
+{
+    color: #5f97ef;   
+}
 </style>
  
 <script src="scripts/jquery-3.3.1.min.js"></script>
-<script src="scripts/jquery-3.3.1.slim.min.js"></script>
+
 <script>
 
 $(document).ready(function () {
-    $("#uid").focus();
-    $("#btnlogin").click(function(){
-        var name = $('#uid').val();
+	
+    $(".uid").blur(function(){
+        var name = $('.uid').val();
         if (name.length == 0) {
             $('#spanuser').next('div.red').remove();
             $('#spanuser').after('<div class="red">User Name is Required</div>');
@@ -29,7 +50,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnlogin").click(function(){
+    $("#pwd").blur(function(){
         var password = $('#pwd').val();
         if (password.length == 0) {
             $('#spanpass').next('div.red').remove();
@@ -39,89 +60,74 @@ $(document).ready(function () {
             $('#spanpass').next('div.red').remove();
             return true;
         }
-    });     
+    });   
+    
+    $(".uid").blur(function () {    	
+        value =$(".uid").val();    
+    	if(value!=""){ 
+        $.post("ValidateUserId.php",{"value":value}, function(data, status){
+    if(data=="true")
+    {	    	
+    	$("#imgsrc1").attr("src","images/wrong.jpg");
+        	$('#imgsrc1').next('div.red').remove();        
+    }
+    else
+    {
+    	$('#imgsrc1').next('div.red').remove();
+    	$("#imgsrc1").attr("src","images/correct.jpg");
+    }    
+        });
+    	}else
+    	{
+    	$("#imgsrc1").attr("src","");
+    	}
+    });
+
       
 });
+<% String see =(String) session.getAttribute("sessname");
+	//System.out.print(see);
+	
+%>
 			
 </script>  
 </head>
 <body>
 
-<%     
-
-   Cookie UserName = new Cookie("UserName", request.getParameter("UserName"));
-Cookie UserPass = new Cookie("UserPass", request.getParameter("UserPass"));
-   UserName.setMaxAge(24*60*60);
-   UserPass.setMaxAge(24*60*60);
- 
-   response.addCookie( UserName );
-   response.addCookie( UserPass );
-  
-  
-%>
-  
-
 <jsp:include page="LoginHead.jsp"></jsp:include>
 
 	<div  align="center" style="margin-top: 100px">
 	<spr:form action="login.php" commandName="user" method="post" id="myform">
-	
 	<fieldset>
-	<legend>LOGIN</legend>
+	<legend align="center">&nbsp;&nbsp;&nbsp;LOGIN&nbsp;&nbsp;&nbsp;</legend>
 	<table>
-	<a href="AdminUserDetails.jsp">admin</a>
+	
 	<tr>
-	<tr>
-	 	<td>User Name : </td><td><spr:input path="userName" id="uid" name="uid"/></td><td><span id="spanuser"></span></td>
+	 	<td>User Name : </td><td><spr:input path="userName" class="uid" name="uid"/></td><td><span><img id="imgsrc1" src=""/></span></td><td><span id="spanuser"></span></td>
 	</tr>
-	 <%= request.getParameter("UserName")%>
-	</tr>
-	<tr>
+	
 	<tr>
 	     <td>Password : </td><td><spr:password path="userPass" id="pwd" name="pwd"/></td><td><span id="spanpass"></span></td>
 	</tr>
-	</tr>
-	<tr>
-	<tr>
-	<tr>
-		<td> <label>
-        <input type="checkbox" name="remember" id="remember"> Remember me
-      </label></td>
-    </tr>
-    </tr>
-    </tr>
-    
-    <tr>
-    <tr>
-    <tr>
-
-		<td colspan="2" align="center"><input type="submit" id="btnlogin" value="Login" /> <input type="reset" value="Reset" /></td>
-
-	</tr>
-	</tr>
-	</tr>
 	
-	</table> 
-		
-		</div>
-		
-		</fieldset>
-		
-		
-		
-		
-		<p id="details"></p>
-	</spr:form>
-<table align="center">
-	<tr>
-	<tr>
+	<tr><td> 
+        <input type="checkbox" name="remember" id="remember"> Remember me
+     </td></tr> 
 
-		<td align="Left"><a href="registrationpage.jsp">New Register</a></td> <td align="Right"><a href="forgotpass.php">Forgot Password</a></td>
+    <tr>
+    	<td colspan="2" align="center"><input type="submit" id="btnlogin" value="Login" /> <input type="reset" value="Reset" /></td>		
+	</tr>	
 		
-	</tr>
+	<p id="details"></p>
+	
+	
+	<tr>
+		<td align="Left"><a href="registration.php">New Register</a></td> <td align="Right"><a href="forgotpass.php">Forgot Password</a></td>	
 	</tr>
 </table>
-		<p>Welcome <%= UserName.toString() %></p>  
-		<p>Welcome <%= UserPass.toString() %></p>  
+	</fieldset>	
+	</div>
+	</spr:form>
+		
 </body>
 </html>

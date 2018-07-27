@@ -2,8 +2,12 @@ package Dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -20,7 +24,10 @@ public class UserDao {
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
-
+	@Autowired
+	UserDetails ud;
+	@Autowired
+	User user;
 	public UserDao() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -50,13 +57,31 @@ public class UserDao {
 		});
 	}
 
-	public void deleteUser(User user) {
+	public void createUserDetails(UserDetails user) {
+		this.ud=user;
+		hibernateTemplate.execute(new HibernateCallback<UserDetails>() {
+			
+			@Override
+			public UserDetails doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				arg0.save(ud);
+				t.commit();
+				arg0.flush();
+				arg0.close();
+				return null;
+			}
+		
+		});
+	}
+	
+	public void InsertIntoLogin(User user) {
+		this.user=user;
 		hibernateTemplate.execute(new HibernateCallback<User>() {
-
+			
 			@Override
 			public User doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
-				arg0.delete(user);
+				arg0.save(user);
 				t.commit();
 				arg0.flush();
 				arg0.close();
@@ -99,13 +124,14 @@ public class UserDao {
 		return ulist;
 	}
 	
-	public List<UserDetails> allUserList(){
+	public List<UserDetails> checkUserDetails(String uid){
 		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
 
 			@Override
 			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.eq("userName", uid));
 				List<UserDetails> ul = q.list();
 				t.commit();
 				arg0.close();
@@ -115,6 +141,44 @@ public class UserDao {
 		});
 		return ulist;
 	}
+	
+	public List<UserDetails> checkMobileDetails(String uid){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+
+			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.eq("phoneNo", uid));
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	public List<UserDetails> checkMailDetails(String uid){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+
+			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.eq("emailId", uid));
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	
 	
 	public boolean checkUser(User user){
 		
@@ -139,7 +203,24 @@ public class UserDao {
 		
 	}
 	
-	public List<UserDetails> singleUser(String uid){
+		public List<UserDetails> allUserList(){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+
+			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+
+public List<UserDetails> singleUser(String uid){
 		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
 
 			@Override
@@ -156,29 +237,9 @@ public class UserDao {
 		});
 		return ulist;
 	}
-	
-/*	public boolean CheckPhone(User user){
-		
-		List<User> ulist = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
 
-			@Override
-			public List<User> doInHibernate(Session arg0) throws HibernateException {
-				Transaction t = arg0.beginTransaction();
-				Criteria q = arg0.createCriteria(UserDetails.class);
-				q.add(Restrictions.eq("phoneNo","d" ));
-				List<User> ul = q.list();
-				t.commit();
-				arg0.close();
-				return ul;
-			}
-		
-		});
-		if(ulist.isEmpty())		
-			return false;
-		else
-			return true;
-		
-	}
-	*/
+	
+	
+
 
 }

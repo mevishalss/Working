@@ -24,19 +24,10 @@ public class Payment {
 	private String transStatus;
 	private String transDate;
 	private String modeOfTrans;
-	
-	@ManyToOne
-	private OrderDetails orderDetails;
-	
-	
-	public OrderDetails getOrderDetails() {
-		return orderDetails;
-	}
 
+	
+	
 
-	public void setOrderDetails(OrderDetails orderDetails) {
-		this.orderDetails = orderDetails;
-	}
 
 
 	

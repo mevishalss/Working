@@ -132,10 +132,12 @@ $(document).ready(function () {
   transform: translateY(4px);
 }
 
-editDiv {
+div {
     border-radius: 5px;
     background-color: 696969;
     padding: 20px;
+    background-image: url("images/background.jpg");
+    e
 }
 
 #text {
@@ -147,6 +149,32 @@ editDiv {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+fieldset { 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;
+    
+    }
+    
+    
+    legend
+   {
+       color: #5f97ef;
+   
+    }
+ #h1 {
+    color: #164084;
+    font-family: verdana;
+    font-size: 150%;
+}
 </style>
 </head>
 
@@ -157,32 +185,48 @@ editDiv {
 <% List <UserDetails> list = (List) request.getAttribute("list"); %>
 <jsp:include page="menu.jsp"></jsp:include>
 
+<h1 align="center" id="h1">Edit Profile</h1>
 
 <div align="center" id="editDiv" >
 <spr:form action="edited.php" commandName="user"  method="post" >
-<fieldset>
-<legend><b><u><font size="5">Edit Page</font></u></b></legend>
-<div align="right" id="changePasswordDiv" >
-<a href="changePassword.jsp">Change Password?</a>
-</div>
 <%for(UserDetails m : list){ %>
+<div align="center">
+<fieldset>
+
+<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
+<tr>
+<td>UserID: </td><td> <spr:input path = "userName"  required="required" disabled="true" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
+</tr>
  <tr>
-<td>FirstName : </td><td><spr:input path = "fName" id="text" class="fname"  required="required"  placeholder="First Name" value="<%=m.getfName() %>" /></td><td><span  id="fnamemsg"></span></td>
-</tr>
- 
+<td>FirstName : </td><td><spr:input path = "fName" id="text" class="fname"  disabled="true"  placeholder="First Name" value="<%=m.getfName() %>" /></td><td><span  id="fnamemsg"></span></td>
+</tr> 
 <tr>
-<td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname" required="required" Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
+<td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname"  disabled="true"  required="required" Placeholder="Last Name" value="<%=m.getlName() %>"/></td><td><span id="lnamemsg"  ></span></td>
 </tr>
-
 <tr>
- <td>Birth Date:</td><td><spr:input path = "bithDate" class="birthdate" id="text"  value="<%=m.getBithDate() %>" required="required" /></td><td><span id="spanbirthdate"></span></td>
+ <td>Birth Date:</td><td><spr:input path = "bithDate" disabled="true" class="birthdate" id="text"  value="<%=m.getBithDate() %>" required="required" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
-
 <tr>
-<td>UserID: </td><td> <spr:input path = "userName"  required="required" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
+<td>Password: </td><td> <spr:input type="password" path="userPass" class="pass" required="required" id="text" Placeholder="Password" /></td>
 </tr>
+<tr>
+<td>Confirm Password: </td><td> <input type="password"  class="conpass" required id="text" required="required" Placeholder="Confirm Password" ></td><td><span id="conpass"></span></td>
+</tr>
+<tr>
+<td>Email-Id: </td><td> <spr:input type ="email" path = "emailId" id="text" disabled="true" required="required" Placeholder="abc@gmail.com"  value="<%=m.getEmailId() %>" /> </td>
+</tr>
+<tr>
+<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text" class="mobile" required="required" Placeholder="eg:9123456789" value="<%=m.getPhoneNo() %>"/></td><td><span id="spanmobile"></span></td>
+</tr>
+</table>
+</fieldset>
+</div>
 
+<div align="center" >
+<fieldset>
+<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>College Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<table>
 <tr>
 <td>College Code: </td><td> <spr:input   path = "CollegeCode" class="cCode"  readonly="readonly" value="<%=m.getCollegeCode()%>" required="required" id="text" Placeholder="College Code" /></td><td><span id="cCode"></span></td>
 </tr>
@@ -199,15 +243,20 @@ editDiv {
 <td>Course: </td><td> <spr:input path = "course" id="text" class="course" readonly="readonly" value="<%=m.getCourse() %>" required="required" Placeholder="Course" /></td><td><span id="course"></span></td>
 </tr>
 
+
 <tr>
-<td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" required="required" Placeholder="abc@gmail.com"  value="<%=m.getEmailId() %>" /> </td>
+<td>Duration of Course: </td><td> <spr:input path = "yearOfCourse" class="yearofcourse"  readonly="readonly" value="<%=m.getYearOfCourse() %>" required="required" id="text" Placeholder="Year of Course" /></td><td><span id="spanyearofcourse"></span></td>
 </tr>
-<tr>
-<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text" class="mobile" required="required" Placeholder="eg:9123456789" value="<%=m.getPhoneNo() %>"/></td><td><span id="spanmobile"></span></td>
-</tr>
-<tr>
-<td>Year of Course: </td><td> <spr:input path = "yearOfCourse" class="yearofcourse"  readonly="readonly" value="<%=m.getYearOfCourse() %>" required="required" id="text" Placeholder="Year of Course" /></td><td><span id="spanyearofcourse"></span></td>
-</tr>
+
+</table>
+</fieldset>
+</div>
+
+
+<div align="center">
+<fieldset >
+<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Address Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<table>
 <tr>
 <td>Address: </td><td> <spr:input path = "address"  id="text" required="required" Placeholder="Address" value="<%=m.getAddress() %>" /></td>
 </tr>
@@ -220,17 +269,23 @@ editDiv {
 <tr>
 <td>PinCode: </td><td> <spr:input path = "pinCode" id="text" class="pincode"  value="<%=m.getPinCode() %>" required="required" Placeholder="PinCode" /></td><td><span id="spanpincode"></span></td>
 </tr>
+</table>
+</fieldset>
+</div>
 
+<div align="center">
+<table>
 <tr>
 <td></td><td><input type="submit" id="submit" value="Save" /></td>
 </tr>	
-
 </table>
+</div>
+
 <%} %>
-</fieldset>
+
 
 </spr:form>
-</div>
+
 
 
 	
