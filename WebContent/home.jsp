@@ -57,6 +57,7 @@ input[type=text]:focus {
 <% User user = (User) request.getAttribute("user"); 
  String see =(String) session.getAttribute("sessname");
 //System.out.print(see);
+
 if(see==null)
 {
 	//response.sendRedirect("prepLog.php");

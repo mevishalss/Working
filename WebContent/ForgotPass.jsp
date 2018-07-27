@@ -70,7 +70,15 @@
 
 </head>
 <body>
-	
+<% 
+ String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
 	<jsp:include page="AdminMenu.jsp"></jsp:include>
 	
 	<div  align="center" style="margin-top: 100px">

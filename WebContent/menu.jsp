@@ -92,7 +92,7 @@ h3 { color: #f2f2f2; background: #ff4a4a; font-size: 40px; line-height: 45px; fo
     <a href="orderdetails.php">My Orders</a>
         <a href="paymentdetails.php">My Installment</a>
     <a href="edit.php">Edit Profile</a>
-        <a href="prepLog.php">Logout</a>
+        <a href="sessionexpired.php">Logout</a>
     
   </div>
 </div>

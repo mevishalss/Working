@@ -297,6 +297,16 @@ fieldset {
 
 
 <body>
+<% 
+ String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
+
 <jsp:include page="LoginHead.jsp"></jsp:include>
 <spr:form action="registrationpage.php"  method="post" commandName="user">
 <h1 align="center" id="h1">Registration Page</h1>

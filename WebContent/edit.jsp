@@ -182,7 +182,10 @@ fieldset {
 
 
 <body>
-<% List <UserDetails> list = (List) request.getAttribute("list"); %>
+<% List <UserDetails> list = (List) request.getAttribute("list"); 
+
+
+%>
 <jsp:include page="menu.jsp"></jsp:include>
 
 <h1 align="center" id="h1">Edit Profile</h1>

@@ -142,6 +142,14 @@ public class WelcomeController {
 				return "session";
 	}
 	
+	
+	@RequestMapping(value="/sessionexpired.php")
+	public String sessionexpire(User user,ModelMap model) {
+			model.put("user", user);
+			
+				return "sessionexpired";
+	}
+	
 	@RequestMapping(value="/LoginPage.php")
 	public String LoginPage(User user,ModelMap model) {
 			model.put("user", user);

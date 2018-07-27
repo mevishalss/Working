@@ -29,8 +29,15 @@
 </script>
 
 <body>
-
-
+<% 
+ String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
 <div  align="center" style="margin-top: 100px">
 	
 	<fieldset>
