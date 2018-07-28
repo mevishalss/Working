@@ -152,11 +152,45 @@ public class WelcomeController {
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
 		this.user = user;
+		model.put("uid", user.getUserName());
+		model.put("user", user);
 			if(dao.checkUser(this.user))
-				return "home";
-			else
-				return "login";
+				return "session";
+			//else
+				//return "login";
+			return "session";
 	}
+	
+	
+	
+	@RequestMapping(value="/session.php")
+	public String checklogin(User user,ModelMap model) {
+			model.put("user", user);
+			
+				return "session";
+	}
+	
+	
+	@RequestMapping(value="/sessionexpired.php")
+	public String sessionexpire(User user,ModelMap model) {
+			model.put("user", user);
+			
+				return "sessionexpired";
+	}
+	
+	@RequestMapping(value="/LoginPage.php")
+	public String LoginPage(User user,ModelMap model) {
+			model.put("user", user);
+					return "home";
+				}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	@RequestMapping(value="/ClgLogin.php")
@@ -184,10 +218,16 @@ public class WelcomeController {
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
 		this.AdminObj = AdminObj;
-		if(adao.checkUser(this.AdminObj))
-			return "Adminlogin_page";
-		else
-			return "AdminHome";
+	//	if(adao.checkUser(this.AdminObj))
+		{
+				List<OrderDetails> list= odao.AllorderList();
+				model.put("list",list);
+				return "ViewToAdmin";
+		}
+		//	else
+		//	{
+		//		return "AdminHome";
+		//}
 	}
 	
 	public EditDao getEditdao() {
@@ -303,10 +343,22 @@ public class WelcomeController {
 		else
 			ans = "false";
 		
-		System.out.println(ans);
 		model.put("ans", ans);
 		return "ValidateMobile";
 	}
+	
+	
+	@RequestMapping(value="/orderUpdatePage.php")
+	public String orderUPdate (@RequestParam("value") String value,@RequestParam("uid") String uid,ModelMap model) {
+		List<OrderDetails> list = odao.orderList(uid);
+		for(OrderDetails u :list)
+		{
+			u.setOrderSatus(value);
+			odao.OrderUpdate(u);
+		}
+		return "orderUpdatePage";
+	}
+	
 	
 	
 	@RequestMapping(value="/searchProduct.php", method = RequestMethod.POST)

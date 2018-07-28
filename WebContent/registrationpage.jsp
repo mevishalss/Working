@@ -297,17 +297,19 @@ fieldset {
 
 
 <body>
+
+
 <jsp:include page="LoginHead.jsp"></jsp:include>
 <spr:form action="registrationpage.php"  method="post" commandName="user">
 <h1 align="center" id="h1">Registration Page</h1>
 <div align="center" >
 <fieldset>
 
-<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
 
-<td>UserID: </td><td> <spr:input path = "userName" required="required"  id="text" Placeholder="User ID" /></td>
+<td>UserID: </td><td> <spr:input path = "userName" required="required" class="uid" id="text" Placeholder="User ID" /></td><td><span><img id="imgsrc1" src=""/></span></td>
 </tr>
  <tr>
 
@@ -328,11 +330,11 @@ fieldset {
 </tr>
 <tr>
 
-<td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" required="required" Placeholder="abc@gmail.com" /></td>
+<td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" class="email" required="required" Placeholder="abc@gmail.com" /></td><td><span><img id="imgsrc2" src=""/></span></td>
 </tr>
 <tr>
 
-<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text" class="mobile" required="required" Placeholder="9123456789" /></td><td><span id="spanmobile"></span></td>
+<td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text"  class="mobile" required="required" Placeholder="9123456789" /></td><td><span><img id="imgsrc3" src=""/></span></td>
 </tr>
 </table>
 </fieldset>
@@ -340,7 +342,7 @@ fieldset {
 
 <div align="center" >
 <fieldset>
-<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>College Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;College Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
 <td>College Code: </td><td> <spr:input type="text"  path = "CollegeCode" class="cCode"  required="required" id="text" Placeholder="College Code" /></td><td><span id="spancCode"></span></td>
@@ -366,7 +368,7 @@ fieldset {
 
 <div align="center">
 <fieldset >
-<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Address Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
 <td>Address: </td><td> <spr:input path = "address"  id="text" required="required" Placeholder="Address" /></td>

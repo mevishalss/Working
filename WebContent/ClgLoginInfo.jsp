@@ -9,29 +9,76 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script src="scripts/jquery-3.3.1.min.js"></script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <% List<UserDetails> list = (List) request.getAttribute("list");
 	UserDao dao = (UserDao)request.getAttribute("user");
 %>
 
 <script>
-$(document).ready(function () {
-    $('.radio').click(function () {
-        value =$("input[class='radio']:checked").val();
-        uid = $('#uid').html();
+$(document).ready(function () {   
+   $('input.btn-outline-warning').click(function () {
+	   				$('#option1').bootstrapToggle('on');
+	   				$('#option2').bootstrapToggle('off');
+	   				$('#option3').bootstrapToggle('off');
+       value =$('#option1').val();
+       uid = $('#uid').html();
        $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
-    	   			alert(data);
+    	   			alert(value);
+    	   			
            });
-       
-    });
+ 
+   	   	 });		
 
+$('input.btn-outline-success').click(function () {
+		$('#option2').bootstrapToggle('on');
+		$('#option1').bootstrapToggle('off');
+		$('#option3').bootstrapToggle('off');
+       value =$('#option2').val();
+       uid = $('#uid').html();
+       $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
+    	   			alert(value);
+           });
+
+   	   	 });	
+$('input.btn-outline-danger').click(function () {
+
+
+	$('#option3').bootstrapToggle('on');
+	$('#option1').bootstrapToggle('off');
+	$('#option2').bootstrapToggle('off');
+    value =$('#option3').val();
+    uid = $('#uid').html();
+    $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
+ 	   			alert(value);
+        });
+
+	   	 });
+   
 });
 
 </script>
 
+<script>
+
+
+</script>
+
+
 </head>
 
 <body>
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
+
 <jsp:include page="AdminMenu.jsp"></jsp:include>
+
+
 <br><br><br>
 
 
@@ -51,9 +98,7 @@ $(document).ready(function () {
 		<th >PRN Number</th>
 		<th >Email</th>
 		<th >Phone Number</th>
-		<th > Valid user</th>
-		<th > NOT Valid user</th>
-		
+		<th >Status</th>	
 		</tr>
 		</thead>
 		
@@ -84,14 +129,24 @@ $(document).ready(function () {
 			<td align="center" >
 				<%=m.getPhoneNo()%>
 			</td>
+			
+	
 			<td>
-				<input type="radio" name="validate" value="valid" class="radio" >
-				
-			</td>
-			<td>
-				<input type="radio" name="validate" value="InValid" class="radio">
+		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  			<label class="btn btn-secondary ">
+    			<input type="button" class="btn btn-outline-warning"  value="Not verified" name="options" id="option1" autocomplete="off" checked="checked" data-onstyle="warning" data-offstyle="primary"> 
+  			</label>
+ 			 <label class="btn btn-secondary">
+   				 <input type="button" class="btn btn-outline-success"  value="verified" name="options" id="option2" autocomplete="off" checked="checked" data-onstyle="success" data-offstyle="primary"> 
+ 			</label>
+  			<label class="btn btn-secondary">
+   				 <input type="button" class="btn btn-outline-danger"  value="declined" name="options" id="option3" autocomplete="off" checked="checked" data-onstyle="danger" data-offstyle="primary"> 
+ 			</label>
+		</div>
+			
 			
 			</td>
+		
 		</tr>
 		<% } %>
 		

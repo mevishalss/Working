@@ -7,8 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
 
-<%=request.getAttribute("msg") %>
+String uname=(String)request.getAttribute("uid"); 
+//out.print("Welcome "+ uname);
+session.setAttribute("sessname",uname);
+response.sendRedirect("LoginPage.php");
+
+
+
+
+%>
+
+
+
 
 
 </body>

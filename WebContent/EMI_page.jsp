@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Product_Details </title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
 <style type="text/css">
@@ -24,10 +24,20 @@
     cursor: pointer;
    
 }
+
+ #imgdiv {
+    width: 960px;
+    color: navy;
+    background-color: ;
+    border-style: inset;
+    padding: 5px;
+ }
+ 
+ 
 #btn {border-radius: 4px;}
 
 .img:hover {
-    transform: scale(1.5);
+    transform: scale(1.3);
 
 </style>
 <script type="text/javascript">  
@@ -47,9 +57,21 @@
 </script>
 
 <body>
+<jsp:include page="menu.jsp" ></jsp:include>
+
 
 <%
 
+ String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
+
+<% 
 String productid=(String)request.getAttribute("productid");
 float sellprice=(float)request.getAttribute("sellprice");
 String title=(String)request.getAttribute("title");
@@ -81,17 +103,11 @@ List<Object> off=(List) request.getAttribute("offers");
 %>
 
 <div class="container">
-  <h1 align="center">Product Details</h1><br><br>
+  <h1 align="center"><font size="5">Product Details</font></h1><br><br>
   <div class="row">
-    <div class="col-sm-5" align="center" >
+    <div class="col-sm-5" id="imgdiv" align="center" >
       <img src="<%=image %>" class="img">
-      <div align="bottom"><table><tr>Offers
-      
-      
-      
-      
-      
-      </tr></table></div>
+
     </div>
     <div class="col-sm-7" ">
       <div  align="center" style="margin-top: 50px">
@@ -111,7 +127,7 @@ List<Object> off=(List) request.getAttribute("offers");
 	<tr>
 	 	<td><b>color</b> </td><td>: <%=color %></td>
 	</tr>
-	<tr><td><b>Detailed Specification  :</b></td></tr>
+	<tr><td><b>Detailed Specification  </b></td></tr>
 	<%for(Object o :arr){
 		String abc = o.toString();
 	%>
