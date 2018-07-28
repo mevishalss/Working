@@ -298,7 +298,7 @@ fieldset {
 
 <body>
 <jsp:include page="LoginHead.jsp"></jsp:include>
-<spr:form action="registrationpage.php"  method="post" >
+<spr:form action="registrationpage.php"  method="post" commandName="user">
 <h1 align="center" id="h1">Registration Page</h1>
 <div align="center" >
 <fieldset>

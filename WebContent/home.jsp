@@ -55,29 +55,18 @@ input[type=text]:focus {
 </head>
 <body>
 <% User user = (User) request.getAttribute("user"); %>
-<%
 
-Cookie username = new Cookie("username",user.getUserName());
-Cookie pass = new Cookie("email",user.getUserPass());
-
-username.setMaxAge(60*60*10); 
-pass.setMaxAge(60*60*10); 
-
-// Add both the cookies in the response header.
-response.addCookie( username );
-response.addCookie( pass );
-
-%>
 <jsp:include page="menu.jsp?user=<%=user.getUserName() %>"></jsp:include>
-<form>
+<form action="searchProduct.php" method="post">
 <div align="center" style="margin-top: 200px">
 
 <table>
 <tr>
   <input type="text" name="search" placeholder="Paste Your URL & Search for the products......">
-
+	<
 	<td>
-		<input type="button" id="searchbox" value="Search">	
+	
+		<input type="submit" id="searchbox" value="Search" name="searchbtn">	
 	</td>
 </tr>
 
