@@ -16,9 +16,7 @@ public class Payment {
 	@Id
 	@Column(name="transId")
 	private String transId;
-	
 	private String userId;
-	
 	private String orderId;
 	private String transAmount;
 	private String transStatus;
