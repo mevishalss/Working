@@ -85,9 +85,8 @@ $(document).ready(function () {
 
       
 });
+
 <% String see =(String) session.getAttribute("sessname");
-	//System.out.print(see);
-	
 %>
 			
 </script>  
@@ -103,7 +102,7 @@ $(document).ready(function () {
 	<table>
 	
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="userName" class="uid" name="uid"/></td><td><span><img id="imgsrc1" src=""/></span></td><td><span id="spanuser"></span></td>
+	 	<td>User Name : </td><td><spr:input path="userName" class="uid" name="uid" value="<%= see%>"/></td><td><span><img id="imgsrc1" src=""/></span></td><td><span id="spanuser"></span></td>
 	</tr>
 	
 	<tr>
@@ -128,6 +127,6 @@ $(document).ready(function () {
 	</fieldset>	
 	</div>
 	</spr:form>
-		
+	
 </body>
 </html>

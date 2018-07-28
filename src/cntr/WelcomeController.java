@@ -125,6 +125,7 @@ public class WelcomeController {
 	public String login(User user,ModelMap model) {
 		this.user = user;
 		model.put("uid", user.getUserName());
+		model.put("pwd", user.getUserName());
 		model.put("user", user);
 			if(dao.checkUser(this.user))
 				return "session";
