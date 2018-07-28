@@ -8,30 +8,32 @@ import javax.persistence.Table;
 @Table(name="AdminTable")
 public class Admindto {
 	@Id
-	private  String Userid;
+	private  String userId;
 	
-	private  String Password;
+	private  String password;
 
 	public Admindto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getUserid() {
-		return Userid;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUserid(String userid) {
-		Userid = userid;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
+
+
 	
 	
 

@@ -2,30 +2,46 @@ package dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.BatchSize;
+
+import com.sun.istack.internal.NotNull;
+
 @Entity
-
 @Table (name="user_details")
-
 public class UserDetails {
 	@Id
 	@Column(name="user_id")
 	private String userName;
+	@NotNull
 	private String userPass;
+	@NotNull
 	private String fName;
+	@NotNull
 	private String lName;
+	@NotNull
 	private String phoneNo;
+	@NotNull
 	private String bithDate;
+	@NotNull
 	private String emailId;
+	@NotNull
 	private String prnNo;
+	@NotNull
 	private String course;
+	@NotNull
 	private String yearOfCourse;
+	@NotNull
 	private String address;
+	@NotNull
 	private String city;
+	@NotNull
 	private String state;
 	private String status;
 	public String getStatus() {
@@ -34,16 +50,8 @@ public class UserDetails {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	@OneToOne
-	private User user;
 	
 	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	public String getCollegeName() {
 		return CollegeName;
 	}

@@ -3,6 +3,8 @@ package cntr;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Controller;
@@ -122,11 +124,37 @@ public class WelcomeController {
 	@RequestMapping(value="/login.php")
 	public String login(User user,ModelMap model) {
 		this.user = user;
+		model.put("uid", user.getUserName());
+		model.put("user", user);
 			if(dao.checkUser(this.user))
-				return "home";
-			else
-				return "login";
+				return "session";
+			//else
+				//return "login";
+			return "session";
 	}
+	
+	
+	
+	@RequestMapping(value="/session.php")
+	public String checklogin(User user,ModelMap model) {
+			model.put("user", user);
+			
+				return "session";
+	}
+	
+	@RequestMapping(value="/LoginPage.php")
+	public String LoginPage(User user,ModelMap model) {
+			model.put("user", user);
+				return "home";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	@RequestMapping(value="/ClgLogin.php")
@@ -154,10 +182,16 @@ public class WelcomeController {
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
 		this.AdminObj = AdminObj;
-		if(adao.checkUser(this.AdminObj))
-			return "Adminlogin_page";
-		else
-			return "AdminHome";
+	//	if(adao.checkUser(this.AdminObj))
+		{
+				List<OrderDetails> list= odao.AllorderList();
+				model.put("list",list);
+				return "ViewToAdmin";
+		}
+		//	else
+		//	{
+		//		return "AdminHome";
+		//}
 	}
 	
 	public EditDao getEditdao() {
@@ -209,6 +243,10 @@ public class WelcomeController {
 		return "ValidateUser";
 	}
 	
+
+	
+	
+	
 	
 	@RequestMapping(value="/edited.php")
 	public String editDetails(UserDetails user,ModelMap model) {
@@ -224,18 +262,64 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/registrationpage.php")
-	public String Regis( UserDetails d ,ModelMap model){
+	public String Regis(UserDetails d ,ModelMap model){
+		this.ud = d;
+		System.out.println(ud.getAddress());
+		dao.createUserDetails(d);
+		user.setUserName(ud.getUserName());
+		user.setUserPass(ud.getUserPass());
+		dao.InsertIntoLogin(user);
+		model.put("user", user);
+		return "login";
+	}
+	
+
+	
+	@RequestMapping(value="/ValidateUserId.php")
+	public String validateuserid(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkUserDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+			
+		model.put("ans", ans);
+		return "ValidateUserId";
+	}
+	
+	@RequestMapping(value="/ValidateMailId.php")
+	public String ValidateMailId(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkMailDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
 		
-		System.out.println(d.getfName());
-		return "registrationPage";
+		model.put("ans", ans);
+		return "ValidateMailId";
+	}
+	
+		
+	@RequestMapping(value="/ValidateMobile.php")
+	public String Validatemobile(@RequestParam("value") String value,ModelMap model) {
+		List<UserDetails> list = dao.checkMobileDetails(value);
+		String ans;
+		if(list.isEmpty())
+			ans = "true";
+		else
+			ans = "false";
+		
+		model.put("ans", ans);
+		return "ValidateMobile";
 	}
 	
 	
-
-	@RequestMapping(value="/changePassword.php")
-	public String chagePassword(UserDetails user,ModelMap model) {
-		dao.updateUser(user);
-			return "home";
-}
 	
+	
+
 }
+
+	
+

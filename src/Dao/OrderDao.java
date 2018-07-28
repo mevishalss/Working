@@ -53,4 +53,24 @@ public class OrderDao {
 		return ulist;
 	
 }
+	
+	public List<OrderDetails> AllorderList(){
+		List<OrderDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<OrderDetails>>() {
+
+			@Override
+			public List<OrderDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(OrderDetails.class);
+				
+				List<OrderDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	
+}
+	
 	}
