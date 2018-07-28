@@ -232,15 +232,18 @@ fieldset {
 
 <legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
-<tr>
-<td>UserID: </td><td> <input path = "userName"  required id="text" Placeholder="User ID" /></td>
-</tr>
+
  <tr>
 <td>FirstName : </td><td><input path = "fName" id="text" class="fname" id="first_name" required  placeholder="First Name"/></td><td><span class="fnameclass" id="fnamemsg"></span></td>
 </tr>
 <tr>
 <td>LastName: </td><td> <input path = "lName" id="text" class="lname" required Placeholder="Last Name" /></td><td><span id="lnamemsg"></span></td>
 </tr>
+
+<tr>
+<td>UserID: </td><td> <input path = "userName"  required id="text" Placeholder="User ID" /></td>
+</tr>
+
 <tr>
  <td>Birth Date:</td><td><input path = "bithDate" class="birthdate" id="text" class="birthdate" required Placeholder="(MM/DD/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
 </tr>

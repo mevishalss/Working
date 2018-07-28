@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script src="scripts/jquery-3.3.1.min.js"></script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <% List<UserDetails> list = (List) request.getAttribute("list");
 	UserDao dao = (UserDao)request.getAttribute("user");
 %>
@@ -24,9 +26,49 @@ $(document).ready(function () {
        
     });
 
+   
+    
+   $('input.btn-outline-warning').click(function () {
+
+	   
+       value =$('#option1').val();
+       uid = $('#uid').html();
+       $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
+    	   			alert(data);
+           });
+
+   	   	 });		
+
+$('input.btn-outline-success').click(function () {
+
+	   
+       value =$('#option2').val();
+       uid = $('#uid').html();
+       $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
+    	   			alert(data);
+           });
+
+   	   	 });	
+$('input.btn-outline-danger').click(function () {
+
+	   
+    value =$('#option3').val();
+    uid = $('#uid').html();
+    $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
+ 	   			alert(data);
+        });
+
+	   	 });
+   
 });
 
 </script>
+
+<script>
+
+
+</script>
+
 
 </head>
 
@@ -51,9 +93,7 @@ $(document).ready(function () {
 		<th >PRN Number</th>
 		<th >Email</th>
 		<th >Phone Number</th>
-		<th > Valid user</th>
-		<th > NOT Valid user</th>
-		
+		<th >Status</th>	
 		</tr>
 		</thead>
 		
@@ -84,14 +124,25 @@ $(document).ready(function () {
 			<td align="center" >
 				<%=m.getPhoneNo()%>
 			</td>
+			
+	
 			<td>
-				<input type="radio" name="validate" value="valid" class="radio" >
-				
-			</td>
-			<td>
-				<input type="radio" name="validate" value="InValid" class="radio">
+		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  			<label class="btn btn-secondary active">
+    			<input type="button" class="btn btn-outline-warning"  value="Not verified" name="options" id="option1" autocomplete="off" checked> 
+  			</label>
+ 			 <label class="btn btn-secondary">
+   				 <input type="button" class="btn btn-outline-success"  value="verified" name="options" id="option2" autocomplete="off"> 
+ 			</label>
+  			<label class="btn btn-secondary">
+   				 <input type="button" class="btn btn-outline-danger"  value="declined" name="options" id="option3" autocomplete="off"> 
+ 			
+ 			</label>
+		</div>
+			
 			
 			</td>
+		
 		</tr>
 		<% } %>
 		
