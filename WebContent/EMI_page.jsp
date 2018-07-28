@@ -11,30 +11,30 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
 <style type="text/css">
-#btn {
+.btn {
     background-color: #e59b12; /* Green */
     border: none;
     color: white;
-    padding: 15px;
+    padding: 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 3px 2px;
     cursor: pointer;
    
 }
 
  #imgdiv {
-    width: 960px;
+    width: 800px;
+    height:450px;
     color: navy;
-    background-color: ;
+    background-color: #d4d8db;
     border-style: inset;
     padding: 5px;
  }
- 
- 
-#btn {border-radius: 4px;}
+
+.btn {border-radius: 4px;}
 
 .img:hover {
     transform: scale(1.3);
@@ -44,15 +44,31 @@
 
      function calculate()
      { 
-     		var price=document.getElementById("price").value;
-     		var Dpay=document.getElementById("Dpay").value;     		
-     		var EMIPrice =price-Dpay;    	
-     		var mm=document.getElementById("month").value;     		
-     		var result1=EMIPrice/mm;
-     		var T_EMI=mm*result1;
-     		var intrest = result1+(result1/10) ;
-     		document.getElementById("result").innerHTML=intrest;
-     		document.getElementById("T_EMI").innerHTML=intrest*mm;
+  		var Dpay=document.getElementById("Dpay").value;
+ 		var price=document.getElementById("sellingPrice").value;
+ 		var minamt=3*(price/10);	
+  		if(Dpay>=minamt)
+  	  	{
+  	  		var EMIPrice =price-Dpay;         	
+     		var mm=document.getElementById("month").value;     	    		
+     		var result1=EMIPrice/mm;     
+     		var T_EMI=mm*result1;     	
+     		var interest = result1+(result1/10) ;     		
+     		document.getElementById("result").innerHTML=Math.ceil(interest);
+      		if(Dpay>=minamt)         		
+     		document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
+      		else{
+      		var v="Minimum 30% Downpayment Required";
+      		document.getElementById("T_EMI").innerHTML=v;	
+      		}
+  		}
+  		else{
+  	  		var v="Minimum 30% Downpayment Required";
+     		document.getElementById("result").innerHTML=v;
+      		document.getElementById("T_EMI").innerHTML="";	
+     		
+  		}
+  	  		
      }
 </script>
 
@@ -103,7 +119,7 @@ List<Object> off=(List) request.getAttribute("offers");
 %>
 
 <div class="container">
-  <h1 align="center"><font size="5">Product Details</font></h1><br><br>
+  <h1 align="center"><i><u><font size="5" color="BlueViolet">Product Details</font></u></i></h1><br><br>
   <div class="row">
     <div class="col-sm-5" id="imgdiv" align="center" >
       <img src="<%=image %>" class="img">
@@ -122,7 +138,7 @@ List<Object> off=(List) request.getAttribute("offers");
 	 	<td><b>brand </b></td><td>: <%=brand %> </td>
 	</tr>
 	<tr>
-	 	<td><b>Selling Price </b></td><td>: <%=sellprice %></td>
+	 	<td><b>Selling Price</b></td><td>: <b>&#x20B9;&nbsp;<%=sellprice %></b></td><input type="hidden" id="sellingPrice" value="<%=sellprice %>">
 	</tr>		
 	<tr>
 	 	<td><b>color</b> </td><td>: <%=color %></td>
@@ -135,12 +151,30 @@ List<Object> off=(List) request.getAttribute("offers");
 	<% }%>
 
 	
-	<tr><td></td></tr>
-	<tr><td></td></tr>
-	
+	<tr></tr>
+	<tr></tr>
+	<tr><td><b>DownPayment Amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>(Min 30%):</b></td><td><input type="text" id="Dpay"></td></tr>
+		<tr><td><b>Month :</b></td><td><select id="month">
+  <option value="3">3</option>
+  <option value="6">6</option>
+   <option value="9">9</option>
+  <option value="12">12</option>
+</select></td><td></td>
+
+	</tr>
+	<tr>
+	 	<td colspan="2" align="center"><button id="calculate"  class="btn" onclick="calculate()">Calculate</button></td>
+	</tr>
+	<tr></tr>
+	<tr></tr>	
+	</table>
+	<table border="1" >
+	<tr><td style="padding:4px">Monthly EMI</td><td colspan="2"><span id="result"></span></td></tr>
+	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr>
+</table>
 	
 </table>
-<div padding-top: 25px; align="center"><input type="submit" id="btn" value="Apply For Loan"/></button></div>
+<div padding-top: 25px; align="center"><input type="submit" class="btn" value="Apply For Loan"/></button></div>
 
 </div>
     </div>
