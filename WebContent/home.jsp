@@ -51,6 +51,14 @@ input[type=text]:focus {
   transform: translateY(4px);
 }
 
+#image {
+    margin-top: 80px;
+    margin-right: 100px;
+    margin-left: 100px;
+    width: 50%;
+    border: 3px solid #ecf0f1	;
+    padding: 10px;
+}
 
 </style>
 
@@ -78,7 +86,7 @@ if(see==null)
 <jsp:include page="menu.jsp?user=<%=user.getUserName() %>"></jsp:include>
 <form action="searchProduct.php" method="post">
 <div align="center" style="margin-top: 200px">
- <div align="center"><img src="images/final.png" ></div>
+ <div align="center" id="image"><img src="images/final.png" ></div>
  <br><br>
 <table>
 <tr>
