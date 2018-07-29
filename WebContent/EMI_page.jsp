@@ -22,7 +22,6 @@ $(document).ready(function() {
 	  
 	  });
 
-
 });
 
 
@@ -71,7 +70,7 @@ $(document).ready(function() {
   		var Dpay=document.getElementById("Dpay").value;
  		var price=document.getElementById("sellingPrice").value;
  		var minamt=3*(price/10);	
-		if(Dpay<=price){
+		if(Dpay>=price){
   			if(Dpay>=minamt)
   	  		{
   	  			var EMIPrice =price-Dpay;         	

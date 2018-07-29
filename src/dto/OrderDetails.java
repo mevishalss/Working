@@ -8,7 +8,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.Parameter;
 
 import com.sun.istack.internal.NotNull;
 @Entity
@@ -17,6 +19,9 @@ import com.sun.istack.internal.NotNull;
 public class OrderDetails {
 	@Id
 	@Column (name="order_id")
+	@GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
+            @Parameter(name = "sequenceName", value = "sequence"),
+            @Parameter(name = "allocationSize", value = "1000000"),})
 	private String orderId;
 	
 	private String userId;

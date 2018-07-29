@@ -207,16 +207,17 @@ public class WelcomeController {
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
 		this.AdminObj = AdminObj;
-	//	if(adao.checkUser(this.AdminObj))
+		if(adao.checkUser(this.AdminObj))
 		{
-				List<OrderDetails> list= odao.AllorderList();
+				List<OrderDetails> list= odao.AllPendingList();
 				model.put("list",list);
 				return "ViewToAdmin";
 		}
-		//	else
-		//	{
-		//		return "AdminHome";
-		//}
+			else
+			{
+				model.put("Admindto", new Admindto());
+				return "Adminlogin_page";
+		}
 	}
 	
 	@RequestMapping(value="/AdminData1.php")
@@ -518,6 +519,10 @@ public class WelcomeController {
 		
 		return "EMI_page";
 	}
+	
+	
+	
+	
 
 }
 

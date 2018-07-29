@@ -9,12 +9,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 @Entity
 @Table (name="paydetails")
 public class Payment {
 	
 	@Id
 	@Column(name="transId")
+    @GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
+            @Parameter(name = "sequenceName", value = "sequence"),
+            @Parameter(name = "allocationSize", value = "1000000"),})
 	private String transId;
 	private String userId;
 	private String orderId;
