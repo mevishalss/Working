@@ -424,7 +424,7 @@ public class WelcomeController {
 		List<OrderDetails> list = odao.orderList(uid);
 		for(OrderDetails u :list)
 		{
-			u.setOrderSatus(value);
+			u.setOrderStatus(value);
 			odao.OrderUpdate(u);
 		}
 		List<UserDetails> list1 = dao.checkUserDetails(uid);

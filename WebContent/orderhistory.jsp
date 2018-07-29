@@ -24,8 +24,11 @@
 		<th >User Id</th>
 		<th >Order Date</th>
 		<th >Number of Installments</th>
+		<th >Remaining Installments</th>
+		<th >EMI Amount</th>
 		<th >Price of Item</th>
-		
+		<th >Order Status</th>
+		<th >Pay</th>
 		
 		</tr>
 		</thead>
@@ -48,10 +51,31 @@
 			<%=m.getNoOfInstalments() %>
 				
 			</td>
+			<td ><%= m.getRemainingInst() %></td>
+			
+			
+			
+			<td align="center" >
+				<%= m.getEMIAmount()  %>
+			</td>
+			
 			<td align="center" >
 				<%=m.getOrderPrice() %>
 			</td>
 			
+			<td align="center" >
+				<%=m.getOrderStatus() %>
+			</td>
+			<td>
+			<%
+			if( m.getRemainingInst() > 0 && m.getOrderStatus().equals("confirm") )
+			{ 
+				String text = "PayInstallment.php?orderId="+m.getOrderId();
+			%>
+				<a href="<%= text%>">Pay Installment</a>
+			<% }%>
+			
+			</td> 
 		</tr>
 		<% } %>
 		
