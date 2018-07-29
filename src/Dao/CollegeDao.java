@@ -44,7 +44,7 @@ public class CollegeDao {
 			{
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(UserDetails.class);
-				q.add(Restrictions.eq("CollegeCode", code));
+				q.add(Restrictions.and(Restrictions.eq("CollegeCode", code), Restrictions.eq("status", "Not Verified")));
 				List<UserDetails> ul = q.list();
 				t.commit();
 				arg0.close();

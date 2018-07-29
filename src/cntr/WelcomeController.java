@@ -147,16 +147,6 @@ public class WelcomeController {
 			model.put("user", user);
 					return "home";
 				}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	@RequestMapping(value="/ClgLogin.php")
 	public String clglogin (ModelMap model) {
 		model.put("collegedto", new Collegedto());

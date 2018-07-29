@@ -19,6 +19,8 @@
 $(document).ready(function () {   
    $('input.btn-outline-warning').click(function () {
 	   				$('#option1').bootstrapToggle('on');
+	   				$('#option2').bootstrapToggle('off');
+	   				$('#option3').bootstrapToggle('off');
     	   	
        value =$('#option1').val();
        uid = $('#uid').html();
@@ -31,6 +33,8 @@ $(document).ready(function () {
 
 $('input.btn-outline-success').click(function () {
 		$('#option2').bootstrapToggle('on');
+		$('#option1').bootstrapToggle('off');
+		$('#option3').bootstrapToggle('off');
 	
        value =$('#option2').val();
        uid = $('#uid').html();
@@ -43,7 +47,8 @@ $('input.btn-outline-danger').click(function () {
 
 
 	$('#option3').bootstrapToggle('on');
-	
+	$('#option1').bootstrapToggle('off');
+	$('#option2').bootstrapToggle('off');
     value =$('#option3').val();
     uid = $('#uid').html();
     $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
@@ -120,14 +125,14 @@ $('input.btn-outline-danger').click(function () {
 	
 			<td>
 		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  			<label class="btn btn-secondary ">
-    			<input type="button" class="btn btn-outline-warning"  value="Not verified" name="options" id="option1" autocomplete="off" checked="checked" data-onstyle="warning" data-offstyle="primary"> 
+  			<label class="btn btn-secondary active">
+    			<input type="button" class="btn btn-outline-warning"  value="Not Verified" name="options" id="option1" autocomplete="off" checked="checked" data-onstyle="warning" data-offstyle="primary" data-on="Not Verified" data-off="Off"> 
   			</label>
  			 <label class="btn btn-secondary">
-   				 <input type="button" class="btn btn-outline-success"  value="verified" name="options" id="option2" autocomplete="off" checked="checked" data-onstyle="success" data-offstyle="primary"> 
+   				 <input type="button" class="btn btn-outline-success"  value="Verified" name="options" id="option2" autocomplete="off" checked="checked" data-onstyle="success" data-offstyle="primary" data-on="Verified" data-off="Off"> 
  			</label>
   			<label class="btn btn-secondary">
-   				 <input type="button" class="btn btn-outline-danger"  value="declined" name="options" id="option3" autocomplete="off" checked="checked" data-onstyle="danger" data-offstyle="primary"> 
+   				 <input type="button" class="btn btn-outline-danger"  value="Declined" name="options" id="option3" autocomplete="off" checked="checked" data-onstyle="danger" data-offstyle="primary" data-on="Declined" data-off="Off"> 
  			</label>
 		</div>
 			
