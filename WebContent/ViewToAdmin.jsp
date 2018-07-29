@@ -15,7 +15,7 @@
 
 <body>
 
-<jsp:include page="menu.jsp"></jsp:include>
+<jsp:include page="Viewadminmenu.jsp"></jsp:include>
 <br><br><br>
 
 <% List <OrderDetails> list = (List) request.getAttribute("list"); %>
@@ -23,18 +23,32 @@
 
 
 <script>
-$(document).ready(function () {
-    $('.radio').click(function () {
-        value =$("input[class='radio']:checked").val();
+$(document).ready(function () {  
+    $('input.btn-outline-danger').click(function () {
+
+ 	   
+        value =$('#option3').val();
         uid = $('#uid').html();
-        alert(value+uid);
-       $.post("orderUpdatePage.php",{"value":value,"uid":uid}, function(data, status){
-    	   			alert(data);
-           });
-       
-    });
+        $.post("orderUpdatePage.php",{"value":value,"uid":uid}, function(data, status){
+     	   			alert("Success");
+            });
+
+    	   	 });		
+
+ $('input.btn-outline-success').click(function () {
+
+ 	   
+        value =$('#option2').val();
+        uid = $('#uid').html();
+        $.post("orderUpdatePage.php",{"value":value,"uid":uid}, function(data, status){
+     	   			alert("Success");
+            });
+
+    	   	 });	
 
 });
+
+
 
 </script>
 
@@ -50,7 +64,7 @@ $(document).ready(function () {
 		<th >Number of Installments</th>
 		<th >Price of Item</th>
 		<th >confirm Oreder </th>
-		<th >   NOT confirm </th>
+	
 		</tr>
 		</thead>	
 		<tbody>
@@ -73,14 +87,18 @@ $(document).ready(function () {
 			<td align="center" >
 				<%=m.getOrderPrice() %>
 			</td>
-			<td align="center" >
-				
-				<input type="radio" name="validate" value="confirm" class="radio" >
-				
-			</td>
-			<td align="center">
-				<input type="radio" name="validate" value="NOT confirm" class="radio">
-			
+			<td>
+			<div class="btn-group btn-group-toggle" data-toggle="buttons">
+ 			 <label class="btn btn-secondary">
+   				 <input type="button" class="btn btn-outline-success"  value="confirm" name="options" id="option2" autocomplete="off"> 
+ 			</label>
+ 			
+ 			
+  			<label class="btn btn-secondary">
+   				 <input type="button" class="btn btn-outline-danger"  value="pending" name="options" id="option3" autocomplete="off"> 
+ 			
+ 			</label>
+		</div>	
 			</td>
 			</td>
             </tr>

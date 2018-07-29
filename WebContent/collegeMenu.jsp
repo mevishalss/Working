@@ -87,9 +87,8 @@ h3 { color: #f2f2f2; background: #ff4a4a; font-size: 40px; line-height: 45px; fo
 <h3 align="center">EMI POOL</h3>
   <div class="header-right">
     
-    <a href="login.php">Student Login</a>
-        <a href="ClgLogin.php">College Login</a>
-    	
+        <a href="login.php">Student Login</a>
+    	<a href="AdminLogin.php">Admin Login</a>
   </div>
 </div>
 

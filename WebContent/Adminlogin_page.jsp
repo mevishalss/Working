@@ -66,7 +66,7 @@ fieldset {
 <body>
 
 
-<jsp:include page="LoginHead.jsp"></jsp:include>
+<jsp:include page="AdminMenu.jsp"></jsp:include>
 
 
 

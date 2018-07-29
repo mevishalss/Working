@@ -1,6 +1,4 @@
 package cntr;
-
-
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.InputStream;
@@ -155,7 +153,9 @@ public class WelcomeController {
 		model.put("uid", user.getUserName());
 		model.put("user", user);
 			if(dao.checkUser(this.user))
+			{
 				return "session";
+			}	
 			else
 				return "login";
 	}
@@ -262,6 +262,18 @@ public class WelcomeController {
 	public String forgotPass (ModelMap model) {
 		System.out.println("hello");
 		return "ForgotPass";
+	}
+	
+	@RequestMapping(value="/paymentpage.php")
+	public String paymentpage (ModelMap model) {
+		System.out.println("payment in progress");
+		return "paymentpage";
+	}
+	
+	@RequestMapping(value="/PaymentInProgress.php")
+	public String paymentfinal (ModelMap model) {
+		System.out.println("payment in done");
+		return "PaymentInProgress";
 	}
 	
 	@RequestMapping(value="/ValidateUser.php")

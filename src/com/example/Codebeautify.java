@@ -1,9 +1,6 @@
 package com.example;
-
 import java.util.ArrayList;
-
 import org.codehaus.jackson.annotate.JsonProperty;
-
 import com.google.gson.annotations.SerializedName;
 
 public class Codebeautify {

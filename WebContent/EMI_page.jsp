@@ -47,7 +47,7 @@
   		var Dpay=document.getElementById("Dpay").value;
  		var price=document.getElementById("sellingPrice").value;
  		var minamt=3*(price/10);	
-		if(Dpay<price){
+		if(Dpay<=price){
   			if(Dpay>=minamt)
   	  		{
   	  			var EMIPrice =price-Dpay;         	
@@ -124,7 +124,7 @@ float bookyear=(float)request.getAttribute("year");
 List<Object> arr = (List) request.getAttribute("categoryspeci");
 List<Object> off=(List) request.getAttribute("offers");
 %>
-
+<form action="paymentpage.jsp" method="post">
 <div class="container">
   <h1 align="center"><i><u><font size="5" color="BlueViolet">Product Details</font></u></i></h1><br><br>
   <div class="row">
@@ -169,7 +169,11 @@ List<Object> off=(List) request.getAttribute("offers");
 </select></td><td></td>
 
 	</tr>
-	<tr>
+	
+</table>
+	
+</table>
+<table><tr>
 	 	<td colspan="2" align="center"><button id="calculate"  class="btn" onclick="calculate()">Calculate</button></td>
 	</tr>
 	<tr></tr>
@@ -177,10 +181,7 @@ List<Object> off=(List) request.getAttribute("offers");
 	</table>
 	<table border="1" >
 	<tr><td style="padding:4px">Monthly EMI</td><td colspan="2"><span id="result"></span></td></tr>
-	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr>
-</table>
-	
-</table>
+	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr></table>
 <div padding-top: 25px; align="center"><input type="submit" class="btn" value="Apply For Loan"/></button></div>
 
 </div>
@@ -189,7 +190,7 @@ List<Object> off=(List) request.getAttribute("offers");
 </div>
 
 
-
+</form>
 
 
 
