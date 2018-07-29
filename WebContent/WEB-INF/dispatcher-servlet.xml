@@ -88,5 +88,9 @@
 	<bean id="editdao" class="Dao.EditDao" >
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
+	
+
+    
+
 
 </beans>

@@ -70,7 +70,17 @@ $('input.btn-outline-danger').click(function () {
 </head>
 
 <body>
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
+
 <jsp:include page="AdminMenu.jsp"></jsp:include>
+
+
 <br><br><br>
 
 

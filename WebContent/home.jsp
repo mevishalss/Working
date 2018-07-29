@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Home Page</title>
 <style type="text/css">
 input[type=text] {
     width: 130px;
@@ -54,9 +54,11 @@ input[type=text]:focus {
 
 </head>
 <body>
+
 <% User user = (User) request.getAttribute("user"); 
  String see =(String) session.getAttribute("sessname");
 //System.out.print(see);
+
 if(see==null)
 {
 	//response.sendRedirect("prepLog.php");
@@ -70,16 +72,18 @@ if(see==null)
 
 
 
+
 <jsp:include page="menu.jsp?user=<%=user.getUserName() %>"></jsp:include>
-<form>
+<form action="searchProduct.php" method="post">
 <div align="center" style="margin-top: 200px">
 
 <table>
 <tr>
   <input type="text" name="search" placeholder="Paste Your URL & Search for the products......">
-
+	<
 	<td>
-		<input type="button" id="searchbox" value="Search">	
+	
+		<input type="submit" id="searchbox" value="Search" name="searchbtn">	
 	</td>
 </tr>
 

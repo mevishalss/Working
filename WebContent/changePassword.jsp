@@ -21,7 +21,7 @@ $(document).ready(function () {
 		 }
 	});
 	
-
+});
 
 </script>
 
@@ -71,6 +71,7 @@ div {
 </head>
 <body>
 <jsp:include page="LoginHead.jsp"></jsp:include>
+
 <div align="center" >
 <form action="changePassword.php"  method="post" >
 <fieldset>
