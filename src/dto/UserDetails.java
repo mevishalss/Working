@@ -43,7 +43,9 @@ public class UserDetails {
 	private String city;
 	@NotNull
 	private String state;
-	private String status;
+	@Column(name="status") 
+    private String status="pending"; 
+	
 	
 	public String getStatus() {
 		return status;

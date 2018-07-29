@@ -1,4 +1,4 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

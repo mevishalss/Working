@@ -1,5 +1,5 @@
 <%@page import="java.io.Console"%>
-<%@page import="javax.websocket.Session"%>
+
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

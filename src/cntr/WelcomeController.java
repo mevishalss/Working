@@ -156,9 +156,8 @@ public class WelcomeController {
 		model.put("user", user);
 			if(dao.checkUser(this.user))
 				return "session";
-			//else
-				//return "login";
-			return "session";
+			else
+				return "login";
 	}
 	
 	
@@ -183,16 +182,6 @@ public class WelcomeController {
 			model.put("user", user);
 					return "home";
 				}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	@RequestMapping(value="/ClgLogin.php")
 	public String clglogin (ModelMap model) {
 		model.put("collegedto", new Collegedto());
@@ -273,8 +262,16 @@ public class WelcomeController {
 		List<UserDetails> list = dao.checkUserDetails(uid);
 		for(UserDetails u :list)
 		{
+			
 			u.setStatus(value);
 			dao.updateUser(u);
+		}
+		List<User> list1 = dao.checkLoginDetails(uid);
+		for(User u1 :list1)
+		{
+			
+			u1.setStatus(value);
+			dao.updateUserLogin(u1);
 		}
 		return "ValidateUser";
 	}
