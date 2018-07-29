@@ -127,10 +127,12 @@ public class WelcomeController {
 		model.put("uid", user.getUserName());
 		model.put("user", user);
 			if(dao.checkUser(this.user))
+			{
+				
 				return "session";
-			//else
-				//return "login";
-			return "session";
+			
+			}	
+			return "login";
 	}
 	
 	
