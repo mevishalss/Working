@@ -9,6 +9,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Product_Details </title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+$(document).ready(function() {
+	   $("#btn2").hide();
+
+	  $("#btn1").click(function () {
+	   if($("#Dpay").val()!="")		  
+			  $("#btn2").show();
+	  
+	  });
+
+
+});
+
+
+
+
+</script>
+
+
+
 </head>
 <style type="text/css">
 .btn {
@@ -38,6 +61,7 @@
 
 .img:hover {
     transform: scale(1.3);
+    }
 
 </style>
 <script type="text/javascript">  
@@ -167,23 +191,24 @@ List<Object> off=(List) request.getAttribute("offers");
    <option value="9">9</option>
   <option value="12">12</option>
 </select></td><td></td>
+<div id="header-plugin">
 
 	</tr>
-	
-</table>
-	
-</table>
-<table><tr>
-	 	<td colspan="2" align="center"><button id="calculate"  class="btn" onclick="calculate()">Calculate</button></td>
+	<tr>
+	 	<td colspan="2" align="center"><button type="button" class="btn" id="btn1" onclick="calculate()">Calculate</button></td>
 	</tr>
 	<tr></tr>
 	<tr></tr>	
-	</table>
+	
+	</table>	
 	<table border="1" >
 	<tr><td style="padding:4px">Monthly EMI</td><td colspan="2"><span id="result"></span></td></tr>
-	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr></table>
-<div padding-top: 25px; align="center"><input type="submit" class="btn" value="Apply For Loan"/></button></div>
+	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr>
+</table>
+	
 
+<div padding-top: 25px; align="center"><input type="submit" class="btn" id="btn2"value="Apply For Loan"/></button></div>
+</div>
 </div>
     </div>
   </div>
