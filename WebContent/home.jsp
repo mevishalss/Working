@@ -78,11 +78,12 @@ if(see==null)
 <jsp:include page="menu.jsp?user=<%=user.getUserName() %>"></jsp:include>
 <form action="searchProduct.php" method="post">
 <div align="center" style="margin-top: 200px">
-
+ <div align="center"><img src="images/final.png" ></div>
+ <br><br>
 <table>
 <tr>
   <input type="text" name="search" placeholder="Paste Your URL & Search for the products......">
-	<
+	
 	<td>
 	
 		<input type="submit" id="searchbox" value="Search" name="searchbtn">	
