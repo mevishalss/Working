@@ -16,6 +16,7 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import Demo.Mailer;
 import dto.User;
 import dto.UserDetails;
 
@@ -72,6 +73,12 @@ public class UserDao {
 			}
 		
 		});
+		
+		Mailer ml=new Mailer();
+		//String link="http://localhost:8001/Project/prepLog.php";
+		//from,password,to,subject,message  
+		ml.send("3p.mechto@gmail.com","prafull3p",user.getEmailId(),"EMI POOL::","Your registration done successfully");  
+	
 	}
 	
 	public void InsertIntoLogin(User user) {
