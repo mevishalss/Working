@@ -1,6 +1,4 @@
 package cntr;
-
-
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.InputStream;
@@ -221,6 +219,28 @@ public class WelcomeController {
 		//}
 	}
 	
+	@RequestMapping(value="/AdminData1.php")
+	public String adminUserName (Admindto AdminObj ,ModelMap model) {
+		List<UserDetails> list= editdao.UserList();
+		model.put("list",list);
+			return "AdminUserName";
+	}
+	
+	@RequestMapping(value="/admnUserDetails.php")
+	public String adminUserDetails (@RequestParam("uid") String uid,ModelMap model) {
+		List<UserDetails> list= dao.singleUser(uid);
+		model.put("list",list);
+		model.put("user", user);
+		return "AdminUserDetails";
+	}
+	
+	@RequestMapping(value="/paymentDetails1.php")
+	public String paymentDetails1 (User user,ModelMap model) {
+		List<Payment> list =pdao.paymentList(user.getUserName());
+		model.put("list", list);
+		return "AdminPaymentDetails";
+	}
+	
 	public EditDao getEditdao() {
 		return editdao;
 	}
@@ -231,10 +251,8 @@ public class WelcomeController {
 
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
-		
-		List<Payment> list =pdao.paymentList(user);
+		List<Payment> list =pdao.UserPaymentList(user);
 		model.put("list", list);
-		
 		return "payment";
 	}
 	
