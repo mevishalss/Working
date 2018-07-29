@@ -85,13 +85,13 @@ h3 { color: #f2f2f2; background: #ff4a4a; font-size: 40px; line-height: 45px; fo
 <body>
 
 <div class="header">
-<h3><a href ="home.jsp">EMI POOL</a></h3>
+<h3>EMI POOL</h3>
   <div class="header-right">
     <a class="active" href="home.php">Home</a>
-    <a href="#contact">My Profile</a>
+   <a href="edit.php">Edit Profile</a>
     <a href="orderdetails.php">My Orders</a>
         <a href="paymentdetails.php">My Installment</a>
-    <a href="edit.php">Edit Profile</a>
+    
         <a href="sessionexpired.php">Logout</a>
     
   </div>

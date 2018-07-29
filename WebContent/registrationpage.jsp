@@ -44,7 +44,7 @@ $("#submit").click(function(){
 
 		var numreg=/^(10|[1-6])$/;
 		var regcollge=/^[0-9]/;
-		var birthreg=/^[0,1]?\d{1}\/(([0-2]?\d{1})|([3][0,1]{1}))\/(([1]{1}[9]{1}[9]{1}\d{1})|([2-9]{1}\d{3}))$/;
+		var birthreg=/(?:0[1-9]|[12][0-9]|3[01])\/(?:0[1-9]|1[0-2])\/(?:19|20\d{2})/;
 		var fname = $(".fname").val();
 		var lname = $(".lname").val();
 		var city = $(".city").val();
@@ -61,7 +61,7 @@ $("#submit").click(function(){
 
 		if (!birthreg.test(birthdate)) {
         	$('#spanbirthdate').next('div.red').remove();
-            $('#spanbirthdate').after('<div class="red">Invalid date(MM/DD/YYYY)</div>');
+            $('#spanbirthdate').after('<div class="red">Invalid date(DD/MM/YYYY)</div>');
         } else {
         	$('#spanbirthdate').next('div.red').remove();
         }
@@ -319,7 +319,7 @@ fieldset {
 <td>LastName: </td><td> <spr:input path = "lName" id="text" class="lname" required="required" Placeholder="Last Name" /></td><td><span id="lnamemsg"></span></td>
 </tr>
 <tr>
- <td>Birth Date:</td><td><spr:input path = "bithDate" id="text" class="birthdate" required="required" Placeholder="(MM/DD/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
+ <td>Birth Date:</td><td><spr:input path = "bithDate" id="text" class="birthdate" required="required" Placeholder="(DD/MM/YYYY)" /></td><td><span id="spanbirthdate"></span></td>
 </tr>
 
 <tr>
