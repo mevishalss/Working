@@ -255,6 +255,32 @@ public class WelcomeController {
 		return "AdminPaymentDetails";
 	}
 	
+	
+	@RequestMapping(value="/PayInstallment.php")
+	public String PayPage (@RequestParam("orderId") String orderId,ModelMap model) {
+		model.put("orderId", orderId);
+		return "paymentpage";
+	}
+	
+	
+	@RequestMapping(value="/PaymentPage.php")
+	public String PayInstallment (@RequestParam("orderId") String orderId,ModelMap model) {
+		List<OrderDetails> list = odao.orderList(orderId);
+		for(OrderDetails o : list)
+		{
+			if(o.getRemainingInst()>0)
+			{
+			
+			o.setRemainingInst(o.getRemainingInst()-1);
+			odao.OrderUpdate(o);
+			}
+		}
+		
+		return "PaymentInProgress";
+	}
+	
+	
+	
 	public EditDao getEditdao() {
 		return editdao;
 	}

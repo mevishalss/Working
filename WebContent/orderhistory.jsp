@@ -17,7 +17,7 @@
 <table align="center" border="1" >
 		<thead>
 		<tr>
-		<th colspan="8" >Order History Page</th>
+		<th colspan="9" >Order History Page</th>
 		</tr>
 		<tr>
 		<th >Order Id</th>
@@ -70,9 +70,13 @@
 			<%
 			if( m.getRemainingInst() > 0 && m.getOrderStatus().equals("confirm") )
 			{ 
-				String text = "PayInstallment.php?orderId="+m.getOrderId();
+				String text = m.getOrderId();
 			%>
-				<a href="<%= text%>">Pay Installment</a>
+			<form method="post" action="PayInstallment.php">
+				<input type="hidden" name="orderId" value="<%=text%>">
+				<input type="submit" value="Pay Installment" ></a>
+			</form>
+				
 			<% }%>
 			
 			</td> 

@@ -23,25 +23,24 @@ public class OrderDetails {
             @Parameter(name = "sequenceName", value = "sequence"),
             @Parameter(name = "allocationSize", value = "1000000"),})
 	private String orderId;
-	
 	private String userId;
 	private String orderDate;
 	private int noOfInstalments;
 	private String orderPrice;
+	private String description;
+	private int remainingInst;
+	private int EMIAmount;
+	@Column(name="OrderStatus") 
+	private String OrderStatus="pending";
 	
-		public String getOrderStatus() {
+	
+	public String getOrderStatus() {
 		return OrderStatus;
 	}
 	public void setOrderStatus(String orderStatus) {
 		OrderStatus = orderStatus;
 	}
-		private String description;
-	private int remainingInst;
-	private int EMIAmount;
-	
-	
-	@Column(name="OrderStatus") 
-	private String OrderStatus="pending";
+
 	
 	public String getOrderId() {
 		return orderId;
