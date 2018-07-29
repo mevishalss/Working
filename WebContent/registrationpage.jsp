@@ -54,7 +54,7 @@ $("#submit").click(function(){
 		var birthdate = $(".birthdate").val();
 		var collegename=$(".cName").val();
 		var collegecode=$(".cCode").val();
-
+		var collegereg=/^([^0-9]*)$/;
 		
 		
 		
@@ -76,7 +76,7 @@ $("#submit").click(function(){
         }
 		 
 		
-		if (!regex1.test(collegename)) {
+		if (!collegereg.test(collegename)) {
         	$('#spancName').next('div.red').remove();
             $('#spancName').after('<div class="red">Invalid College Name</div>');
         } else {
@@ -156,7 +156,7 @@ else
 
 
 $(".email").blur(function () {
-	var emailreg=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	var emailreg=/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 	$('#imgsrc2').next('div.red').remove();
 
     value =$(".email").val();    

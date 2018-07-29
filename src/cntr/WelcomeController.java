@@ -257,6 +257,18 @@ public class WelcomeController {
 		return "ForgotPass";
 	}
 	
+	@RequestMapping(value="/paymentpage.php")
+	public String paymentpage (ModelMap model) {
+		System.out.println("payment in progress");
+		return "paymentpage";
+	}
+	
+	@RequestMapping(value="/PaymentInProgress.php")
+	public String paymentfinal (ModelMap model) {
+		System.out.println("payment in done");
+		return "PaymentInProgress";
+	}
+	
 	@RequestMapping(value="/ValidateUser.php")
 	public String Timepass (@RequestParam("value") String value,@RequestParam("uid") String uid,ModelMap model) {
 		List<UserDetails> list = dao.checkUserDetails(uid);

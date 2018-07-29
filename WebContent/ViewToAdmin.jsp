@@ -15,7 +15,7 @@
 
 <body>
 
-<jsp:include page="menu.jsp"></jsp:include>
+<jsp:include page="Viewadminmenu.jsp"></jsp:include>
 <br><br><br>
 
 <% List <OrderDetails> list = (List) request.getAttribute("list"); %>
