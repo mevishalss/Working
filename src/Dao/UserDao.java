@@ -235,6 +235,10 @@ public class UserDao {
 				q.add(Restrictions.and(Restrictions.eq("userName", user.getUserName()), Restrictions.eq("userPass", user.getUserPass())));
 				List<User> ul = q.list();
 				t.commit();
+				
+			
+				
+				
 				arg0.close();
 				return ul;
 			}
@@ -245,12 +249,48 @@ String s="Verified";
 		
 		if(ulist.isEmpty() && (!user.getStatus().equals(s))	)	
 			return false;
-		else
+		else 
 			return true;
-		
 	}
 	
-public boolean checkStatus(UserDetails user){
+	
+	
+	public List<UserDetails> allUserList(){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+ 			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	
+	public List<UserDetails> singleUser(String uid){
+		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+ 			@Override
+			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(UserDetails.class);
+				q.add(Restrictions.and(Restrictions.eq("userName", uid)));
+				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	
+	public boolean checkStatus(UserDetails user){
 		
 		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
 			@Override
@@ -274,3 +314,7 @@ public boolean checkStatus(UserDetails user){
 	
 
 }
+	
+	
+
+
