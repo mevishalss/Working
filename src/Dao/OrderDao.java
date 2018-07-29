@@ -81,7 +81,7 @@ public class OrderDao {
 			public List<OrderDetails> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(OrderDetails.class);
-				q.add(Restrictions.eq("orderId", uid));
+				q.add(Restrictions.eq("OrderStatus", "pending"));
 				List<OrderDetails> ul = q.list();
 				t.commit();
 				arg0.close();

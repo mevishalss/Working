@@ -57,6 +57,35 @@
     	$('#contact').next('div.red').remove();
     }
     });
+    
+    
+    
+    $(".email").blur(function () {    	
+        value =$(".email").val();    
+    	if(value!=""){ 
+        $.post("ValidateMailId.php",{"value":value}, function(data, status){
+    if(data=="true")
+    {	    	
+    	alert("true");
+    
+    	//$("#imgsrc1").attr("src","images/wrong.jpg");
+        // $('#imgsrc1').next('div.red').remove(); 
+    }
+    else
+    {
+    	alert("click submit button to send passsword your email id");
+    
+    	//$('#imgsrc1').next('div.red').remove();
+    	//$("#imgsrc1").attr("src","images/correct.jpg");
+    }    
+        });
+    	}else
+    	{
+    		alert("Enter your mail id");
+    	
+    	//$("#imgsrc1").attr("src","");
+    	}
+    });
 
 });
 			
@@ -88,7 +117,7 @@ if(see==null)
 	<table>
 	<tr>
 	<tr>
-	 	<td>Enter Your E-Mail Address: </td><td><input type="text" path="contactNo" id="contact" name="contact"/><span id="errmsg"> </span></td>
+	 	<td>Enter Your E-Mail Address: </td><td><input type="text" path="email" class="email" id="contact" name="email"/><td><span><img id="imgsrc1" src=""/></span></td>
 	</tr>
 	</tr>
 	

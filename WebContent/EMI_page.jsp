@@ -15,11 +15,13 @@
 
 $(document).ready(function() {
 	   $("#btn2").hide();
-
+	   $("#tb1").hide();
 	  $("#btn1").click(function () {
-	   if($("#Dpay").val()!="")		  
+	   if($("#Dpay").val()!="")	{	  
 			  $("#btn2").show();
-	  
+		  $("#tb1").show();
+	   }
+
 	  });
 
 });
@@ -32,6 +34,29 @@ $(document).ready(function() {
 
 
 </head>
+<style type="text/css">
+.red {
+    color:red;
+}
+fieldset 
+{ 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;    
+}
+    
+legend
+{
+    color: #5f97ef;   
+}
+</style>
 <style type="text/css">
 .btn {
     background-color: #e59b12; /* Green */
@@ -65,41 +90,41 @@ $(document).ready(function() {
 </style>
 <script type="text/javascript">  
 
-     function calculate()
-     { 
-  		var Dpay=document.getElementById("Dpay").value;
- 		var price=document.getElementById("sellingPrice").value;
- 		var minamt=3*(price/10);	
-		if(Dpay>=price){
-  			if(Dpay>=minamt)
-  	  		{
-  	  			var EMIPrice =price-Dpay;         	
-     			var mm=document.getElementById("month").value;     	    		
-     			var result1=EMIPrice/mm;     
-     			var T_EMI=mm*result1;     	
-     			var interest = result1+(result1/10) ;     		
-     			document.getElementById("result").innerHTML=Math.ceil(interest);
-      			if(Dpay>=minamt)         		
-     			document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
-      			else
-          		{
-      				var v="Minimum 30% Downpayment Required";
-      				document.getElementById("T_EMI").innerHTML=v;	
-      			}
-  		}
-  		else{
-  	  		var v="Minimum 30% Downpayment Required";
-     		document.getElementById("result").innerHTML=v;
-      		document.getElementById("T_EMI").innerHTML="";	
-     		
-  		}
+function calculate()
+{ 
+		var Dpay=document.getElementById("Dpay").value;
+	var price=document.getElementById("sellingPrice").value;
+	var minamt=3*(price/10);	
+	if(Dpay<=price){
+			if(Dpay>=minamt)
+	  		{
+	  			var EMIPrice =price-Dpay;         	
+			var mm=document.getElementById("month").value;     	    		
+			var result1=EMIPrice/mm;     
+			var T_EMI=mm*result1;     	
+			var interest = result1+(result1/10) ;     		
+			document.getElementById("result").innerHTML=Math.ceil(interest);
+ 			if(Dpay>=minamt)         		
+			document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
+ 			else
+     		{
+ 				var v="Minimum 30% Downpayment Required";
+ 				document.getElementById("T_EMI").innerHTML=v;	
+ 			}
 		}
+		else{
+	  		var v="Minimum 30% Downpayment Required";
+		document.getElementById("result").innerHTML=v;
+ 		document.getElementById("T_EMI").innerHTML="";	
+		
+		}
+}
 else
-	{
-	alert("Invalid Downpayment Amount");
-	}
-  	  		
-     }
+{
+alert("Invalid Downpayment Amount");
+}
+	  		
+}
 </script>
 
 <body>
@@ -200,7 +225,7 @@ List<Object> off=(List) request.getAttribute("offers");
 	<tr></tr>	
 	
 	</table>	
-	<table border="1" >
+	<table border="1" id="tb1">
 	<tr><td style="padding:4px">Monthly EMI</td><td colspan="2"><span id="result"></span></td></tr>
 	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr>
 </table>

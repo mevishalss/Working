@@ -26,33 +26,22 @@ public class OrderDetails {
 	
 	private String userId;
 	private String orderDate;
-	private String noOfInstalments;
+	private int noOfInstalments;
 	private String orderPrice;
-	private String description;
-	private String remainingInst;
 	
-	@NotNull 
-private String orderSatus;
+		public String getOrderStatus() {
+		return OrderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		OrderStatus = orderStatus;
+	}
+		private String description;
+	private int remainingInst;
+	private int EMIAmount;
 	
 	
-	public String getOrderSatus() {
-		return orderSatus;
-	}
-	public void setOrderSatus(String orderSatus) {
-		this.orderSatus = orderSatus;
-	}
-
-	
-	public OrderDetails(String userId) {
-		super();
-		this.userId = userId;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+	@Column(name="OrderStatus") 
+	private String OrderStatus="pending";
 	
 	public String getOrderId() {
 		return orderId;
@@ -60,40 +49,53 @@ private String orderSatus;
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getOrderDate() {
 		return orderDate;
 	}
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public String getNoOfInstalments() {
+	public int getNoOfInstalments() {
 		return noOfInstalments;
 	}
-	public void setNoOfInstalments(String noOfInstalments) {
+	public void setNoOfInstalments(int noOfInstalments) {
 		this.noOfInstalments = noOfInstalments;
 	}
 	public String getOrderPrice() {
 		return orderPrice;
 	}
-	@Override
-	public String toString() {
-		return "OrderDetails [orderId=" + orderId + ", userId=" + userId + ", orderDate=" + orderDate
-				+ ", noOfInstalments=" + noOfInstalments + ", orderPrice=" + orderPrice + "]";
-	}
 	public void setOrderPrice(String orderPrice) {
 		this.orderPrice = orderPrice;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getRemainingInst() {
+		return remainingInst;
 	}
 	public OrderDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderDetails(String orderId, String orderDate, String noOfInstalments, String orderPrice) {
-		super();
-		this.orderId = orderId;
-		this.orderDate = orderDate;
-		this.noOfInstalments = noOfInstalments;
-		this.orderPrice = orderPrice;
+	public void setRemainingInst(int remainingInst) {
+		this.remainingInst = remainingInst;
 	}
+	public int getEMIAmount() {
+		return EMIAmount;
+	}
+	public void setEMIAmount(int eMIAmount) {
+		EMIAmount = eMIAmount;
+	}
+	
 	
 
 }

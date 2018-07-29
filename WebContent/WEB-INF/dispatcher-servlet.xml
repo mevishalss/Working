@@ -89,6 +89,10 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
+	<bean id="forgotpass" class="Dao.ForgotPass" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
 
     
 
