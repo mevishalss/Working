@@ -67,7 +67,7 @@ editDiv {
 
 
 <div align="center" id="paymentDiv" >
-<spr:form action="paymentDetails.php" commandName="user"  method="post" >
+<spr:form action="paymentDetails1.php" commandName="user"  method="post" >
 <fieldset>
 <legend><b><u><font size="5"> Payment Details</font></u></b></legend>
 <div align="right" id="userdetail" >
@@ -119,7 +119,7 @@ editDiv {
 <td>Address: </td><td> <%=m.getAddress() %> <%=  m.getCity() %> <%= m.getState() %> <%= m.getPinCode() %></td>
 </tr>
 <tr>
-<td></td><td><input type="submit" id="submit" onclick="paymentDetails1.php?uid=<%= m.getUserName()%>" value="Show Payment Details" /></td>
+<td></td><td><input type="submit" id="submit"  value="Show Payment Details" /></td>
 </tr>
 
 </table>

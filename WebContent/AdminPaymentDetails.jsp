@@ -71,6 +71,11 @@ editDiv {
 		
 		<tbody>
 		<%
+		if(plist.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}
 			for(Payment m : plist){
 		%>
 		<tr>

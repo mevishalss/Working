@@ -235,10 +235,10 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/paymentDetails1.php")
-	public String paymentDetails1 (@RequestParam("uid") String uid,ModelMap model) {
-		List<Payment> list =pdao.paymentList(uid);
+	public String paymentDetails1 (User user,ModelMap model) {
+		List<Payment> list =pdao.paymentList(user.getUserName());
 		model.put("list", list);
-		return "AdminPatymentDetails";
+		return "AdminPaymentDetails";
 	}
 	
 	public EditDao getEditdao() {
