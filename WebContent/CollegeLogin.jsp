@@ -66,7 +66,7 @@ fieldset {
 <body>
 
 
-<jsp:include page="LoginHead.jsp"></jsp:include>
+<jsp:include page="collegeMenu.jsp"></jsp:include>
 	<div  align="center" style="margin-top: 100px">
 	<spr:form action="MLogin.php" commandName="collegedto" method="post" >
 	<fieldset>

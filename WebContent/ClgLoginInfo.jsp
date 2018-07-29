@@ -96,7 +96,7 @@ $('input.btn-outline-danger').click(function () {
 <body>
 
 
-<jsp:include page="AdminMenu.jsp"></jsp:include>
+<jsp:include page="collegeMenu.jsp"></jsp:include>
 
 
 <br><br><br>
