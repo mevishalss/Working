@@ -219,6 +219,13 @@ public class WelcomeController {
 		//}
 	}
 	
+	@RequestMapping(value="/AdminData1.php")
+	public String adminUserName (Admindto AdminObj ,ModelMap model) {
+		List<UserDetails> list= editdao.UserList();
+		model.put("list",list);
+			return "AdminUserName";
+	}
+	
 	public EditDao getEditdao() {
 		return editdao;
 	}

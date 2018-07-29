@@ -70,7 +70,7 @@
       		document.getElementById("T_EMI").innerHTML="";	
      		
   		}
-}
+		}
 else
 	{
 	alert("Invalid Downpayment Amount");
