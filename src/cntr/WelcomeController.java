@@ -226,6 +226,21 @@ public class WelcomeController {
 			return "AdminUserName";
 	}
 	
+	@RequestMapping(value="/admnUserDetails.php")
+	public String adminUserDetails (@RequestParam("uid") String uid,ModelMap model) {
+		List<UserDetails> list= dao.singleUser(uid);
+		model.put("list",list);
+		model.put("user", user);
+		return "AdminUserDetails";
+	}
+	
+	@RequestMapping(value="/paymentDetails1.php")
+	public String paymentDetails1 (@RequestParam("uid") String uid,ModelMap model) {
+		List<Payment> list =pdao.paymentList(uid);
+		model.put("list", list);
+		return "AdminPatymentDetails";
+	}
+	
 	public EditDao getEditdao() {
 		return editdao;
 	}
@@ -236,10 +251,8 @@ public class WelcomeController {
 
 	@RequestMapping(value="/paymentdetails.php")
 	public String paymentdetails (ModelMap model) {
-		
-		List<Payment> list =pdao.paymentList(user);
+		List<Payment> list =pdao.UserPaymentList(user);
 		model.put("list", list);
-		
 		return "payment";
 	}
 	

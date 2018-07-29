@@ -34,7 +34,26 @@ public class PaymentDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 	
-	public List<Payment> paymentList(User user){
+	public List<Payment> paymentList(String uid){
+		List<Payment> ulist = hibernateTemplate.execute(new HibernateCallback<List<Payment>>() {
+
+			@Override
+			public List<Payment> doInHibernate(Session arg0) throws HibernateException 
+			{
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(Payment.class);
+				q.add(Restrictions.eq("userId",uid));
+				List<Payment> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	public List<Payment> UserPaymentList(User user){
 		List<Payment> ulist = hibernateTemplate.execute(new HibernateCallback<List<Payment>>() {
 
 			@Override
