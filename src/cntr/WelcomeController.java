@@ -39,9 +39,11 @@ import com.google.gson.GsonBuilder;
 import Dao.AdminDao;
 import Dao.CollegeDao;
 import Dao.EditDao;
+import Dao.ForgotPass;
 import Dao.OrderDao;
 import Dao.PaymentDao;
 import Dao.UserDao;
+import Demo.Mailer;
 import dto.Admindto;
 import dto.Collegedto;
 import dto.OrderDetails;
@@ -71,6 +73,17 @@ public class WelcomeController {
 	Admindto AdminObj;
 	@Autowired
 	AdminDao adao;
+	@Autowired
+	ForgotPass forgotpass;
+	
+	public ForgotPass getForgotpass() {
+		return forgotpass;
+	}
+
+	public void setForgotpass(ForgotPass forgotpass) {
+		this.forgotpass = forgotpass;
+	}
+
 	public UserDetails getUd() {
 		return ud;
 	}
@@ -272,6 +285,28 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/forgotpass.php")
+	public String changePass (@RequestParam("email") String email,ModelMap model) {
+		
+		List<UserDetails> list= forgotpass.getpass(email);
+		String pwd="";
+		for(UserDetails m : list){ 
+			
+		pwd = m.getUserPass();
+		break;
+		}
+		Mailer ml=new Mailer();
+		String link="http://localhost:8001/Project/prepLog.php";
+		//from,password,to,subject,message  
+		ml.send("3p.mechto@gmail.com","prafull3p",email,"Your One Time Password is::","Your password is "+pwd+" "+"Use this password to login");  
+		System.out.println("Password send to your email id successfully !");
+//		model.put("user", user);
+//		return "login";
+		return "ForgotPass";
+		
+	}
+	
+	
+	@RequestMapping(value="/forgotpass1.php")
 	public String forgotPass (ModelMap model) {
 		System.out.println("hello");
 		return "ForgotPass";
@@ -297,6 +332,13 @@ public class WelcomeController {
 			
 			u.setStatus(value);
 			dao.updateUser(u);
+		}
+		
+		List<UserDetails> list2 = dao.checkUserDetails(uid);
+		for(UserDetails u :list2)
+		{
+			Mailer ml=new Mailer();
+			ml.send("3p.mechto@gmail.com","prafull3p",u.getEmailId(),"EMI POOL::","Your Account is in "+ value+"status");  
 		}
 		List<User> list1 = dao.checkLoginDetails(uid);
 		for(User u1 :list1)
@@ -384,6 +426,13 @@ public class WelcomeController {
 		{
 			u.setOrderSatus(value);
 			odao.OrderUpdate(u);
+		}
+		List<UserDetails> list1 = dao.checkUserDetails(uid);
+		for(UserDetails u :list1)
+		{
+			Mailer ml=new Mailer();
+			ml.send("3p.mechto@gmail.com","prafull3p",u.getEmailId(),"EMI POOL::","Your order is been : "+ value);  
+		
 		}
 		return "orderUpdatePage";
 	}

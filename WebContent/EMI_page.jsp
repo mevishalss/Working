@@ -9,6 +9,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Product_Details </title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+$(document).ready(function() {
+	   $("#btn2").hide();
+	   $("#tb1").hide();
+	  $("#btn1").click(function () {
+	   if($("#Dpay").val()!="")	{	  
+			  $("#btn2").show();
+		  $("#tb1").show();
+	   }
+
+	  });
+
+
+});
+
+
+
+
+</script>
+
+
+
 </head>
 <style type="text/css">
 .red {
@@ -61,45 +86,46 @@ legend
 
 .img:hover {
     transform: scale(1.3);
+    }
 
 </style>
 <script type="text/javascript">  
 
-     function calculate()
-     { 
-  		var Dpay=document.getElementById("Dpay").value;
- 		var price=document.getElementById("sellingPrice").value;
- 		var minamt=3*(price/10);	
-		if(Dpay<=price){
-  			if(Dpay>=minamt)
-  	  		{
-  	  			var EMIPrice =price-Dpay;         	
-     			var mm=document.getElementById("month").value;     	    		
-     			var result1=EMIPrice/mm;     
-     			var T_EMI=mm*result1;     	
-     			var interest = result1+(result1/10) ;     		
-     			document.getElementById("result").innerHTML=Math.ceil(interest);
-      			if(Dpay>=minamt)         		
-     			document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
-      			else
-          		{
-      				var v="Minimum 30% Downpayment Required";
-      				document.getElementById("T_EMI").innerHTML=v;	
-      			}
-  		}
-  		else{
-  	  		var v="Minimum 30% Downpayment Required";
-     		document.getElementById("result").innerHTML=v;
-      		document.getElementById("T_EMI").innerHTML="";	
-     		
-  		}
+function calculate()
+{ 
+		var Dpay=document.getElementById("Dpay").value;
+	var price=document.getElementById("sellingPrice").value;
+	var minamt=3*(price/10);	
+	if(Dpay<=price){
+			if(Dpay>=minamt)
+	  		{
+	  			var EMIPrice =price-Dpay;         	
+			var mm=document.getElementById("month").value;     	    		
+			var result1=EMIPrice/mm;     
+			var T_EMI=mm*result1;     	
+			var interest = result1+(result1/10) ;     		
+			document.getElementById("result").innerHTML=Math.ceil(interest);
+ 			if(Dpay>=minamt)         		
+			document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
+ 			else
+     		{
+ 				var v="Minimum 30% Downpayment Required";
+ 				document.getElementById("T_EMI").innerHTML=v;	
+ 			}
 		}
+		else{
+	  		var v="Minimum 30% Downpayment Required";
+		document.getElementById("result").innerHTML=v;
+ 		document.getElementById("T_EMI").innerHTML="";	
+		
+		}
+}
 else
-	{
-	alert("Invalid Downpayment Amount");
-	}
-  	  		
-     }
+{
+alert("Invalid Downpayment Amount");
+}
+	  		
+}
 </script>
 
 <body>
@@ -190,23 +216,24 @@ List<Object> off=(List) request.getAttribute("offers");
    <option value="9">9</option>
   <option value="12">12</option>
 </select></td><td></td>
+<div id="header-plugin">
 
 	</tr>
-	
-</table>
-	
-</table>
-<table><tr>
-	 	<td colspan="2" align="center"><button id="calculate"  class="btn" onclick="calculate()">Calculate</button></td>
+	<tr>
+	 	<td colspan="2" align="center"><button type="button" class="btn" id="btn1" onclick="calculate()">Calculate</button></td>
 	</tr>
 	<tr></tr>
 	<tr></tr>	
-	</table>
-	<table border="1" >
+	
+	</table>	
+	<table border="1" id="tb1">
 	<tr><td style="padding:4px">Monthly EMI</td><td colspan="2"><span id="result"></span></td></tr>
-	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr></table>
-<div padding-top: 25px; align="center"><input type="submit" class="btn" value="Apply For Loan"/></button></div>
+	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr>
+</table>
+	
 
+<div padding-top: 25px; align="center"><input type="submit" class="btn" id="btn2"value="Apply For Loan"/></button></div>
+</div>
 </div>
     </div>
   </div>
