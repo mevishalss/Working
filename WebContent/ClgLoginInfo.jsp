@@ -16,46 +16,38 @@
 %>
 
 <script>
-$(document).ready(function () {
-    $('.radio').click(function () {
-        value =$("input[class='radio']:checked").val();
-        uid = $('#uid').html();
-       $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
-    	   			alert(data);
-           });
-       
-    });
-
-   
-    
+$(document).ready(function () {   
    $('input.btn-outline-warning').click(function () {
-
-	   
+	   				$('#option1').bootstrapToggle('on');
+    	   	
        value =$('#option1').val();
        uid = $('#uid').html();
        $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
-    	   			alert(data);
+    	   			alert(value);
+    	   			
            });
-
+ 
    	   	 });		
 
 $('input.btn-outline-success').click(function () {
-
-	   
+		$('#option2').bootstrapToggle('on');
+	
        value =$('#option2').val();
        uid = $('#uid').html();
        $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
-    	   			alert(data);
+    	   			alert(value);
            });
 
    	   	 });	
 $('input.btn-outline-danger').click(function () {
 
-	   
+
+	$('#option3').bootstrapToggle('on');
+	
     value =$('#option3').val();
     uid = $('#uid').html();
     $.post("ValidateUser.php",{"value":value,"uid":uid}, function(data, status){
- 	   			alert(data);
+ 	   			alert(value);
         });
 
 	   	 });
@@ -128,15 +120,14 @@ $('input.btn-outline-danger').click(function () {
 	
 			<td>
 		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  			<label class="btn btn-secondary active">
-    			<input type="button" class="btn btn-outline-warning"  value="Not verified" name="options" id="option1" autocomplete="off" checked> 
+  			<label class="btn btn-secondary ">
+    			<input type="button" class="btn btn-outline-warning"  value="Not verified" name="options" id="option1" autocomplete="off" checked="checked" data-onstyle="warning" data-offstyle="primary"> 
   			</label>
  			 <label class="btn btn-secondary">
-   				 <input type="button" class="btn btn-outline-success"  value="verified" name="options" id="option2" autocomplete="off"> 
+   				 <input type="button" class="btn btn-outline-success"  value="verified" name="options" id="option2" autocomplete="off" checked="checked" data-onstyle="success" data-offstyle="primary"> 
  			</label>
   			<label class="btn btn-secondary">
-   				 <input type="button" class="btn btn-outline-danger"  value="declined" name="options" id="option3" autocomplete="off"> 
- 			
+   				 <input type="button" class="btn btn-outline-danger"  value="declined" name="options" id="option3" autocomplete="off" checked="checked" data-onstyle="danger" data-offstyle="primary"> 
  			</label>
 		</div>
 			
