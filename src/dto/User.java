@@ -21,6 +21,8 @@ public class User {
 	@NotNull
 	@BatchSize(size =10)
 	private String userPass;
+	@Column(name="status") 
+    private String status="pending"; 
 	public User() {
 		super();
 	}
@@ -29,6 +31,12 @@ public class User {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getUserPass() {
 		return userPass;

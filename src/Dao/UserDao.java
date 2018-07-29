@@ -91,6 +91,23 @@ public class UserDao {
 		});
 	}
 	public void updateUser(UserDetails user) {
+		hibernateTemplate.execute(new HibernateCallback<UserDetails>() {
+
+			@Override
+			public UserDetails doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				arg0.update(user);
+				t.commit();
+				System.out.println(user);
+				arg0.flush();
+				arg0.close();
+				return null;
+			}
+		
+		});
+	}
+	
+	public void updateUserLogin(User user) {
 		hibernateTemplate.execute(new HibernateCallback<User>() {
 
 			@Override
@@ -106,6 +123,8 @@ public class UserDao {
 		
 		});
 	}
+	
+	
 	
 	public List<User> userList(){
 		List<User> ulist = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
@@ -133,6 +152,24 @@ public class UserDao {
 				Criteria q = arg0.createCriteria(UserDetails.class);
 				q.add(Restrictions.eq("userName", uid));
 				List<UserDetails> ul = q.list();
+				t.commit();
+				arg0.close();
+				return ul;
+			}
+		
+		});
+		return ulist;
+	}
+	
+	public List<User> checkLoginDetails(String uid){
+		List<User> ulist = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
+
+			@Override
+			public List<User> doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				Criteria q = arg0.createCriteria(User.class);
+				q.add(Restrictions.eq("userName", uid));
+				List<User> ul = q.list();
 				t.commit();
 				arg0.close();
 				return ul;
@@ -196,7 +233,10 @@ public class UserDao {
 			}
 		
 		});
-		if(ulist.isEmpty())		
+		
+String s="Verified";
+		
+		if(ulist.isEmpty() && (!user.getStatus().equals(s))	)	
 			return false;
 		else
 			return true;
@@ -206,7 +246,6 @@ public class UserDao {
 public boolean checkStatus(UserDetails user){
 		
 		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
-
 			@Override
 			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();

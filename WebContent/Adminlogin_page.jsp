@@ -67,6 +67,10 @@ fieldset {
 
 
 <jsp:include page="LoginHead.jsp"></jsp:include>
+
+
+
+
 	<div  align="center" style="margin-top: 100px">
 	<spr:form action="AdminData.php" commandName="Admindto" method="post" >
 	<fieldset>

@@ -182,7 +182,10 @@ fieldset {
 
 
 <body>
-<% List <UserDetails> list = (List) request.getAttribute("list"); %>
+<% List <UserDetails> list = (List) request.getAttribute("list"); 
+
+
+%>
 <jsp:include page="menu.jsp"></jsp:include>
 
 <h1 align="center" id="h1">Edit Profile</h1>
@@ -193,7 +196,7 @@ fieldset {
 <div align="center">
 <fieldset>
 
-<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
 <td>UserID: </td><td> <spr:input path = "userName"  required="required" disabled="true" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
@@ -225,7 +228,7 @@ fieldset {
 
 <div align="center" >
 <fieldset>
-<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>College Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>College Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
 <td>College Code: </td><td> <spr:input   path = "CollegeCode" class="cCode"  readonly="readonly" value="<%=m.getCollegeCode()%>" required="required" id="text" Placeholder="College Code" /></td><td><span id="cCode"></span></td>
@@ -254,8 +257,8 @@ fieldset {
 
 
 <div align="center">
-<fieldset >
-<legend><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Address Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
+<fieldset  >
+<legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Address Details</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
 <tr>
 <td>Address: </td><td> <spr:input path = "address"  id="text" required="required" Placeholder="Address" value="<%=m.getAddress() %>" /></td>
