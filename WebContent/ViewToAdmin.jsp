@@ -97,6 +97,12 @@ $(document).ready(function () {
 		</tr>
 		</thead>	
 		<tbody>
+		<%if(list.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+		
 		<%
 			for(OrderDetails m : list){
 		%>

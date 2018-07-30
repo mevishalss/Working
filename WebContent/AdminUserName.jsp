@@ -75,7 +75,15 @@ editDiv {
 <br><br>
 <% List <UserDetails> list1 = (List) request.getAttribute("list"); %>
 <table border="1" align="center">
+<%
+		if(list1.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+
 		<thead>
+		
 		
 		<tr>
 		<th >User Id</th>

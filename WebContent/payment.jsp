@@ -58,6 +58,12 @@ body {
 		</tr>
 		</thead>
 		<tbody>
+		<%if(list.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+		
 		<%
 			for(Payment m : list){
 		%>

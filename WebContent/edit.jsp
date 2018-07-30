@@ -194,16 +194,23 @@ fieldset {
 
 <div align="center" id="editDiv" >
 <spr:form action="edited.php" commandName="user"  method="post" >
-<%for(UserDetails m : list){ %>
+
 <div align="center">
 <fieldset>
 
 <legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Personal Information</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
+<%if(list.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+<%for(UserDetails m : list){ %>
 <tr>
 <td>UserID: </td><td> <spr:input path = "userName"  required="required" disabled="true" id="text" readonly="readonly" value="<%=m.getUserName()%>" Placeholder="User ID" /></td>
 </tr>
  <tr>
+ 
 <td>FirstName : </td><td><spr:input path = "fName" id="text" class="fname"  disabled="true"  placeholder="First Name" value="<%=m.getfName() %>" /></td><td><span  id="fnamemsg"></span></td>
 </tr> 
 <tr>

@@ -72,7 +72,12 @@ editDiv {
 <legend><b><u><font size="5"> Payment Details</font></u></b></legend>
 <div align="right" id="userdetail" >
 <tr>
-
+<%
+		if(list.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
 </tr>
 </div>
 <%for(UserDetails m : list){ %>
