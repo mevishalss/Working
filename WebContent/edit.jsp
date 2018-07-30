@@ -184,7 +184,7 @@ fieldset {
 
 
 <body>
-<% String uid = (String) request.getAttribute("user"); 
+<% 
  String see =(String) session.getAttribute("sessname");
 //System.out.print(see);
 
