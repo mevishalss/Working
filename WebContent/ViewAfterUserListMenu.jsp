@@ -87,7 +87,7 @@ h3 { color: #f2f2f2; background: #ff4a4a; font-size: 40px; line-height: 45px; fo
 <h3 align="center">EMI POOL</h3>
   <div class="header-right">
     
-    <a href="AdminData1.php">User List</a>
+    <a href="ViewToAdmin.php">Order List</a>
               <a href="sessionexpired.php">Logout</a>
     	
   </div>

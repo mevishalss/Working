@@ -47,7 +47,16 @@ body {
 <jsp:include page="Viewadminmenu.jsp"></jsp:include>
 <br><br><br>
 
-<% List <OrderDetails> list = (List) request.getAttribute("list"); %>
+<% List <OrderDetails> list = (List) request.getAttribute("list"); 
+String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("AdminLogin.php"); 
+	rd.forward(request, response);
+}
+
+%>
 
 
 

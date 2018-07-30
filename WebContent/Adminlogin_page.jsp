@@ -120,7 +120,7 @@ fieldset {
 
 
 	<div  align="center" style="margin-top: 100px">
-	<spr:form action="AdminData.php" commandName="Admindto" method="post" >
+	<spr:form action="AdminSession.php" commandName="Admindto" method="post" >
 	<fieldset>
 	<legend align="center">&nbsp;&nbsp;&nbsp;Admin  Login&nbsp;&nbsp;&nbsp;</legend>
 	<table>

@@ -63,8 +63,20 @@ editDiv {
 
 <body>
 
-<% List<Payment> plist = (List) request.getAttribute("list"); %>
-<jsp:include page="menu.jsp"></jsp:include>
+<% List<Payment> plist = (List) request.getAttribute("list");
+
+String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("AdminLogin.php"); 
+	rd.forward(request, response);
+}
+
+
+
+%>
+<jsp:include page="ViewAfterUserListMenu.jsp"></jsp:include>
 <br><br>
 
 <table align="center" border="0" >

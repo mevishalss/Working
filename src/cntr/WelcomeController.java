@@ -174,7 +174,6 @@ public class WelcomeController {
 	}
 	
 	
-	
 	@RequestMapping(value="/session.php")
 	public String checklogin(User user,ModelMap model) {
 			model.put("user", user);
@@ -216,13 +215,21 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/AdminData.php")
-	public String adminLogin (Admindto AdminObj ,ModelMap model) {
-		this.AdminObj = AdminObj;
-		if(adao.checkUser(this.AdminObj))
-		{
-				List<OrderDetails> list= odao.AllPendingList();
+	public String adminLogin (@RequestParam("uid") String uid ,ModelMap model) {
+			List<OrderDetails> list= odao.AllPendingList();
 				model.put("list",list);
 				return "ViewToAdmin";
+		
+	}
+	
+	@RequestMapping(value="/AdminSession.php")
+	public String admin(Admindto AdminObj ,ModelMap model) {
+		this.AdminObj = AdminObj;
+		model.put("Admindto", new Admindto());
+		if(adao.checkUser(this.AdminObj))
+		{
+				model.put("uid", AdminObj.getUserId());
+				return "CreateAdminSession";
 		}
 			else
 			{
@@ -231,11 +238,21 @@ public class WelcomeController {
 		}
 	}
 	
+	
 	@RequestMapping(value="/AdminData1.php")
 	public String adminUserName (Admindto AdminObj ,ModelMap model) {
 		List<UserDetails> list= editdao.UserList();
 		model.put("list",list);
 			return "AdminUserName";
+	}
+	
+	
+	@RequestMapping(value="/ViewToAdmin.php")
+	public String viewtoadmin (ModelMap model) {
+	//	System.out.println("payment in progress");
+		List<OrderDetails> list= odao.AllPendingList();
+		model.put("list",list);
+		return "ViewToAdmin";
 	}
 	
 	@RequestMapping(value="/admnUserDetails.php")
