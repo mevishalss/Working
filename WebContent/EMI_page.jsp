@@ -24,7 +24,6 @@ $(document).ready(function() {
 
 	  });
 
-
 });
 
 
@@ -35,6 +34,29 @@ $(document).ready(function() {
 
 
 </head>
+<style type="text/css">
+.red {
+    color:red;
+}
+fieldset 
+{ 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;    
+}
+    
+legend
+{
+    color: #5f97ef;   
+}
+</style>
 <style type="text/css">
 .btn {
     background-color: #e59b12; /* Green */
@@ -70,38 +92,43 @@ $(document).ready(function() {
 
 function calculate()
 { 
-		var Dpay=document.getElementById("Dpay").value;
-	var price=document.getElementById("sellingPrice").value;
-	var minamt=3*(price/10);	
-	if(Dpay<=price){
-			if(Dpay>=minamt)
-	  		{
-	  			var EMIPrice =price-Dpay;         	
+	var Dpay1=document.getElementById("Dpay").value;
+	var price1=document.getElementById("sellingPrice").value;
+	var minamt1=3*(price1/10);
+	var Dpay=Math.ceil(Dpay1);
+	var price=Math.ceil(price1);
+	var minamt=Math.ceil(minamt1);	
+	if(price>Dpay)
+	{
+		if(Dpay>=minamt)
+	  	{
+	  		var EMIPrice =price-Dpay;         	
 			var mm=document.getElementById("month").value;     	    		
 			var result1=EMIPrice/mm;     
 			var T_EMI=mm*result1;     	
 			var interest = result1+(result1/10) ;     		
 			document.getElementById("result").innerHTML=Math.ceil(interest);
- 			if(Dpay>=minamt)         		
-			document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
+ 			if(Dpay>=minamt)  
+ 			{
+				document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
+ 			}
  			else
      		{
  				var v="Minimum 30% Downpayment Required";
  				document.getElementById("T_EMI").innerHTML=v;	
  			}
 		}
-		else{
+		else
+		{
 	  		var v="Minimum 30% Downpayment Required";
-		document.getElementById("result").innerHTML=v;
- 		document.getElementById("T_EMI").innerHTML="";	
-		
+			document.getElementById("result").innerHTML=v;
+ 			document.getElementById("T_EMI").innerHTML="";			
 		}
-}
-else
-{
-alert("Invalid Downpayment Amount");
-}
-	  		
+	}
+	else
+	{
+		alert("Invalid Downpayment Amount");
+	}	  		
 }
 </script>
 

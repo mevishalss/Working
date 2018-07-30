@@ -18,6 +18,8 @@ import dto.User;
 
 @Repository
 public class PaymentDao {
+	@Autowired
+	Payment payment;
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
@@ -70,6 +72,23 @@ public class PaymentDao {
 		
 		});
 		return ulist;
+	}
+	
+	public void PayInstallments(Payment payment1) {
+		this.payment=payment1;
+		hibernateTemplate.execute(new HibernateCallback<User>() {
+			
+			@Override
+			public User doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				arg0.save(payment);
+				t.commit();
+				arg0.flush();
+				arg0.close();
+				return null;
+			}
+		
+		});
 	}
 	
 

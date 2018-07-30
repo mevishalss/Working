@@ -9,6 +9,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
 <style type="text/css">
+.red {
+    color:red;
+}
+fieldset 
+{ 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;    
+}
+    
+legend
+{
+    color: #5f97ef;   
+}
+</style>
+<style type="text/css">
 input[type=text] {
     width: 130px;
     box-sizing: border-box;
@@ -50,9 +73,20 @@ input[type=text]:focus {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+<<<<<<< HEAD
 body {
   background-image: url("images/background.jpg");
    
+=======
+
+#image {
+    margin-top: 80px;
+    margin-right: 100px;
+    margin-left: 100px;
+    width: 50%;
+    border: 3px solid #ecf0f1	;
+    padding: 10px;
+>>>>>>> branch 'master' of https://github.com/mevishalss/Working.git
 }
 
 </style>
@@ -81,7 +115,7 @@ if(see==null)
 <jsp:include page="menu.jsp?user=<%=user.getUserName() %>"></jsp:include>
 <form action="searchProduct.php" method="post">
 <div align="center" style="margin-top: 200px">
- <div align="center"><img src="images/final.png" ></div>
+ <div align="center" id="image"><img src="images/final.png" ></div>
  <br><br>
 <table>
 <tr>
