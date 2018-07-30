@@ -64,7 +64,7 @@
 			</td>
 			
 			<td align="center" >
-				<%=m.getOrderStatus() %>
+				<%= m.getOrderStatus() %>
 			</td>
 			<td>
 			<%
