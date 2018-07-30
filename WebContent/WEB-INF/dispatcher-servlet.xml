@@ -83,6 +83,7 @@
 	<bean id="AdminObj" class="dto.Admindto" ></bean>
 	<bean id="ud" class="dto.UserDetails" ></bean>
 	<bean id="payment" class="dto.Payment" ></bean>
+	<bean id="orderDetails" class="dto.OrderDetails" ></bean>
 	
 
 	<bean id="editdao" class="Dao.EditDao" >

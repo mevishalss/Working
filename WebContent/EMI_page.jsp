@@ -104,18 +104,23 @@ function calculate()
 			var T_EMI=mm*result1;     	
 			var interest = result1+(result1/10) ;     		
 			document.getElementById("result").innerHTML=Math.ceil(interest);
+			document.getElementById("result").value=Math.ceil(interest);
  			if(Dpay>=minamt)         		
 			document.getElementById("T_EMI").innerHTML=Math.ceil(interest*mm);
+ 			//document.getElementById("T_EMI").value=Math.ceil(interest*mm);
  			else
      		{
  				var v="Minimum 30% Downpayment Required";
  				document.getElementById("T_EMI").innerHTML=v;	
+ 				document.getElementById("T_EMI").value=v;
  			}
 		}
 		else{
 	  		var v="Minimum 30% Downpayment Required";
 		document.getElementById("result").innerHTML=v;
+		document.getElementById("result").value=v;
  		document.getElementById("T_EMI").innerHTML="";	
+ 		document.getElementById("T_EMI").value="";
 		
 		}
 }
@@ -172,7 +177,7 @@ float bookyear=(float)request.getAttribute("year");
 List<Object> arr = (List) request.getAttribute("categoryspeci");
 List<Object> off=(List) request.getAttribute("offers");
 %>
-<form action="paymentpage.jsp" method="post">
+<form action="PayDownPayment.php" method="post">
 <div class="container">
   <h1 align="center"><i><u><font size="5" color="BlueViolet">Product Details</font></u></i></h1><br><br>
   <div class="row">
@@ -208,8 +213,8 @@ List<Object> off=(List) request.getAttribute("offers");
 	
 	<tr></tr>
 	<tr></tr>
-	<tr><td><b>DownPayment Amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>(Min 30%):</b></td><td><input type="text" id="Dpay"></td></tr>
-		<tr><td><b>Month :</b></td><td><select id="month">
+	<tr><td><b>DownPayment Amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>(Min 30%):</b></td><td><input name="dpay" type="text" id="Dpay"></td></tr>
+		<tr><td><b>Month :</b></td><td><select id="month" name="noi">
   <option value="3">3</option>
   <option value="6">6</option>
    <option value="9">9</option>
@@ -226,11 +231,17 @@ List<Object> off=(List) request.getAttribute("offers");
 	
 	</table>	
 	<table border="1" id="tb1">
-	<tr><td style="padding:4px">Monthly EMI</td><td colspan="2"><span id="result"></span></td></tr>
-	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI"></span></td></tr>
+	<tr><td style="padding:4px">Monthly EMI</td><td colspan="2"><input type="text" id="result" name="emi" value=""></span></td></tr>
+	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI" ></span></td></tr>
 </table>
+	<% String uid= (String)request.getAttribute("uid"); 
+	out.print(uid);%>
 	
-
+	<input type="hidden" value="<%=uid %>" name="uid">
+	<input type="hidden" value="<%=(new java.util.Date()).toLocaleString() %>" name="date">
+	<input type="hidden" value="<%=sellprice %>" name="orderPrice">
+	<input type="hidden" value="<%=title %>" name="descirption">
+	
 <div padding-top: 25px; align="center"><input type="submit" class="btn" id="btn2"value="Apply For Loan"/></button></div>
 </div>
 </div>
