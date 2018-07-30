@@ -72,13 +72,16 @@ body {
 			</td>
 			
 			<td align="center" >
+
 				<%= m.getOrderStatus() %>
+
+
 			</td>
 			<td>
 			<%
 			if( m.getRemainingInst() > 0 && m.getOrderStatus().equals("confirm") )
 			{ 
-				String text = m.getOrderId();
+				int text = m.getOrderId();
 			%>
 			<form method="post" action="PayInstallment.php">
 				<input type="hidden" name="orderId" value="<%=text%>">

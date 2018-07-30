@@ -2,6 +2,8 @@ package dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,33 +21,38 @@ import com.sun.istack.internal.NotNull;
 public class OrderDetails {
 	@Id
 	@Column (name="order_id")
-	@GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
-            @Parameter(name = "sequenceName", value = "sequence"),
-            @Parameter(name = "allocationSize", value = "1000000"),})
-	private String orderId;
+	@GeneratedValue(strategy=GenerationType.AUTO)  
+	private int orderId;
 	private String userId;
 	private String orderDate;
 	private int noOfInstalments;
-	private String orderPrice;
+	private double orderPrice;
 	private String description;
+	private double downPayment;
 	private int remainingInst;
-	private int EMIAmount;
+	private double EMIAmount;
 	@Column(name="OrderStatus") 
-	private String OrderStatus="pending";
+	private String orderStatus="pending";
 	
 	
+	
+	
+	public double getDownPayment() {
+		return downPayment;
+	}
+	public void setDownPayment(double downPayment) {
+		this.downPayment = downPayment;
+	}
 	public String getOrderStatus() {
-		return OrderStatus;
+		return orderStatus;
 	}
 	public void setOrderStatus(String orderStatus) {
-		OrderStatus = orderStatus;
+		this.orderStatus = orderStatus;
 	}
-
-	
-	public String getOrderId() {
+	public int getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(String orderId) {
+	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
 	public String getUserId() {
@@ -66,10 +73,10 @@ public class OrderDetails {
 	public void setNoOfInstalments(int noOfInstalments) {
 		this.noOfInstalments = noOfInstalments;
 	}
-	public String getOrderPrice() {
+	public double getOrderPrice() {
 		return orderPrice;
 	}
-	public void setOrderPrice(String orderPrice) {
+	public void setOrderPrice(double orderPrice) {
 		this.orderPrice = orderPrice;
 	}
 	public String getDescription() {
@@ -88,10 +95,10 @@ public class OrderDetails {
 	public void setRemainingInst(int remainingInst) {
 		this.remainingInst = remainingInst;
 	}
-	public int getEMIAmount() {
+	public double getEMIAmount() {
 		return EMIAmount;
 	}
-	public void setEMIAmount(int eMIAmount) {
+	public void setEMIAmount(double eMIAmount) {
 		EMIAmount = eMIAmount;
 	}
 	

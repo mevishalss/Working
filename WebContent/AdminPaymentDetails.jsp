@@ -67,7 +67,7 @@ editDiv {
 <jsp:include page="menu.jsp"></jsp:include>
 <br><br>
 
-<table align="center" border="0" >
+<table align="center" border="2" >
 		
 		<tbody>
 		<%
@@ -78,23 +78,30 @@ editDiv {
 		<%}
 			for(Payment m : plist){
 		%>
+		<th >User Id</th>
+		<th >Order Id</th>
+		<th >Transaction Id</th> 
+		<th >Transaction Date</th>
+		<th >Transaction Amount</th>
+		<th >Transaction Status</th>
+		<th >Transaction Mode</th>
 		<tr>
-			<th >User Id</th> <td align="center" >
+			 <td align="center" >
 				<%=m.getUserId() %>
 			</td>
-			<th >Order Id</th> <td align="center" >
+			 <td align="center" >
 				<%=m.getOrderId()%>
 			</td>
-			<th >Transaction Id</th> <td align="center" >
+			<td align="center" >
 				<%=m.getTransId() %>
 			</td>
-			<th >Transaction Date</th><td align="center" >
+			<td align="center" >
 				<%=m.getTransDate() %>
 			</td>
-			<th >Transaction Amount</th><td align="center" >
+			<td align="center" >
 				<%=m.getTransAmount() %>
 			</td>
-			<th >Transaction Status</th><td align="center" >
+			<td align="center" >
 				<%=m.getTransStatus()%>
 			</td>
 			<td align="center" >

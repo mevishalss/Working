@@ -136,6 +136,11 @@ $(document).ready(function () {
       
 });
 <% String see =(String) session.getAttribute("sessname");
+String msg =(String) session.getAttribute("msg");
+if(msg==null)
+{
+	msg=" ";
+}
 	//System.out.print(see);
 	
 %>
@@ -147,6 +152,7 @@ $(document).ready(function () {
 <jsp:include page="LoginHead.jsp"></jsp:include>
 
 	<div  align="center" style="margin-top: 100px">
+	<label name="msg" value="" align="center" style="background-color: #382a5e;color: #f9020a;border-radius: 11px"><%=msg %></label>
 	<spr:form action="login.php" commandName="user" method="post" id="myform">
 	<fieldset>
 	<legend align="center">&nbsp;&nbsp;&nbsp;LOGIN&nbsp;&nbsp;&nbsp;</legend>

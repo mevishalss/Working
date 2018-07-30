@@ -18,6 +18,9 @@ import dto.UserDetails;
 
 @Repository
 public class OrderDao {
+	
+	@Autowired
+	OrderDetails orderDetails;
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
@@ -54,7 +57,7 @@ public class OrderDao {
 		return ulist;
 	
 }
-	public List<OrderDetails> orderList(String uid){
+	public List<OrderDetails> orderList(int uid){
 		List<OrderDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<OrderDetails>>() {
 
 			@Override
@@ -81,7 +84,7 @@ public class OrderDao {
 			public List<OrderDetails> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(OrderDetails.class);
-				q.add(Restrictions.eq("OrderStatus", "pending"));
+				q.add(Restrictions.eq("orderStatus", "pending"));
 				List<OrderDetails> ul = q.list();
 				t.commit();
 				arg0.close();
@@ -104,6 +107,24 @@ public class OrderDao {
 				arg0.update(or);
 				t.commit();
 				System.out.println(or);
+				arg0.flush();
+				arg0.close();
+				return null;
+			}
+		
+		});
+	}
+	
+	
+	public void InsertOrder(OrderDetails o) {
+		this.orderDetails=o;
+		hibernateTemplate.execute(new HibernateCallback<User>() {
+			
+			@Override
+			public User doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				arg0.save(orderDetails);
+				t.commit();
 				arg0.flush();
 				arg0.close();
 				return null;
