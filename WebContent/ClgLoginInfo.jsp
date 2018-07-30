@@ -10,14 +10,14 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-<<<<<<< HEAD
 body {
   background-image: url("images/background.jpg");
   }
 </style>
 
 
-=======
+
+<style type="text/css">
 .red {
     color:red;
 }
@@ -40,7 +40,6 @@ legend
     color: #5f97ef;   
 }
 </style>
->>>>>>> branch 'master' of https://github.com/mevishalss/Working.git
 <script src="scripts/jquery-3.3.1.min.js"></script>
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>

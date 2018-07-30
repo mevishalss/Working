@@ -73,11 +73,10 @@ input[type=text]:focus {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-<<<<<<< HEAD
 body {
   background-image: url("images/background.jpg");
    
-=======
+}
 
 #image {
     margin-top: 80px;
@@ -86,7 +85,6 @@ body {
     width: 50%;
     border: 3px solid #ecf0f1	;
     padding: 10px;
->>>>>>> branch 'master' of https://github.com/mevishalss/Working.git
 }
 
 </style>
