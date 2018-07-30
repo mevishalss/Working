@@ -9,6 +9,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
 <style type="text/css">
+.red {
+    color:red;
+}
+fieldset 
+{ 
+    display: block;
+    margin-left: 350px;
+    margin-right: 350px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    background: #F8F8F8;
+    border-color: #5f97ef;    
+}
+    
+legend
+{
+    color: #5f97ef;   
+}
+</style>
+<style type="text/css">
 input[type=text] {
     width: 130px;
     box-sizing: border-box;

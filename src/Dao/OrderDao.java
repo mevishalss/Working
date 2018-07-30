@@ -74,14 +74,14 @@ public class OrderDao {
 }
 	
 	
-	public List<OrderDetails> AllorderList(){
+	public List<OrderDetails> AllPendingList(){
 		List<OrderDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<OrderDetails>>() {
 
 			@Override
 			public List<OrderDetails> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(OrderDetails.class);
-				
+				q.add(Restrictions.eq("OrderStatus", "pending"));
 				List<OrderDetails> ul = q.list();
 				t.commit();
 				arg0.close();
@@ -92,6 +92,8 @@ public class OrderDao {
 		return ulist;
 	
 }
+	
+	
 	
 	public void OrderUpdate(OrderDetails or) {
 		hibernateTemplate.execute(new HibernateCallback<OrderDetails>() {
@@ -109,5 +111,7 @@ public class OrderDao {
 		
 		});
 	}
+	
+	
 	
 	}

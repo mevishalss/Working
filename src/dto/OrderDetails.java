@@ -8,7 +8,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.Parameter;
 
 import com.sun.istack.internal.NotNull;
 @Entity
@@ -17,37 +19,28 @@ import com.sun.istack.internal.NotNull;
 public class OrderDetails {
 	@Id
 	@Column (name="order_id")
+	@GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
+            @Parameter(name = "sequenceName", value = "sequence"),
+            @Parameter(name = "allocationSize", value = "1000000"),})
 	private String orderId;
-	
 	private String userId;
 	private String orderDate;
-	private String noOfInstalments;
+	private int noOfInstalments;
 	private String orderPrice;
 	private String description;
-	private String remainingInst;
+	private int remainingInst;
+	private int EMIAmount;
+	@Column(name="OrderStatus") 
+	private String OrderStatus="pending";
 	
-	@NotNull 
-private String orderSatus;
 	
-	
-	public String getOrderSatus() {
-		return orderSatus;
+	public String getOrderStatus() {
+		return OrderStatus;
 	}
-	public void setOrderSatus(String orderSatus) {
-		this.orderSatus = orderSatus;
+	public void setOrderStatus(String orderStatus) {
+		OrderStatus = orderStatus;
 	}
 
-	
-	public OrderDetails(String userId) {
-		super();
-		this.userId = userId;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 	
 	public String getOrderId() {
 		return orderId;
@@ -55,40 +48,53 @@ private String orderSatus;
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getOrderDate() {
 		return orderDate;
 	}
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public String getNoOfInstalments() {
+	public int getNoOfInstalments() {
 		return noOfInstalments;
 	}
-	public void setNoOfInstalments(String noOfInstalments) {
+	public void setNoOfInstalments(int noOfInstalments) {
 		this.noOfInstalments = noOfInstalments;
 	}
 	public String getOrderPrice() {
 		return orderPrice;
 	}
-	@Override
-	public String toString() {
-		return "OrderDetails [orderId=" + orderId + ", userId=" + userId + ", orderDate=" + orderDate
-				+ ", noOfInstalments=" + noOfInstalments + ", orderPrice=" + orderPrice + "]";
-	}
 	public void setOrderPrice(String orderPrice) {
 		this.orderPrice = orderPrice;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public int getRemainingInst() {
+		return remainingInst;
 	}
 	public OrderDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderDetails(String orderId, String orderDate, String noOfInstalments, String orderPrice) {
-		super();
-		this.orderId = orderId;
-		this.orderDate = orderDate;
-		this.noOfInstalments = noOfInstalments;
-		this.orderPrice = orderPrice;
+	public void setRemainingInst(int remainingInst) {
+		this.remainingInst = remainingInst;
 	}
+	public int getEMIAmount() {
+		return EMIAmount;
+	}
+	public void setEMIAmount(int eMIAmount) {
+		EMIAmount = eMIAmount;
+	}
+	
 	
 
 }

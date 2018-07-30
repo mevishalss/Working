@@ -220,16 +220,17 @@ public class WelcomeController {
 	@RequestMapping(value="/AdminData.php")
 	public String adminLogin (Admindto AdminObj ,ModelMap model) {
 		this.AdminObj = AdminObj;
-	//	if(adao.checkUser(this.AdminObj))
+		if(adao.checkUser(this.AdminObj))
 		{
-				List<OrderDetails> list= odao.AllorderList();
+				List<OrderDetails> list= odao.AllPendingList();
 				model.put("list",list);
 				return "ViewToAdmin";
 		}
-		//	else
-		//	{
-		//		return "AdminHome";
-		//}
+			else
+			{
+				model.put("Admindto", new Admindto());
+				return "Adminlogin_page";
+		}
 	}
 	
 	@RequestMapping(value="/AdminData1.php")
@@ -253,6 +254,32 @@ public class WelcomeController {
 		model.put("list", list);
 		return "AdminPaymentDetails";
 	}
+	
+	
+	@RequestMapping(value="/PayInstallment.php")
+	public String PayPage (@RequestParam("orderId") String orderId,ModelMap model) {
+		model.put("orderId", orderId);
+		return "paymentpage";
+	}
+	
+	
+	@RequestMapping(value="/PaymentPage.php")
+	public String PayInstallment (@RequestParam("orderId") String orderId,ModelMap model) {
+		List<OrderDetails> list = odao.orderList(orderId);
+		for(OrderDetails o : list)
+		{
+			if(o.getRemainingInst()>0)
+			{
+			
+			o.setRemainingInst(o.getRemainingInst()-1);
+			odao.OrderUpdate(o);
+			}
+		}
+		
+		return "PaymentInProgress";
+	}
+	
+	
 	
 	public EditDao getEditdao() {
 		return editdao;
@@ -424,7 +451,7 @@ public class WelcomeController {
 		List<OrderDetails> list = odao.orderList(uid);
 		for(OrderDetails u :list)
 		{
-			u.setOrderSatus(value);
+			u.setOrderStatus(value);
 			odao.OrderUpdate(u);
 		}
 		List<UserDetails> list1 = dao.checkUserDetails(uid);
@@ -567,6 +594,10 @@ public class WelcomeController {
 		
 		return "EMI_page";
 	}
+	
+	
+	
+	
 
 }
 

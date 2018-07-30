@@ -117,7 +117,7 @@ span.price {
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="PaymentInProgress.jsp" " method="post">
+      <form action="PaymentPage.php" " method="post">
       
         <div class="row">
           <div class="col-50">
@@ -174,6 +174,9 @@ span.price {
         <label>
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
+        <% String oid = (String) request.getAttribute("orderId");%>
+        <input type="hidden" name="orderId" value="<%= oid%>">
+              
         <input type="submit" value="Continue to checkout" class="btn">
       </form>
     </div>
