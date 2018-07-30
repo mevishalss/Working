@@ -365,7 +365,8 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/forgotpass1.php")
 	public String forgotPass (ModelMap model) {
-		return "forgot_pass";
+				
+		return "ForgotPass";
 	}
 	
 	@RequestMapping(value="/paymentpage.php")

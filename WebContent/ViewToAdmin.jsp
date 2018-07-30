@@ -31,6 +31,13 @@ legend
 }
 </style>
 
+<style type="text/css">
+body {
+  background-image: url("images/background.jpg");
+   
+}
+</style>
+
 </head>
 
 

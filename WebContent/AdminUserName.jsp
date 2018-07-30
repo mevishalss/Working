@@ -22,6 +22,12 @@
 .red {
     color:red;
 }
+
+body {
+  background-image: url("images/background.jpg");
+   
+}
+
 #submit {
   display: inline-block;
   padding: 15px 25px;
