@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import dto.OrderDetails;
 import dto.Payment;
 import dto.User;
 
@@ -90,6 +91,24 @@ public class PaymentDao {
 		
 		});
 	}
+	
+	public void InsertPayment(Payment o) {
+		this.payment=o;
+		hibernateTemplate.execute(new HibernateCallback<User>() {
+			
+			@Override
+			public User doInHibernate(Session arg0) throws HibernateException {
+				Transaction t = arg0.beginTransaction();
+				arg0.save(payment);
+				t.commit();
+				arg0.flush();
+				arg0.close();
+				return null;
+			}
+		
+		});
+	}
+	
 	
 
 }

@@ -7,7 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<style type="text/css">
+body {
+  background-image: url("images/background.jpg");
+   
+}
+</style>
 </head>
+
 <body>
 
 <jsp:include page="menu.jsp"></jsp:include>
@@ -64,13 +72,13 @@
 			</td>
 			
 			<td align="center" >
-				<%=m.getOrderStatus() %>
+				<%=m.getOrderPrice() %>
 			</td>
 			<td>
 			<%
 			if( m.getRemainingInst() > 0 && m.getOrderStatus().equals("confirm") )
 			{ 
-				String text = m.getOrderId();
+				int text = m.getOrderId();
 			%>
 			<form method="post" action="PayInstallment.php">
 				<input type="hidden" name="orderId" value="<%=text%>">

@@ -73,6 +73,10 @@ input[type=text]:focus {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+body {
+  background-image: url("images/background.jpg");
+   
+}
 
 #image {
     margin-top: 80px;
@@ -88,7 +92,7 @@ input[type=text]:focus {
 </head>
 <body>
 
-<% User user = (User) request.getAttribute("user"); 
+<% String uid = (String) request.getAttribute("user"); 
  String see =(String) session.getAttribute("sessname");
 //System.out.print(see);
 
@@ -106,7 +110,7 @@ if(see==null)
 
 
 
-<jsp:include page="menu.jsp?user=<%=user.getUserName() %>"></jsp:include>
+<jsp:include page="menu.jsp"></jsp:include>
 <form action="searchProduct.php" method="post">
 <div align="center" style="margin-top: 200px">
  <div align="center" id="image"><img src="images/final.png" ></div>
@@ -117,7 +121,9 @@ if(see==null)
 	
 	<td>
 	
-		<input type="submit" id="searchbox" value="Search" name="searchbtn">	
+		<input type="submit" id="searchbox" value="Search" name="searchbtn">
+		
+		<input type="hidden" id="uid" value="<%=uid%>" name="uid">		
 	</td>
 </tr>
 

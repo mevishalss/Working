@@ -31,6 +31,13 @@ legend
 }
 </style>
 
+<style type="text/css">
+body {
+  background-image: url("images/background.jpg");
+   
+}
+</style>
+
 </head>
 
 
@@ -96,18 +103,35 @@ $(document).ready(function () {
 		<tr>
 			
 			<td align="center" id="uid"><%=m.getOrderId()%></td>
+			
 			<td align="center"  >
 				<%=m.getUserId() %>
 			</td>
+			
+			
 			<td align="center" >
 				<%=m.getOrderDate() %>
 			</td>
 			<td align="center" >
 			<%=m.getNoOfInstalments() %>
-				
+			</td>
+			
 			</td>
 			<td align="center" >
-				<%=m.getOrderPrice() %>
+			<%=m.getRemainingInst() %>
+			</td>
+			
+			</td>
+			<td align="center" >
+			<%=m.getDescription() %>
+			</td>
+			
+			<td align="center" >
+				<%=m.getOrderPrice()%>
+			</td>
+			
+			<td align="center" >
+				<%=m.getDownPayment()%>
 			</td>
 			<td>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">

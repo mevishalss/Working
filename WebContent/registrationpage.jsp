@@ -271,15 +271,16 @@ div {
 
 fieldset { 
     display: block;
-    margin-left: 350px;
-    margin-right: 350px;
+    align="center";
     padding-top: 0.35em;
     padding-bottom: 0.625em;
     padding-left: 0.75em;
     padding-right: 0.75em;
     border: 2px groove (internal value);
     background: #F8F8F8;
-    border-color: #5f97ef;    
+    border-color: #5f97ef;  
+    width: 700px;
+    height: auto; 
     }
     
     legend
