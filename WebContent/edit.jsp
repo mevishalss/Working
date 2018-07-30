@@ -184,6 +184,18 @@ fieldset {
 
 
 <body>
+<% String uid = (String) request.getAttribute("user"); 
+ String see =(String) session.getAttribute("sessname");
+//System.out.print(see);
+
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
+
 <% List <UserDetails> list = (List) request.getAttribute("list"); 
 
 

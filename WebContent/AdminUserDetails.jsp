@@ -62,14 +62,25 @@ editDiv {
 
 
 <body>
-<% List <UserDetails> list = (List) request.getAttribute("list"); %>
-<jsp:include page="menu.jsp"></jsp:include>
+<% List <UserDetails> list = (List) request.getAttribute("list");
+String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("AdminLogin.php"); 
+	rd.forward(request, response);
+}
+
+
+
+%>
+<jsp:include page="ViewAfterUserListMenu.jsp"></jsp:include>
 
 
 <div align="center" id="paymentDiv" >
 <spr:form action="paymentDetails1.php" commandName="user"  method="post" >
 <fieldset>
-<legend><b><u><font size="5"> Payment Details</font></u></b></legend>
+<legend align="center"><b><u><font size="5"> Payment Details</font></u></b></legend>
 <div align="right" id="userdetail" >
 <tr>
 <%
