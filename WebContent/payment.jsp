@@ -31,6 +31,12 @@ legend
 }
 </style>
 </head>
+<style type="text/css">
+body {
+  background-image: url("images/background.jpg");
+   
+}
+</style>
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
 <br><br>
