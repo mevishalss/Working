@@ -72,10 +72,8 @@ body {
 			</td>
 			
 			<td align="center" >
-
 				<%= m.getOrderStatus() %>
-
-
+				
 			</td>
 			<td>
 			<%
