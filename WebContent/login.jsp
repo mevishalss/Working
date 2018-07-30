@@ -92,10 +92,10 @@ $(document).ready(function () {
     $(".uid").blur(function(){
         var name = $('.uid').val();
         if (name.length == 0) {
-            $('#spanuser').next('div.red').remove();
-            $('#spanuser').after('<div class="red">User Name is Required</div>');
+            $('#imgsrc1').next('div.red').remove();
+            $('#imgsrc1').after('<div class="red">User Name is Required</div>');
         } else {
-        	$('#spanuser').next('div.red').remove();
+        	$('#imgsrc1').next('div.red').remove();
             return true;
         }
     });

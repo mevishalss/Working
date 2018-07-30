@@ -85,7 +85,15 @@ if(see==null)
 
 %>
 <table border="1" align="center">
+<%
+		if(list1.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+
 		<thead>
+		
 		
 		<tr>
 		<th >User Id</th>
