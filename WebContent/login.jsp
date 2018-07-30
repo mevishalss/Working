@@ -160,9 +160,10 @@ $(document).ready(function () {
 	     <td>Password : </td><td><spr:password path="userPass" id="pwd" name="pwd"/></td><td><span id="spanpass"></span></td>
 	</tr>
 	
-	<tr><td> 
-        <input type="checkbox" name="remember" id="remember"> Remember me
-     </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
 
     <tr>
     	<td colspan="2" align="center"><input type="submit" id="btnlogin" class="myButton" value="Login" /> <input type="reset" value="Reset" class="myButton"/></td>		
@@ -170,7 +171,9 @@ $(document).ready(function () {
 		
 	<p id="details"></p>
 	
-	
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
 	<tr>
 		<td align="Left"><a href="registration.php">New Register</a></td> <td align="Right"><a href="forgotpass1.php">Forgot Password</a></td>	
 	</tr>
