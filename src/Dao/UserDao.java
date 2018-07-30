@@ -310,15 +310,15 @@ String s="Verified";
 	}
 	
 	
-	public boolean checkStatus(UserDetails user){
+	public boolean checkStatus(User user){
 		
-		List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
+		List<User> ulist = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
 			@Override
-			public List<UserDetails> doInHibernate(Session arg0) throws HibernateException {
+			public List<User> doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
 				Criteria q = arg0.createCriteria(User.class);
-				q.add(Restrictions.and(Restrictions.eq("userName", user.getUserName()), Restrictions.eq("userPass", "verified")));
-				List<UserDetails> ul = q.list();
+				q.add(Restrictions.and(Restrictions.eq("userName", user.getUserName()), Restrictions.eq("status", "Verified")));
+				List<User> ul = q.list();
 				t.commit();
 				arg0.close();
 				return ul;
