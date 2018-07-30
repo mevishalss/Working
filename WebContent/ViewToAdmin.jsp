@@ -9,6 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
+<style type="text/css">
+body {
+  background-image: url("images/background.jpg");
+   
+}
+</style>
+
 </head>
 
 

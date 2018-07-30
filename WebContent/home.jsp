@@ -50,7 +50,10 @@ input[type=text]:focus {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
+body {
+  background-image: url("images/background.jpg");
+   
+}
 
 </style>
 

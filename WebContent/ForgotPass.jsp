@@ -10,7 +10,14 @@
 <style type="text/css">
 .red {
     color:red;
-}fieldset { 
+}
+
+body {
+  background-image: url("images/background.jpg");
+   
+}
+
+fieldset { 
     display: block;
     margin-left: 350px;
     margin-right: 350px;
@@ -20,7 +27,9 @@
     padding-right: 0.75em;
     border: 2px groove (internal value);
     background: #F8F8F8;
-    border-color: #5f97ef;    
+    border-color: #5f97ef;
+    width: 700px;
+    height: auto;    
     }
     
     legend

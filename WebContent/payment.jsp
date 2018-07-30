@@ -8,6 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<style type="text/css">
+body {
+  background-image: url("images/background.jpg");
+   
+}
+</style>
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
 <br><br>
