@@ -136,7 +136,8 @@ if(data=="true")
 {	
 	if (!uidreg.test(value)) {
 		$('#imgsrc1').next('div.red').remove();
-		$("#imgsrc1").attr("src","images/wrong.jpg");
+		$("#imgsrc1").after('<div class="red">User Id length should be 6</div>');
+		
     } else {
     	$("#imgsrc1").attr("src","images/correct.jpg");
     	$('#imgsrc1').next('div.red').remove();
