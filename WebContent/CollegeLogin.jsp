@@ -119,25 +119,27 @@ fieldset {
 	<div  align="center" style="margin-top: 100px">
 	<spr:form action="MLogin.php" commandName="collegedto" method="post" >
 	<fieldset>
-	<legend align="center">&nbsp;&nbsp;&nbsp;College Login&nbsp;&nbsp;&nbsp;</legend>
+	<legend align="center">&nbsp;&nbsp;&nbsp;COLLEGE LOGIN&nbsp;&nbsp;&nbsp;</legend>
 	<table>
-	<tr>
+	
+	
 	<tr>
 	 	<td>User Name : </td><td><spr:input path="Userid" id="cuid" name="cuid"/></td>
 	</tr>
-	</tr>
-	<tr>
+	
+	
 	<tr>
 	     <td>Password : </td><td><spr:password path="password" id="cpwd" name="cpwd"/></td>
 	</tr>
-	</tr>
+	
 	<tr>
 	<tr>
 	<tr>
-		<td> <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label></td>
+		<td> </td>
     </tr>
+    <tr><td> </td></tr> 
+    <tr><td> </td></tr> 
+    <tr><td> </td></tr> 
     </tr>
     </tr>
     
@@ -148,7 +150,10 @@ fieldset {
 	</tr>
 	</tr>
 	</tr>
-	
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
 	<tr>
 	<tr>
 		<td align="Left">

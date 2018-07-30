@@ -122,7 +122,7 @@ fieldset {
 	<div  align="center" style="margin-top: 100px">
 	<spr:form action="AdminSession.php" commandName="Admindto" method="post" >
 	<fieldset>
-	<legend align="center">&nbsp;&nbsp;&nbsp;Admin  Login&nbsp;&nbsp;&nbsp;</legend>
+	<legend align="center">&nbsp;&nbsp;&nbsp;ADMIN LOGIN&nbsp;&nbsp;&nbsp;</legend>
 	<table>
 	
 	<tr>
@@ -136,11 +136,12 @@ fieldset {
 	</tr>
 
 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
 	
 	<tr>
-		<td> <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label></td>
+		<td> </td>
     </tr>
 
  
@@ -148,7 +149,7 @@ fieldset {
 		<td colspan="2" align="center"><input type="submit" value="Login" class="myButton" /> <input type="reset" value="Reset" class="myButton" /></td>
 	</tr>
 
-	
+	<tr><td> </td></tr> <tr><td> </td></tr> <tr><td> </td></tr> <tr><td> </td></tr> 
 
 	<tr>
 		<td align="Left">

@@ -7,7 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<% String uid = (String) request.getAttribute("user"); 
+ String see =(String) session.getAttribute("sessname");
+//System.out.print(see);
 
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
 <style type="text/css">
 body {
   background-image: url("images/background.jpg");
@@ -72,7 +82,8 @@ body {
 			</td>
 			
 			<td align="center" >
-				<%=m.getOrderPrice() %>
+				<%= m.getOrderStatus() %>
+				
 			</td>
 			<td>
 			<%
