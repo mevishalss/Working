@@ -21,39 +21,19 @@ public class Payment {
     @GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
             @Parameter(name = "sequenceName", value = "sequence"),
             @Parameter(name = "allocationSize", value = "1000000"),})
-	private String transId;
+	private int transId;
 	private String userId;
-	private String orderId;
-	private String transAmount;
+	private int orderId;
+	private double transAmount;
 	private String transStatus;
 	private String transDate;
 	private String modeOfTrans;
-
-	
-	
-
-
-	@ManyToOne
-	private User user;
-	
-	
-	public User getUser() {
-		return user;
-	}
-
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 
 	public Payment() {
 		super();
 	}
 
 	
-	@ManyToOne
-	@JoinColumn(name="userId")
 	public String getUserId() {
 		return userId;
 	}
@@ -66,27 +46,27 @@ public class Payment {
 
 
 
-	public String getTransId() {
+	public int getTransId() {
 		return transId;
 	}
 
-	public void setTransId(String transId) {
+	public void setTransId(int transId) {
 		this.transId = transId;
 	}
 
-	public String getOrderId() {
+	public int getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
 
-	public String getTransAmount() {
+	public double getTransAmount() {
 		return transAmount;
 	}
 
-	public void setTransAmount(String transAmount) {
+	public void setTransAmount(double transAmount) {
 		this.transAmount = transAmount;
 	}
 

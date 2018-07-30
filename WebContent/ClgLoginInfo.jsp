@@ -115,7 +115,11 @@ $('input.btn-outline-danger').click(function () {
 		<tr>
 		<th colspan="10" align="center">Payment History Page</th>
 		</tr>
-		
+		<%if(list.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
 		<tr>
 		
 		<th >User Id</th>

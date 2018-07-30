@@ -152,6 +152,7 @@ public class WelcomeController {
 	@RequestMapping(value="/prepLog.php")
 	public String prepLogin(ModelMap model) {
 		model.put("user", user);
+		model.put("msg","");
 		return "login";
 	}
 	
@@ -165,34 +166,36 @@ public class WelcomeController {
 		this.user = user;
 		model.put("uid", user.getUserName());
 		model.put("user", user);
-			if(dao.checkUser(this.user))
+			if(dao.checkUser(this.user) && dao.checkStatus(this.user))
 			{
+				
 				return "session";
 			}	
 			else
+			{
+				model.put("msg", "Please Check Your Email And Password ");
 				return "login";
+			}
 	}
-	
 	
 	
 	@RequestMapping(value="/session.php")
 	public String checklogin(User user,ModelMap model) {
 			model.put("user", user);
-			
-				return "session";
+			return "session";
 	}
 	
 	
 	@RequestMapping(value="/sessionexpired.php")
 	public String sessionexpire(User user,ModelMap model) {
 			model.put("user", user);
-			
 				return "sessionexpired";
 	}
 	
 	@RequestMapping(value="/LoginPage.php")
-	public String LoginPage(User user,ModelMap model) {
-			model.put("user", user);
+	public String LoginPage(@RequestParam("uid") String uid,ModelMap model) {
+			model.put("user", uid);
+			model.put("msg"," ");
 					return "home";
 				}
 	@RequestMapping(value="/ClgLogin.php")
@@ -218,13 +221,21 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping(value="/AdminData.php")
-	public String adminLogin (Admindto AdminObj ,ModelMap model) {
-		this.AdminObj = AdminObj;
-		if(adao.checkUser(this.AdminObj))
-		{
-				List<OrderDetails> list= odao.AllPendingList();
+	public String adminLogin (@RequestParam("uid") String uid ,ModelMap model) {
+			List<OrderDetails> list= odao.AllPendingList();
 				model.put("list",list);
 				return "ViewToAdmin";
+		
+	}
+	
+	@RequestMapping(value="/AdminSession.php")
+	public String admin(Admindto AdminObj ,ModelMap model) {
+		this.AdminObj = AdminObj;
+		model.put("Admindto", new Admindto());
+		if(adao.checkUser(this.AdminObj))
+		{
+				model.put("uid", AdminObj.getUserId());
+				return "CreateAdminSession";
 		}
 			else
 			{
@@ -233,11 +244,21 @@ public class WelcomeController {
 		}
 	}
 	
+	
 	@RequestMapping(value="/AdminData1.php")
 	public String adminUserName (Admindto AdminObj ,ModelMap model) {
 		List<UserDetails> list= editdao.UserList();
 		model.put("list",list);
 			return "AdminUserName";
+	}
+	
+	
+	@RequestMapping(value="/ViewToAdmin.php")
+	public String viewtoadmin (ModelMap model) {
+	//	System.out.println("payment in progress");
+		List<OrderDetails> list= odao.AllPendingList();
+		model.put("list",list);
+		return "ViewToAdmin";
 	}
 	
 	@RequestMapping(value="/admnUserDetails.php")
@@ -264,7 +285,7 @@ public class WelcomeController {
 	
 	
 	@RequestMapping(value="/PaymentPage.php")
-	public String PayInstallment (@RequestParam("orderId") String orderId,ModelMap model) {
+	public String PayInstallment (@RequestParam("orderId") int orderId,ModelMap model) {
 		List<OrderDetails> list = odao.orderList(orderId);
 		for(OrderDetails o : list)
 		{
@@ -280,6 +301,41 @@ public class WelcomeController {
 	}
 	
 	
+	@RequestMapping(value="/PayDownPayment.php")
+	public String PayDownPayment(	@RequestParam("uid") String uid,
+									@RequestParam("date") String date,
+									@RequestParam("orderPrice") String price,
+									@RequestParam("descirption") String desc,
+									@RequestParam("emi") String emi,
+									@RequestParam("dpay") String dpay,
+									@RequestParam("noi") String noi			
+									,ModelMap model) {
+		double price1 = Double.parseDouble(price);
+		double emi1 = Double.parseDouble(emi);
+		double dpay1 = Double.parseDouble(dpay);
+		int noi1 = Integer.parseInt(noi);
+		OrderDetails od = new OrderDetails();
+		od.setUserId(uid);
+		od.setOrderDate(date);
+		od.setOrderPrice(price1);
+		od.setDescription(desc);
+		od.setEMIAmount(emi1);
+		od.setDownPayment(dpay1);
+		od.setNoOfInstalments(noi1);
+		od.setRemainingInst(noi1);
+		System.out.println(uid);
+		odao.InsertOrder(od);
+		Payment p = new Payment();
+		p.setOrderId(od.getOrderId());
+		p.setModeOfTrans("Net Banking");
+		p.setTransAmount(price1);
+		p.setTransDate(date);
+		p.setUserId(uid);
+		pdao.InsertPayment(p);
+		
+		
+		return "PaymentInProgress";
+	}
 	
 	public EditDao getEditdao() {
 		return editdao;
@@ -323,19 +379,16 @@ public class WelcomeController {
 		}
 		Mailer ml=new Mailer();
 		String link="http://localhost:8001/Project/prepLog.php";
-		//from,password,to,subject,message  
 		ml.send("3p.mechto@gmail.com","prafull3p",email,"Your One Time Password is::","Your password is "+pwd+" "+"Use this password to login");  
 		System.out.println("Password send to your email id successfully !");
-//		model.put("user", user);
-//		return "login";
-		return "ForgotPass";
+		return "forgot_pass";
 		
 	}
 	
 	
 	@RequestMapping(value="/forgotpass1.php")
 	public String forgotPass (ModelMap model) {
-		
+				
 		return "ForgotPass";
 	}
 	
@@ -400,6 +453,7 @@ public class WelcomeController {
 		user.setUserPass(ud.getUserPass());
 		dao.InsertIntoLogin(user);
 		model.put("user", user);
+		model.put("msg", "Please Check Your Email And Password ");
 		return "login";
 	}
 	
@@ -447,7 +501,9 @@ public class WelcomeController {
 	
 	
 	@RequestMapping(value="/orderUpdatePage.php")
-	public String orderUPdate (@RequestParam("value") String value,@RequestParam("uid") String uid,ModelMap model) {
+	public String orderUPdate (@RequestParam("value") String value1,@RequestParam("uid") String uid1,ModelMap model) {
+		int uid = Integer.parseInt(uid1);
+		String value = value1;
 		List<OrderDetails> list = odao.orderList(uid);
 		for(OrderDetails u :list)
 		{
@@ -467,10 +523,10 @@ public class WelcomeController {
 	
 	
 	@RequestMapping(value="/searchProduct.php", method = RequestMethod.POST)
-	public String SearchProduct(@RequestParam("search") String flipkartUrl,ModelMap model) {
-		//System.out.println(flipkartUrl);
+	public String SearchProduct(@RequestParam("search") String flipkartUrl,@RequestParam("uid") String uid,ModelMap model) {
 		
 		
+		try{
 	    MultiValueMap<String, String> parameters = UriComponentsBuilder.fromUriString(flipkartUrl).build().getQueryParams();
 	    List<String> pid = parameters.get("pid");
 	    //System.out.println("PID is "+pid.get(0));
@@ -587,12 +643,20 @@ public class WelcomeController {
 		ArrayList<Object> arrauthor =  productInfo.getCategorySpecificInfoV1().getBooksInfo().rauthor();
 		model.put("author", arrauthor);
 		
+		
 		/*ArrayList<Object> arrspecilist =  productInfo.getCategorySpecificInfoV1().specilist();
 		for (Object a : arrspecilist) {
 			System.out.println(a.toString());
 		}*/		
-		
+		model.put("uid", uid);
+		model.put("msg","");
 		return "EMI_page";
+		}catch(Exception e){
+			model.put("user", uid);
+			model.put("msg","Invalid Url");
+			return "home";
+		
+		}
 	}
 	
 	

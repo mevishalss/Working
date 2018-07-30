@@ -3,42 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<% String uid = (String) request.getAttribute("user"); 
- String see =(String) session.getAttribute("sessname");
-//System.out.print(see);
-
-if(see==null)
-{
-	//response.sendRedirect("prepLog.php");
-	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
-	rd.forward(request, response);
-}
-%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<style type="text/css">
-.red {
-    color:red;
-}
-fieldset 
-{ 
-    display: block;
-    margin-left: 350px;
-    margin-right: 350px;
-    padding-top: 0.35em;
-    padding-bottom: 0.625em;
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-    border: 2px groove (internal value);
-    background: #F8F8F8;
-    border-color: #5f97ef;    
-}
-    
-legend
-{
-    color: #5f97ef;   
-}
-</style>
 <style type="text/css">
 
 #logoutLblPos{
@@ -121,8 +87,9 @@ h3 { color: #f2f2f2; background: #ff4a4a; font-size: 40px; line-height: 45px; fo
 <h3 align="center">EMI POOL</h3>
   <div class="header-right">
     
-        <a href="ClgLogin.php">College Login</a>
-    	<a href="AdminLogin.php">Admin Login</a>
+    <a href="ViewToAdmin.php">Order List</a>
+              <a href="sessionexpired.php">Logout</a>
+    	
   </div>
 </div>
 

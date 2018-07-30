@@ -7,7 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<% String uid = (String) request.getAttribute("user"); 
+ String see =(String) session.getAttribute("sessname");
+//System.out.print(see);
 
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
 <style type="text/css">
 body {
   background-image: url("images/background.jpg");
@@ -41,6 +51,12 @@ body {
 		</tr>
 		</thead>
 		<tbody>
+		<%if(list.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+		
 		<%
 			for(OrderDetails m : list){
 		%>
@@ -72,13 +88,14 @@ body {
 			</td>
 			
 			<td align="center" >
-				<%=m.getOrderStatus() %>
+				<%= m.getOrderStatus() %>
+				
 			</td>
 			<td>
 			<%
 			if( m.getRemainingInst() > 0 && m.getOrderStatus().equals("confirm") )
 			{ 
-				String text = m.getOrderId();
+				int text = m.getOrderId();
 			%>
 			<form method="post" action="PayInstallment.php">
 				<input type="hidden" name="orderId" value="<%=text%>">

@@ -47,7 +47,16 @@ body {
 <jsp:include page="Viewadminmenu.jsp"></jsp:include>
 <br><br><br>
 
-<% List <OrderDetails> list = (List) request.getAttribute("list"); %>
+<% List <OrderDetails> list = (List) request.getAttribute("list"); 
+String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("AdminLogin.php"); 
+	rd.forward(request, response);
+}
+
+%>
 
 
 
@@ -97,24 +106,47 @@ $(document).ready(function () {
 		</tr>
 		</thead>	
 		<tbody>
+		<%if(list.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+		
 		<%
 			for(OrderDetails m : list){
 		%>
 		<tr>
 			
 			<td align="center" id="uid"><%=m.getOrderId()%></td>
+			
 			<td align="center"  >
 				<%=m.getUserId() %>
 			</td>
+			
+			
 			<td align="center" >
 				<%=m.getOrderDate() %>
 			</td>
 			<td align="center" >
 			<%=m.getNoOfInstalments() %>
-				
+			</td>
+			
 			</td>
 			<td align="center" >
-				<%=m.getOrderPrice() %>
+			<%=m.getRemainingInst() %>
+			</td>
+			
+			</td>
+			<td align="center" >
+			<%=m.getDescription() %>
+			</td>
+			
+			<td align="center" >
+				<%=m.getOrderPrice()%>
+			</td>
+			
+			<td align="center" >
+				<%=m.getDownPayment()%>
 			</td>
 			<td>
 			<div class="btn-group btn-group-toggle" data-toggle="buttons">

@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -11,14 +10,7 @@
 <style type="text/css">
 .red {
     color:red;
-}
-
-body {
-  background-image: url("images/background.jpg");
-   
-}
-
-fieldset { 
+}fieldset { 
     display: block;
     margin-left: 350px;
     margin-right: 350px;
@@ -28,9 +20,7 @@ fieldset {
     padding-right: 0.75em;
     border: 2px groove (internal value);
     background: #F8F8F8;
-    border-color: #5f97ef;
-    width: 700px;
-    height: auto;    
+    border-color: #5f97ef;    
     }
     
     legend

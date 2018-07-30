@@ -71,11 +71,29 @@ editDiv {
 		
 		
 		<div align="right" id="userDetails" >
-<jsp:include page="menu.jsp"></jsp:include>
+<jsp:include page="ViewAfterUserListMenu.jsp"></jsp:include>
 <br><br>
-<% List <UserDetails> list1 = (List) request.getAttribute("list"); %>
+<% List <UserDetails> list1 = (List) request.getAttribute("list"); 
+String see =(String) session.getAttribute("sessname");
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("AdminLogin.php"); 
+	rd.forward(request, response);
+}
+
+
+%>
 <table border="1" align="center">
+<%
+		if(list1.isEmpty())
+		{
+		%>
+			<tr><td><%="Data Not Found" %></td></tr>
+		<%}%>
+
 		<thead>
+		
 		
 		<tr>
 		<th >User Id</th>

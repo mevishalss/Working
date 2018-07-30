@@ -136,6 +136,11 @@ $(document).ready(function () {
       
 });
 <% String see =(String) session.getAttribute("sessname");
+String msg =(String) session.getAttribute("msg");
+if(msg==null)
+{
+	msg=" ";
+}
 	//System.out.print(see);
 	
 %>
@@ -147,6 +152,7 @@ $(document).ready(function () {
 <jsp:include page="LoginHead.jsp"></jsp:include>
 
 	<div  align="center" style="margin-top: 100px">
+	<label name="msg" value="" align="center" style="background-color: #382a5e;color: #f9020a;border-radius: 11px"><%=msg %></label>
 	<spr:form action="login.php" commandName="user" method="post" id="myform">
 	<fieldset>
 	<legend align="center">&nbsp;&nbsp;&nbsp;LOGIN&nbsp;&nbsp;&nbsp;</legend>
@@ -160,9 +166,10 @@ $(document).ready(function () {
 	     <td>Password : </td><td><spr:password path="userPass" id="pwd" name="pwd"/></td><td><span id="spanpass"></span></td>
 	</tr>
 	
-	<tr><td> 
-        <input type="checkbox" name="remember" id="remember"> Remember me
-     </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
 
     <tr>
     	<td colspan="2" align="center"><input type="submit" id="btnlogin" class="myButton" value="Login" /> <input type="reset" value="Reset" class="myButton"/></td>		
@@ -170,7 +177,9 @@ $(document).ready(function () {
 		
 	<p id="details"></p>
 	
-	
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
+	<tr><td> </td></tr> 
 	<tr>
 		<td align="Left"><a href="registration.php">New Register</a></td> <td align="Right"><a href="forgotpass1.php">Forgot Password</a></td>	
 	</tr>
