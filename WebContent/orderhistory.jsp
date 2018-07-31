@@ -82,7 +82,8 @@ body {
 			</td>
 			
 			<td align="center" >
-				<%=m.getOrderPrice() %>
+				<%= m.getOrderStatus() %>
+				
 			</td>
 			<td>
 			<%

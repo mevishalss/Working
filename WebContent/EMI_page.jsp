@@ -14,16 +14,29 @@
 
 
 $(document).ready(function() {
-	   $("#btn2").hide();
+	$("#btn2").hide();
 	   $("#tb1").hide();
+		$("#con").hide();
+
+	if($("#sellingPrice").val()>20000)
+		{		
+			$(".container").hide();
+			alert("Product Price Should Be Less Than Rs. 20,000 ");
+			$("#con").show();
+
+			
+		}else
+			{
+			$(".container").show();
+
 	  $("#btn1").click(function () {
 	   if($("#Dpay").val()!="")	{	  
 			  $("#btn2").show();
 		  $("#tb1").show();
 	   }
-
+	  
 	  });
-
+			}
 });
 
 
@@ -140,7 +153,7 @@ function calculate()
 }
 </script>
 
-<body>
+<body >
 <jsp:include page="menu.jsp" ></jsp:include>
 
 
@@ -186,6 +199,7 @@ List<Object> arr = (List) request.getAttribute("categoryspeci");
 List<Object> off=(List) request.getAttribute("offers");
 %>
 <form action="PayDownPayment.php" method="post">
+<div align="center" id="con"><h1><b>The Price Should be Less Than Rs.20,000.</b></h1></div>
 <div class="container">
   <h1 align="center"><i><u><font size="5" color="BlueViolet">Product Details</font></u></i></h1><br><br>
   <div class="row">

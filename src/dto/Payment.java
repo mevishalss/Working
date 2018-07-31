@@ -25,8 +25,7 @@ public class Payment {
 	private String userId;
 	private int orderId;
 	private double transAmount;
-	@Column(name="transStatus")
-	private String transStatus="pending";
+	private String transStatus;
 	private String transDate;
 	private String modeOfTrans;
 

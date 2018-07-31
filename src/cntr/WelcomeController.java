@@ -152,6 +152,7 @@ public class WelcomeController {
 	@RequestMapping(value="/prepLog.php")
 	public String prepLogin(ModelMap model) {
 		model.put("user", user);
+		model.put("msg","");
 		return "login";
 	}
 	
@@ -165,12 +166,16 @@ public class WelcomeController {
 		this.user = user;
 		model.put("uid", user.getUserName());
 		model.put("user", user);
-			if(dao.checkUser(this.user))
+			if(dao.checkUser(this.user) && dao.checkStatus(this.user))
 			{
+				
 				return "session";
 			}	
 			else
+			{
+				model.put("msg", "Please Check Your Email And Password ");
 				return "login";
+			}
 	}
 	
 	
@@ -191,6 +196,7 @@ public class WelcomeController {
 	@RequestMapping(value="/LoginPage.php")
 	public String LoginPage(@RequestParam("uid") String uid,ModelMap model) {
 			model.put("user", uid);
+			model.put("msg"," ");
 					return "home";
 				}
 	@RequestMapping(value="/ClgLogin.php")
@@ -430,6 +436,7 @@ public class WelcomeController {
 		user.setUserPass(ud.getUserPass());
 		dao.InsertIntoLogin(user);
 		model.put("user", user);
+		model.put("msg", "Please Check Your Email And Password ");
 		return "login";
 	}
 	
@@ -500,9 +507,9 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/searchProduct.php", method = RequestMethod.POST)
 	public String SearchProduct(@RequestParam("search") String flipkartUrl,@RequestParam("uid") String uid,ModelMap model) {
-		//System.out.println(flipkartUrl);
 		
 		
+		try{
 	    MultiValueMap<String, String> parameters = UriComponentsBuilder.fromUriString(flipkartUrl).build().getQueryParams();
 	    List<String> pid = parameters.get("pid");
 	    //System.out.println("PID is "+pid.get(0));
@@ -625,8 +632,14 @@ public class WelcomeController {
 			System.out.println(a.toString());
 		}*/		
 		model.put("uid", uid);
-		
+		model.put("msg","");
 		return "EMI_page";
+		}catch(Exception e){
+			model.put("user", uid);
+			model.put("msg","Invalid Url");
+			return "home";
+		
+		}
 	}
 	
 	

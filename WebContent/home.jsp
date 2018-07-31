@@ -93,6 +93,7 @@ body {
 <body>
 
 <% String uid = (String) request.getAttribute("user"); 
+String msg = (String) request.getAttribute("msg");
  String see =(String) session.getAttribute("sessname");
 //System.out.print(see);
 
@@ -112,11 +113,14 @@ if(see==null)
 
 <jsp:include page="menu.jsp"></jsp:include>
 <form action="searchProduct.php" method="post">
-<div align="center" style="margin-top: 200px">
+<div align="center" style="margin-top: 50px">
+<label name="msg" value="" align="center" style="background-color: #382a5e;color: #f9020a;border-radius: 11px;padding:5px "><%=msg %></label>
  <div align="center" id="image"><img src="images/final.png" ></div>
  <br><br>
+ 
 <table>
 <tr>
+
   <input type="text" name="search" placeholder="Paste Your URL & Search for the products......">
 	
 	<td>
