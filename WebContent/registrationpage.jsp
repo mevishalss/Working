@@ -52,9 +52,9 @@ $("#submit").click(function(){
 		var yearofcourse = $(".yearofcourse").val();
 		var mobile = $(".mobile").val();
 		var birthdate = $(".birthdate").val();
-		var collegename=$(".cName").val();
-		var collegecode=$(".cCode").val();
-		var collegereg=/^([^0-9]*)$/;
+		//var collegename=$(".cName").val();
+		//var collegecode=$(".cCode").val();
+		//var collegereg=/^([^0-9]*)$/;
 		
 		
 		
@@ -68,20 +68,20 @@ $("#submit").click(function(){
 		
 		
 		
-		if (!regcollge.test(collegecode)) {
+		/* if (!regcollge.test(collegecode)) {
         	$('#spancCode').next('div.red').remove();
             $('#spancCode').after('<div class="red">Invalid College Code</div>');
         } else {
         	$('#spancCode').next('div.red').remove();
-        }
+        } */
 		 
 		
-		if (!collegereg.test(collegename)) {
+		/* if (!collegereg.test(collegename)) {
         	$('#spancName').next('div.red').remove();
             $('#spancName').after('<div class="red">Invalid College Name</div>');
         } else {
         	$('#spancName').next('div.red').remove();
-        }
+        } */
 		
 		
 		
@@ -217,8 +217,6 @@ else
 });
 
 
-	
-	
 
 });
 
@@ -269,6 +267,16 @@ div {
     box-sizing: border-box;
 }
 
+.text {
+    width: 100%;
+    padding: 10px 17px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 fieldset { 
     display: block;
     align="center";
@@ -301,7 +309,7 @@ fieldset {
 <body>
 
 
-<jsp:include page="LoginHead.jsp"></jsp:include>
+<jsp:include page="LoginHead1.jsp"></jsp:include>
 <spr:form action="registrationpage.php"  method="post" commandName="user">
 <h1 align="center" id="h1">Registration Page</h1>
 <div align="center" >
@@ -334,8 +342,8 @@ fieldset {
 
 <td>EmailId: </td><td> <spr:input type ="email" path = "emailId" id="text" class="email" required="required" Placeholder="abc@gmail.com" /></td><td><span><img id="imgsrc2" src=""/></span></td>
 </tr>
-<tr>
 
+<tr>
 <td>Mobile No: </td><td> <spr:input path = "phoneNo" id="text"  class="mobile" required="required" Placeholder="9123456789" /></td><td><span><img id="imgsrc3" src=""/></span></td>
 </tr>
 </table>
@@ -346,12 +354,35 @@ fieldset {
 <fieldset>
 <legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;College Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
+
 <tr>
-<td>College Code: </td><td> <spr:input type="text"  path = "CollegeCode" class="cCode"  required="required" id="text" Placeholder="College Code" /></td><td><span id="spancCode"></span></td>
+<td>College Name: </td>
+<td>
+<spr:select path="CollegeCode" id="type" class="text">
+    <option value="1000">--Select an Item--</option>
+    <option value="1001">College of Engineering, Pune</option>
+    <option value="1002">Maharashtra Institute of Technology, Pune</option>
+    <option value="1003">Vishwakarma Institute of Technology, Pune</option>
+      <option value="1004">Pune Institute of Computer Technology, Pune</option>
+       <option value="1005">AISSMS College of Engineering, Pune</option>
+</spr:select></td>
 </tr>
+
 <tr>
-<td>College Name: </td><td> <spr:input type="text"  path = "CollegeName" class="cName" required="required" id="text" Placeholder="College Name" /></td><td><span id="spancName"></span></td>
+<td>College Code: </td>
+<td>
+<spr:select path="CollegeName" id="size" class="text" >
+     <option value="College of Engineering, Pune">1001</option>
+    <option value="Maharashtra Institute of Technology, Pune">1002</option>
+    <option value="Vishwakarma Institute of Technology, Pune">1003</option>
+      <option value="Pune Institute of Computer Technology, Pune">1004</option>
+       <option value="AISSMS College of Engineering, Pune">1005</option>
+</spr:select>
+</td>
 </tr>
+
+
+
 <tr>
 <td>College PNR: </td><td> <spr:input path = "prnNo" id="text"  required="required" Placeholder="P123456789" /></td>
 </tr>

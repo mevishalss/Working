@@ -1,3 +1,5 @@
+<%@page import="dto.UserDetails"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form" %>
@@ -273,10 +275,31 @@ fieldset {
 
 
 <body>
-<jsp:include page="LoginHead.jsp"></jsp:include>
-<spr:form action="edited.php"  method="post" commandName="user">
-<h1 align="center" id="h1">Registration Page</h1>
-<div align="center" >
+
+<% 
+ String see =(String) session.getAttribute("sessname");
+//System.out.print(see);
+
+if(see==null)
+{
+	//response.sendRedirect("prepLog.php");
+	RequestDispatcher rd=request.getRequestDispatcher("prepLog.php"); 
+	rd.forward(request, response);
+}
+%>
+
+<% List <UserDetails> list = (List) request.getAttribute("list"); 
+
+
+%>
+<jsp:include page="menu.jsp"></jsp:include>
+
+<h1 align="center" id="h1">Edit Profile</h1>
+
+<div align="center" id="editDiv" >
+<spr:form action="edited.php" commandName="user"  method="post" >
+
+<div align="center">
 <fieldset>
 
 <legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>

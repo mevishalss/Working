@@ -200,6 +200,7 @@ public class WelcomeController {
 			model.put("msg"," ");
 					return "home";
 				}
+	//college Login
 	
 	
 
@@ -447,7 +448,6 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/edited.php")
 	public String editDetails(UserDetails user,ModelMap model) {
-		System.out.println("hello"+user.getUserName());
 			dao.updateUser(user);
 				return "home";
 	}
