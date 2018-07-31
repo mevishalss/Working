@@ -216,24 +216,8 @@ else
 	
 });
 
-$("#type").change(function () {
-    var val = $(this).val();
-    alert(val);
-    if (val == "1001") {
-        $("#size").html("<option value='test'>1001</option><option value='test2'>item1: test 2</option>");
-    } else if (val == "1002") {
-        $("#size").html("<option value='test'>1002</option><option value='test2'>item2: test 2</option>");
-    } else if (val == "1003") {
-        $("#size").html("<option value='test'>1003</option><option value='test2'>item3: test 2</option>");
-    } else if (val == "1004") {
-    	$("#size").html("<option value='test'>1004</option><option value='test2'>item3: test 2</option>");
-    }else if (val == "1005") {
-    	$("#size").html("<option value='test'>1005</option><option value='test2'>item3: test 2</option>");
-    }else if (val == "1000") {
-        $("#size").html("<option value=''>--select one--</option>");
-    }
-});
-	
+
+
 });
 
 </script>
@@ -370,41 +354,32 @@ fieldset {
 <fieldset>
 <legend align="center"><b><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;College Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></legend>
 <table>
+
 <tr>
 <td>College Name: </td>
-<td><select id="type" class="text">
+<td>
+<spr:select path="CollegeCode" id="type" class="text">
     <option value="1000">--Select an Item--</option>
     <option value="1001">College of Engineering, Pune</option>
     <option value="1002">Maharashtra Institute of Technology, Pune</option>
     <option value="1003">Vishwakarma Institute of Technology, Pune</option>
       <option value="1004">Pune Institute of Computer Technology, Pune</option>
        <option value="1005">AISSMS College of Engineering, Pune</option>
-</select></td>
+</spr:select></td>
 </tr>
 
-<%-- <td>College Code: </td><td> <spr:input type="text"  path = "CollegeCode" class="cCode"  required="required" id="text" Placeholder="College Code" /></td><td><span id="spancCode"></span></td>
- --%>
-
-<%-- <spr:select path = "CollegeCode" class="text"  required="required" id="type" Placeholder="College Code" > 
-<option value="1000">--Select an Item--</option>    
-<option value="1001">1001</option>      
-<option value="1002">1002</option>      
-<option value="1003">1003</option>  
-<option value="1004">1004 </option>
-<option  value="1005">1005 </option>
-</spr:select> --%>
-
-
-<%-- <tr><td>College Name: </td></tr><tr><td>
-<spr:select path = "CollegeName" class="cName" required="required" class="text" id="size">
-    <option value="">-- select one -- </option>
+<tr>
+<td>College Code: </td>
+<td>
+<spr:select path="CollegeName" id="size" class="text" >
+     <option value="College of Engineering, Pune">1001</option>
+    <option value="Maharashtra Institute of Technology, Pune">1002</option>
+    <option value="Vishwakarma Institute of Technology, Pune">1003</option>
+      <option value="Pune Institute of Computer Technology, Pune">1004</option>
+       <option value="AISSMS College of Engineering, Pune">1005</option>
 </spr:select>
 </td>
-</tr> --%>
-
-<%-- <tr>
-<td>College Name: </td><td> <spr:input type="text"  path = "CollegeName" class="cName" required="required" id="text" Placeholder="College Name" /></td><td><span id="spancName"></span></td>
-</tr> --%>
+</tr>
 
 
 
