@@ -61,7 +61,6 @@ public class UserDao {
 	public void createUserDetails(UserDetails user) {
 		this.ud=user;
 		hibernateTemplate.execute(new HibernateCallback<UserDetails>() {
-			
 			@Override
 			public UserDetails doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
@@ -98,14 +97,16 @@ public class UserDao {
 		});
 	}
 	public void updateUser(UserDetails user) {
+		this.ud=user;
 		hibernateTemplate.execute(new HibernateCallback<UserDetails>() {
-
+			
 			@Override
 			public UserDetails doInHibernate(Session arg0) throws HibernateException {
 				Transaction t = arg0.beginTransaction();
-				arg0.update(user);
+				System.out.println(ud.getUserName());
+				System.out.println(user.getUserName());
+				arg0.update(ud);
 				t.commit();
-				System.out.println(user);
 				arg0.flush();
 				arg0.close();
 				return null;

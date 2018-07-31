@@ -12,7 +12,7 @@
 String uname=(String)request.getAttribute("uid"); 
 //out.print("Welcome "+ uname);
 session.setAttribute("sessname",uname);
-response.sendRedirect("MLogin.php?uid="+uname);
+response.sendRedirect("Mlogin.php?uid="+uname);
 
 %>
 

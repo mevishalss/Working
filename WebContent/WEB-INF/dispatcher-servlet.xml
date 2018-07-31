@@ -84,7 +84,7 @@
 	<bean id="ud" class="dto.UserDetails" ></bean>
 	<bean id="payment" class="dto.Payment" ></bean>
 	<bean id="orderDetails" class="dto.OrderDetails" ></bean>
-	
+	<bean id="college" class="dto.Collegedto" ></bean>
 
 	<bean id="editdao" class="Dao.EditDao" >
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>

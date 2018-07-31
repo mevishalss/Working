@@ -75,6 +75,8 @@ public class WelcomeController {
 	AdminDao adao;
 	@Autowired
 	ForgotPass forgotpass;
+	@Autowired
+	Collegedto college;
 	
 	public ForgotPass getForgotpass() {
 		return forgotpass;
@@ -198,20 +200,9 @@ public class WelcomeController {
 			model.put("msg"," ");
 					return "home";
 				}
-	@RequestMapping(value="/ClgLogin.php")
-	public String clglogin (ModelMap model) {
-		model.put("collegedto", new Collegedto());
-		return "CollegeLogin";
-	}
 	
-	@RequestMapping(value="/MLogin.php")
-	public String clglogin (  Collegedto clgdto ,ModelMap model) {
-		List<UserDetails> list =cdoa.studentsList(clgdto.getUserid());
-		model.put("list", list);
-		model.put("user",dao);
-		model.put("CollegeCode",clgdto.getUserid());
-		return "ClgLoginInfo";
-	}
+	
+
 	
 	
 	@RequestMapping(value="/AdminLogin.php")
@@ -243,6 +234,25 @@ public class WelcomeController {
 				return "Adminlogin_page";
 		}
 	}
+	
+
+	
+	@RequestMapping(value="/ClgLogin.php")
+	public String clglogin (ModelMap model) {
+		model.put("collegedto", new Collegedto());
+		return "CollegeLogin";
+	}
+	//college Login
+	@RequestMapping(value="/MLogin.php")
+	public String clglogin (Collegedto clgdto ,ModelMap model) {
+		
+		List<UserDetails> list =cdoa.studentsList(clgdto.getUserid());
+		model.put("list", list);
+		model.put("user",dao);
+		model.put("CollegeCode",clgdto.getUserid());
+		return "ClgLoginInfo";
+	}
+	
 	
 	
 	@RequestMapping(value="/AdminData1.php")
@@ -331,7 +341,7 @@ public class WelcomeController {
 		p.setTransAmount(price1);
 		p.setTransDate(date);
 		p.setUserId(uid);
-		pdao.InsertPayment(p);
+		pdao.PayInstallments(p);
 		
 		
 		return "PaymentInProgress";
@@ -362,8 +372,12 @@ public class WelcomeController {
 	@RequestMapping(value="/edit.php")
 	public String edituser (ModelMap model) {
 		List<UserDetails> list= editdao.orderList(user);
-		model.put("user",ud);
+		//System.out.println(user.getUserName());
+		for(UserDetails u :list)
+		{
+		model.put("user",u);
 		model.put("list",list);
+		}
 		return "edit";
 	}
 	
@@ -433,6 +447,7 @@ public class WelcomeController {
 	
 	@RequestMapping(value="/edited.php")
 	public String editDetails(UserDetails user,ModelMap model) {
+		System.out.println("hello"+user.getUserName());
 			dao.updateUser(user);
 				return "home";
 	}

@@ -15,7 +15,7 @@ body {
   background-image: url("images/background.jpg");
   
 }
-
+//new College Login
 .myButton {
 	-moz-box-shadow: 3px 4px 0px 0px #1564ad;
 	-webkit-box-shadow: 3px 4px 0px 0px #1564ad;
@@ -56,8 +56,6 @@ body {
 	position:relative;
 	top:1px;
 }
-
-
 fieldset { 
     display: block;
     margin-left: 350px;
@@ -94,7 +92,6 @@ fieldset {
             return true;
         }
     });
-
     $("#cpwd").blur(function () {
         var password = $('#cpwd').val();
         if (password.length == 0) {
@@ -106,7 +103,6 @@ fieldset {
             return true;
         }
     });
-
 });
 </script> 
 
@@ -124,7 +120,7 @@ fieldset {
 	
 	
 	<tr>
-	 	<td>User Name : </td><td><spr:input path="Userid" id="cuid" name="cuid"/></td>
+	 	<td>User Name : </td><td><spr:input path="userid" id="cuid" name="cuid"/></td>
 	</tr>
 	
 	
@@ -132,39 +128,22 @@ fieldset {
 	     <td>Password : </td><td><spr:password path="password" id="cpwd" name="cpwd"/></td>
 	</tr>
 	
-	<tr>
-	<tr>
-	<tr>
-		<td> </td>
-    </tr>
-    <tr><td> </td></tr> 
-    <tr><td> </td></tr> 
-    <tr><td> </td></tr> 
-    </tr>
-    </tr>
-    
-    <tr>
-    <tr>
+
     <tr>
 		<td colspan="2" align="center"><input type="submit" value="Login" class="myButton" /> <input type="reset" value="Reset" class="myButton" /></td>
 	</tr>
-	</tr>
-	</tr>
-	<tr><td> </td></tr> 
-	<tr><td> </td></tr> 
-	<tr><td> </td></tr> 
-	<tr><td> </td></tr> 
-	<tr>
-	<tr>
+	
+<tr>
 		<td align="Left">
 		</td> <td align="Right"><a href="url">Forgot Password</a></td>
 	</tr>
-	</tr>
+
 	</table> 
 		
-		</div>
+		
 		
 		</fieldset>
 	</spr:form>
+	</div>
 </body>
 </html>

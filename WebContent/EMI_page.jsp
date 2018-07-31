@@ -257,7 +257,7 @@ List<Object> off=(List) request.getAttribute("offers");
 	<tr><td style="padding:4px">Total EMI</td><td colspan="2"><span id="T_EMI" ></span></td></tr>
 </table>
 	<% String uid= (String)request.getAttribute("uid"); 
-	out.print(uid);%>
+	%>
 	
 	<input type="hidden" value="<%=uid %>" name="uid">
 	<input type="hidden" value="<%=(new java.util.Date()).toLocaleString() %>" name="date">

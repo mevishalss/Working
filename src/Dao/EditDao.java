@@ -34,6 +34,7 @@ public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 }
 
 public List<UserDetails> orderList(User user){
+	System.out.println(user.getUserPass());
 	List<UserDetails> ulist = hibernateTemplate.execute(new HibernateCallback<List<UserDetails>>() {
 
 		@Override
@@ -42,6 +43,7 @@ public List<UserDetails> orderList(User user){
 			Criteria q = arg0.createCriteria(UserDetails.class);
 			q.add(Restrictions.eq("userName", user.getUserName()));
 			List<UserDetails> ul = q.list();
+			
 			t.commit();
 			arg0.close();
 			return ul;

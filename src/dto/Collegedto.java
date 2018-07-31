@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name="clg_login")
 public class Collegedto {
 	@Id
-	private String Userid;
+	private String userid;
 	
 	private String password;
 	
@@ -17,19 +17,27 @@ public class Collegedto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
 	public String getUserid() {
-		return Userid;
+		return userid;
 	}
+
+
 	public void setUserid(String userid) {
-		Userid = userid;
+		this.userid = userid;
 	}
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+		
 	
 	
 

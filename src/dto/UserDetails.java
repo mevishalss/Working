@@ -19,30 +19,18 @@ public class UserDetails {
 	@Id
 	@Column(name="user_id")
 	private String userName;
-	@NotNull
 	private String userPass;
-	@NotNull
-	private String fName;
-	@NotNull
+		private String fName;
 	private String lName;
-	@NotNull
-	private String phoneNo;
-	@NotNull
-	private String bithDate;
-	@NotNull
-	private String emailId;
-	@NotNull
+		private String phoneNo;
+		private String bithDate;
+		private String emailId;
 	private String prnNo;
-	@NotNull
-	private String course;
-	@NotNull
-	private String yearOfCourse;
-	@NotNull
-	private String address;
-	@NotNull
-	private String city;
-	@NotNull
-	private String state;
+		private String course;
+		private String yearOfCourse;
+		private String address;
+		private String city;
+		private String state;
 	@Column(name="status") 
     private String status="pending"; 
 	
