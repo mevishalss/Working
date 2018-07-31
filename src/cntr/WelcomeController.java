@@ -203,7 +203,7 @@ public class WelcomeController {
 		model.put("collegedto", new Collegedto());
 		return "CollegeLogin";
 	}
-	
+	//college Login
 	@RequestMapping(value="/MLogin.php")
 	public String clglogin (  Collegedto clgdto ,ModelMap model) {
 		List<UserDetails> list =cdoa.studentsList(clgdto.getUserid());
@@ -434,7 +434,8 @@ public class WelcomeController {
 	@RequestMapping(value="/edited.php")
 	public String editDetails(UserDetails user,ModelMap model) {
 			dao.updateUser(user);
-				return "home";
+				return "home";  
+				
 	}
 	
 
